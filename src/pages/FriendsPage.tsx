@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import MainLayout from '../layout/MainLayout'
 import DragonIcon from '../Icons/DragonIcon'
 import TriAngleIcon from '../Icons/TriAngleIcon'
@@ -15,17 +15,18 @@ import CheckIcon from '../Icons/CheckIcon'
 const FriendsPage: React.FC = () => {
   const [showCopiedIcon, setShowCopiedIcon] = useState<boolean>(false);
   const user = useAppSelector((state) => state.app.game?.user) as User
+  const ref = useRef<HTMLInputElement>(null)
   const utils = useUtils();
 
   const copyReferralLink = () => {
-    utils.openLink(
-      `https://t.me/share/url?text=Join%20the%20Puzzlescrusade%20Game%20Today&url=http://t.me/test_dev_123456bot/sdfsd234sdfsersbot?start=ref_${user.t_user_id}`,
-    );
-    // navigator.clipboard.writeText(`${process.env.REACT_APP_BOT_URL}?startapp=ref${user.t_user_id}`)
-    // setShowCopiedIcon(true);
-    // setTimeout(() => {
-    //   setShowCopiedIcon(false);
-    // }, 1000);
+
+    if (ref.current)
+      ref.current.select()
+    document.execCommand('copy')
+    setShowCopiedIcon(true);
+    setTimeout(() => {
+      setShowCopiedIcon(false);
+    }, 1000);
   }
 
   return (
@@ -94,7 +95,7 @@ const FriendsPage: React.FC = () => {
                 <div className="px-[3.86vw] flex items-center gap-[4vw]">
                   <div className="w-[12vw] h-[12vw] rounded-full bg-white overflow-hidden flex-none">
                     <img
-                      src={ProfileImage}
+                      src={referral.User.photo_url ? referral.User.photo_url : ProfileImage}
                       alt={referral.User.username}
                       className="w-full h-full"
                     />
@@ -127,8 +128,9 @@ const FriendsPage: React.FC = () => {
           }
         </div>
         <div className="fixed left-0 bottom-[25.33vw] px-[5.86vw] w-screen">
+          <input type="text" className='h-[0px] border-none outline-none' value={`${process.env.REACT_APP_BOT_URL}?startapp=ref${user.t_user_id}`} ref={ref} />
           <div className="flex gap-[5.6vw]">
-            <div className="flex-1 h-[12.8vw] rounded-[1.6vw] flex items-center justify-center gap-[1.73vw] bg-[#FA6648]" onClick={() => utils.shareURL(`https://t.me/share/url?url=https%3A%2F%2Ft.me%2FMMproBump_bot%3Fstart%3Dref_6469354442&text=test`, 'test')}>
+            <div className="flex-1 h-[12.8vw] rounded-[1.6vw] flex items-center justify-center gap-[1.73vw] bg-[#FA6648]" onClick={() => utils.shareURL(`https://t.me/share/url?url=${process.env.REACT_APP_BOT_URL}%3Fstartapp%3Dref${user.t_user_id}&text=test`, 'test')}>
               <span className="text-[4.8vw] font-bold text-[#EAEAEA]">
                 Invite a friend
               </span>

@@ -1,3 +1,5 @@
+import { User as TGUser } from "@telegram-apps/sdk-react";
+
 export type ActivePage =
   | "mine"
   | "boost"
@@ -40,6 +42,7 @@ export type User = {
   createdAt: string;
   updatedAt: string;
   serverTime: string;
+  photo_url?: string;
   Referrals: Referral[];
   DailyCheckIn: DailyCheckIn;
 };
@@ -61,6 +64,7 @@ export type ReferralUser = {
   username: string;
   coin_balance: number;
   level_point: number;
+  photo_url?: string;
 };
 
 export type DailyCheckIn = {
@@ -78,3 +82,7 @@ export type UserLevel = {
   to: number;
   index?: number;
 };
+
+export interface ExpandedTGUser extends TGUser {
+  startParam?: string;
+}

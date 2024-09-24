@@ -7,13 +7,14 @@ import FriendsPage from '../pages/FriendsPage'
 import MinePage from '../pages/MinePage'
 import ProfilePage from '../pages/ProfilePage'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import { useInitData, User } from '@telegram-apps/sdk-react'
+import { useInitData } from '@telegram-apps/sdk-react'
 import { initializeUser } from '../store/appSlice'
 import useRecoverEnergy from '../hooks/useRecoverEnergy'
+import { ExpandedTGUser } from '../types/types'
 
 const App: React.FC = () => {
   const activePage = useAppSelector((state) => state.app.activePage)
-  const [initUser, setInitUser] = useState<User | null>(null);
+  const [initUser, setInitUser] = useState<ExpandedTGUser | null>(null);
   const initData = useInitData();
 
   const loading = useAppSelector((state) => state.app.loading)
@@ -25,9 +26,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (initData?.user) {
-      console.log(initData);
-      
-      setInitUser(initData.user)
+      setInitUser({ ...initData.user, startParam: initData.startParam })
     }
   }, [initData?.user])
 

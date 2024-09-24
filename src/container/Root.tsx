@@ -16,7 +16,7 @@ const Inner: FC = () => {
     }, [debug]);
 
     return (
-        <SDKProvider acceptCustomStyles debug={debug}>
+        <SDKProvider acceptCustomStyles debug={true}>
             <Provider store={store}>
                 <App />
             </Provider>

@@ -19,7 +19,7 @@ const Header: React.FC = () => {
         onClick={() => dispatch(changePage('profile'))}
       >
         <div className="w-[13.33vw] h-[13.33vw] rounded-full bg-white overflow-hidden">
-          <img src={ProfileImage} alt="Elbowbeard" className="w-full h-full" />
+          <img src={user.photo_url ? user.photo_url : ProfileImage} alt="Elbowbeard" className="w-full h-full" />
           {/* <img src={initData?.user?.photoUrl} alt={user.username} className="w-full h-full" /> */}
         </div>
         <div className="">

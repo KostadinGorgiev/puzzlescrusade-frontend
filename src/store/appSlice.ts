@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-import { ActivePage, DailyCheckIn, Game } from "../types/types";
-import { User } from "@telegram-apps/sdk-react";
+import { ActivePage, DailyCheckIn, ExpandedTGUser, Game } from "../types/types";
 import axiosInterface from "../utils/axios";
 import levelConfig from "../config/config.json";
 import { userEnergySize } from "../utils/service";
@@ -33,12 +32,15 @@ const throttleAPICall = (param: any) => {
 
 export const initializeUser = createAsyncThunk(
   "users/initialize",
-  async (user: User) => {
+  async (user: ExpandedTGUser) => {
+    console.log('user  = ', user);
+
     const response = await axiosInterface.post("users/initialize", {
       id: user.id,
       first_name: user.firstName,
       last_name: user.lastName,
       username: user.username,
+      startParam: user.startParam,
     });
     return response.data;
   }

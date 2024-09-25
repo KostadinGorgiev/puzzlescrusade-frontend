@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MainLayout from '../layout/MainLayout'
 import TriAngleIcon from '../Icons/TriAngleIcon'
 import CalendarIcon from '../Icons/CalendarIcon'
-import { Task, TaskStatus } from '../types/types'
+import { Task, TaskStatus, User } from '../types/types'
 import XIcon from '../Icons/XIcon'
 import YoutubeIcon from '../Icons/YoutubeIcon'
 import TelegramIcon from '../Icons/TelegramIcon'
 import CheckCircleIcon from '../Icons/CheckCircleIcon'
 import AngleRightIcon from '../Icons/AngleRightIcon'
-import { useAppDispatch } from '../hooks'
-import { changePage } from '../store/appSlice'
+import { useAppDispatch, useAppSelector } from '../hooks'
+import { changePage, updateUser } from '../store/appSlice'
+import axiosInterface from '../utils/axios'
+import { useUtils } from '@telegram-apps/sdk-react'
 
 interface TaskStatusComponentProps {
   status: TaskStatus
@@ -17,43 +19,29 @@ interface TaskStatusComponentProps {
 }
 
 const EarnPage: React.FC = () => {
+  const user = useAppSelector((state) => state.app.game?.user) as User
   const dispatch = useAppDispatch()
+  const utils = useUtils()
+  const [loading, setLoading] = useState<boolean>(false);
 
   const taskList: Task[] = [
     {
       icon: <XIcon className="flex-none w-[3.83vw] h-[3.46vw]" />,
       title: 'Follow Puzzles Crusade on X',
-      status: 'todo',
+      type: 'twitter',
+      url: 'exampletwitter.com'
     },
     {
       icon: <YoutubeIcon className="flex-none w-[4.92vw] h-[3.46vw]" />,
       title: 'Subscribe on YouTube',
-      status: 'claim',
+      type: 'youtube',
+      url: 'exampleyoutube.com'
     },
     {
       icon: <TelegramIcon className="flex-none w-[4.19vw] h-[3.46vw]" />,
       title: 'Join Puzzles Crusade community',
-      status: 'done',
-    },
-    {
-      icon: <TelegramIcon className="flex-none w-[4.19vw] h-[3.46vw]" />,
-      title: 'Join Puzzles Crusade community',
-      status: 'done',
-    },
-    {
-      icon: <TelegramIcon className="flex-none w-[4.19vw] h-[3.46vw]" />,
-      title: 'Join Puzzles Crusade community',
-      status: 'done',
-    },
-    {
-      icon: <TelegramIcon className="flex-none w-[4.19vw] h-[3.46vw]" />,
-      title: 'Join Puzzles Crusade community',
-      status: 'done',
-    },
-    {
-      icon: <TelegramIcon className="flex-none w-[4.19vw] h-[3.46vw]" />,
-      title: 'Join Puzzles Crusade community',
-      status: 'done',
+      type: 'telegram',
+      url: 'exampletelegram.com'
     },
   ]
 
@@ -97,8 +85,40 @@ const EarnPage: React.FC = () => {
     }
   }
 
-  const handleTaskClick = () => {
-    console.log('click task here')
+  const handleTaskClick = async (task: Task) => {
+    let status = taskStatus(task);
+    console.log('click task here', task)
+    utils.openLink(task.url)
+    if (!loading) {
+      if (status === 'todo') {
+        await axiosInterface.post('task/complete', {
+          id: user.t_user_id,
+          task_type: task.type
+        })
+      } else if (status === 'claim') {
+        await axiosInterface.post('task/claim', {
+          id: user.t_user_id,
+          task_type: task.type
+        })
+      }
+      let response = await axiosInterface.get('task/list', {
+        params: {
+          id: user.t_user_id
+        }
+      })
+      console.log(response);
+      dispatch(updateUser(response.data.user as User))
+
+    }
+  }
+
+  const taskStatus = (task: Task): TaskStatus => {
+    let index = user.TaskStatuses.findIndex((uTask) => uTask.task === task.type)
+    if (index !== -1) {
+      return user.TaskStatuses[index].status
+    } else {
+      return 'todo'
+    }
   }
 
   return (
@@ -152,8 +172,8 @@ const EarnPage: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-center w-[10.8vw]">
                   <TaskStatusComponent
-                    status={task.status}
-                    onClick={() => handleTaskClick()}
+                    status={taskStatus(task)}
+                    onClick={() => handleTaskClick(task)}
                   />
                 </div>
               </div>

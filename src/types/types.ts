@@ -12,10 +12,13 @@ export type ActivePage =
 
 export type LayoutBackground = "image" | "gradient-color";
 
+export type UserTaskType = "twitter" | "youtube" | "telegram";
+
 export type Task = {
   icon: React.ReactNode;
   title: string;
-  status: TaskStatus;
+  type: UserTaskType;
+  url: string;
 };
 
 export type TaskStatus = "todo" | "done" | "claim";
@@ -44,6 +47,7 @@ export type User = {
   serverTime: string;
   photo_url?: string;
   Referrals: Referral[];
+  TaskStatuses: UserTaskStatus[];
   DailyCheckIn: DailyCheckIn;
 };
 
@@ -54,6 +58,15 @@ export type Referral = {
   createdAt: string;
   updatedAt: string;
   User: ReferralUser;
+};
+
+export type UserTaskStatus = {
+  id: number;
+  user_id: number;
+  task: UserTaskType;
+  status: TaskStatus;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type ReferralUser = {

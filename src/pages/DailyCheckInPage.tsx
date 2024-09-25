@@ -3,7 +3,7 @@ import MainLayout from '../layout/MainLayout'
 import { DailyCheckInStatus, User } from '../types/types'
 import CheckInComponent from '../components/DailyCheckInPage/CheckInComponent'
 import { useAppSelector } from '../hooks'
-import moment from 'moment'
+import moment, { utc } from 'moment'
 
 const DailyCheckInPage: React.FC = () => {
 

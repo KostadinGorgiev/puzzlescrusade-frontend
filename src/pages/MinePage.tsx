@@ -53,7 +53,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
             </span>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-[3.2vw] mb-[5.86vw]">
+        <div className="flex items-center justify-center gap-[3.2vw] mb-[4.86vw]">
           <img
             src={CoinImage}
             alt="Coin"
@@ -61,7 +61,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
           />
           <span className="text-[9.86vw] text-white font-bold">{user.coin_balance.toLocaleString()}</span>
         </div>
-        <div className="px-[2.13vw] mb-[10.93vw]">
+        <div className="px-[2.13vw] mb-[8.93vw]">
           <div className="w-full flex justify-between mb-[1.33vw]">
             <span className="text-[2.4vw] font-medium text-[#FB6648]">
               {userLevel(user.level_point).title}

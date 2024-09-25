@@ -21,7 +21,8 @@ const CheckInComponent: React.FC<CheckInComponentProps> = ({ status, day }) => {
         let result = await axiosInterface.post("daily-checkin/claim", {
             id: user.t_user_id,
         });
-        dispatch(claimBonus(result.data.dailyCheckIn as DailyCheckIn))
+        if (result.data.success)
+            dispatch(claimBonus(result.data.dailyCheckIn as DailyCheckIn))
     }
 
     if (status === 'claimed') {

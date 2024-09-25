@@ -1,7 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-import { ActivePage, DailyCheckIn, ExpandedTGUser, Game } from "../types/types";
+import {
+  ActivePage,
+  DailyCheckIn,
+  ExpandedTGUser,
+  Game,
+  User,
+} from "../types/types";
 import axiosInterface from "../utils/axios";
 import levelConfig from "../config/config.json";
 import { userEnergySize } from "../utils/service";
@@ -33,7 +39,7 @@ const throttleAPICall = (param: any) => {
 export const initializeUser = createAsyncThunk(
   "users/initialize",
   async (user: ExpandedTGUser) => {
-    console.log('user  = ', user);
+    console.log("user  = ", user);
 
     const response = await axiosInterface.post("users/initialize", {
       id: user.id,
@@ -41,6 +47,7 @@ export const initializeUser = createAsyncThunk(
       last_name: user.lastName,
       username: user.username,
       startParam: user.startParam,
+      isPremium: user.isPremium,
     });
     return response.data;
   }
@@ -55,6 +62,11 @@ export const appSlice = createSlice({
     },
     initializeUser: (state, action: PayloadAction<ActivePage>) => {
       state.activePage = "battle";
+    },
+    updateUser: (state, action: PayloadAction<User>) => {
+      if (state.game) {
+        state.game.user = action.payload;
+      }
     },
     tap: (state) => {
       if (state.game) {
@@ -152,6 +164,7 @@ export const {
   increaseRecovery,
   increaseTapMultiplier,
   claimBonus,
+  updateUser,
 } = appSlice.actions;
 
 export const getPage = (state: RootState) => state.app.activePage;

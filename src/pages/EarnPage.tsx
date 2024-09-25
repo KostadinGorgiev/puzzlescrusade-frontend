@@ -29,19 +29,19 @@ const EarnPage: React.FC = () => {
       icon: <XIcon className="flex-none w-[3.83vw] h-[3.46vw]" />,
       title: 'Follow Puzzles Crusade on X',
       type: 'twitter',
-      url: 'exampletwitter.com'
+      url: 'https://exampletwitter.com'
     },
     {
       icon: <YoutubeIcon className="flex-none w-[4.92vw] h-[3.46vw]" />,
       title: 'Subscribe on YouTube',
       type: 'youtube',
-      url: 'exampleyoutube.com'
+      url: 'https://exampleyoutube.com'
     },
     {
       icon: <TelegramIcon className="flex-none w-[4.19vw] h-[3.46vw]" />,
       title: 'Join Puzzles Crusade community',
       type: 'telegram',
-      url: 'exampletelegram.com'
+      url: 'https://exampletelegram.com'
     },
   ]
 

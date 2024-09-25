@@ -132,7 +132,7 @@ const FriendsPage: React.FC = () => {
         <div className="fixed left-0 bottom-[25.33vw] px-[5.86vw] w-screen">
           <input type="text" className='h-[0px] border-none outline-none' value={`${process.env.REACT_APP_BOT_URL}?startapp=ref${user.t_user_id}`} ref={ref} />
           <div className="flex gap-[5.6vw]">
-            <div className="flex-1 h-[12.8vw] rounded-[1.6vw] flex items-center justify-center gap-[1.73vw] bg-[#FA6648]" onClick={() => utils.shareURL(`${process.env.REACT_APP_BOT_URL}?startapp=ref${user.t_user_id}&text=Please Join Here`, 'Please Join Here')}>
+            <div className="flex-1 h-[12.8vw] rounded-[1.6vw] flex items-center justify-center gap-[1.73vw] bg-[#FA6648]" onClick={() => utils.shareURL(`${process.env.REACT_APP_BOT_URL}?startapp=ref${user.t_user_id}`, '')}>
               <span className="text-[4.8vw] font-bold text-[#EAEAEA]">
                 Invite a friend
               </span>

@@ -87,10 +87,10 @@ const EarnPage: React.FC = () => {
 
   const handleTaskClick = async (task: Task) => {
     let status = taskStatus(task);
-    console.log('click task here', task)
-    utils.openLink(task.url)
     if (!loading) {
       if (status === 'todo') {
+        console.log('click task here', task)
+        utils.openLink(task.url)
         await axiosInterface.post('task/complete', {
           id: user.t_user_id,
           task_type: task.type

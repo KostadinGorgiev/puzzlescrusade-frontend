@@ -33,7 +33,7 @@ const FriendsPage: React.FC = () => {
 
   return (
     <MainLayout bg="gradient-color">
-      <div className="pt-[7.2vw] px-[4.13vw] pb-[3.46vw]">
+      <div className="pt-[7.2vw] px-[4.13vw] pb-[16vw]">
         <div className="flex flex-col items-center px-[2vw]">
           <div className="text-[6.4vw] font-bold text-[#EAEAEA] mb-[5.6vw]">
             Invite your friends
@@ -74,9 +74,7 @@ const FriendsPage: React.FC = () => {
                 </div>
               </div>
               <div className="text-[3.2vw] text-center font-normal text-[#AAAAAA] leading-[110%]">
-                For each <span className="text-[#F36BFF]">p</span>
-                <span className="text-[#EAEAEA]">remiu</span>
-                <span className="text-[#F36BFF]">m</span> <br />
+                For each <span className="text-[#F36BFF]">premium </span>
                 friend who joins
               </div>
             </div>

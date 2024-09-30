@@ -13,14 +13,11 @@ export const callTapApi = async ({
   energy_point,
   level_point,
 }: callTapApiParams) => {
-  console.log(axiosInterface);
-
   const response = await axiosInterface.post("users/tap", {
     id,
     coin_balance,
     energy_point,
     level_point,
   });
-  console.log(response);
   return response.data;
 };

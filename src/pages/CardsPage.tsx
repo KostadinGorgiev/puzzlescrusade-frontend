@@ -5,7 +5,7 @@ import CardImage from '../assets/images/Card_back.png'
 const CardsPage: React.FC = () => {
   return (
     <MainLayout>
-      <div className="pt-[19.73vw] px-[5.6vw] w-screen flex flex-col items-center">
+      <div className="pt-[7.2vw] px-[5.6vw] w-screen flex flex-col items-center">
         <div className="text-[6.4vw] font-bold text-[#EAEAEA] mb-[5.6vw]">
           Build your deck
         </div>

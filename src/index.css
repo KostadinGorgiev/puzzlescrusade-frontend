@@ -15,3 +15,19 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes TapNumber {
+  0% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -140px);
+    opacity: 0;
+  }
+}
+
+.tap-number {
+  animation: TapNumber 1000ms forwards;
+}

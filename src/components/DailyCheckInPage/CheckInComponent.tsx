@@ -80,7 +80,7 @@ const CheckInComponent: React.FC<CheckInComponentProps> = ({ status, day }) => {
                 </div>
                 <div className="w-[calc(100%-4.26vw)] h-[4.26vw] bg-[#EAEAEA] rounded-[1.6vw] -translate-y-1/2 translate-x-[2.13vw] flex items-center justify-center">
                     <span className="text-[2.66vw] font-bold text-[#AAAAAA] leading-none">
-                        Claimed
+                        Claim
                     </span>
                 </div>
             </div>

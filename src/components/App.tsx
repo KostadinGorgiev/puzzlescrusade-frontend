@@ -11,6 +11,7 @@ import { useInitData } from '@telegram-apps/sdk-react'
 import { initializeUser } from '../store/appSlice'
 import useRecoverEnergy from '../hooks/useRecoverEnergy'
 import { ExpandedTGUser } from '../types/types'
+import Loading from './Loading/Loading'
 
 const App: React.FC = () => {
   const activePage = useAppSelector((state) => state.app.activePage)
@@ -38,7 +39,7 @@ const App: React.FC = () => {
 
 
   if (loading) {
-    return <div className="">loading</div>
+    return <Loading />
   } else if (!user) {
     return <div className="">Error when fetch user data</div>
   } else {

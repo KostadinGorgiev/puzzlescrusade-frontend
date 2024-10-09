@@ -57,11 +57,11 @@ export const appSlice = createSlice({
   name: "app",
   initialState,
   reducers: {
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
     changePage: (state, action: PayloadAction<ActivePage>) => {
       state.activePage = action.payload;
-    },
-    initializeUser: (state, action: PayloadAction<ActivePage>) => {
-      state.activePage = "battle";
     },
     updateUser: (state, action: PayloadAction<User>) => {
       if (state.game) {
@@ -148,7 +148,6 @@ export const appSlice = createSlice({
       state.game = {
         user: action.payload,
       };
-      state.loading = false;
     });
     builder.addCase(initializeUser.pending, (state, action) => {
       state.loading = true;
@@ -157,6 +156,7 @@ export const appSlice = createSlice({
 });
 
 export const {
+  setLoading,
   changePage,
   tap,
   recoverEnergy,

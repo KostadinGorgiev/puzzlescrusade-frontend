@@ -12,6 +12,7 @@ import { initializeUser, setLoading } from "../store/appSlice";
 import useRecoverEnergy from "../hooks/useRecoverEnergy";
 import { ExpandedTGUser } from "../types/types";
 import Loading from "./Loading/Loading";
+import Introduction from "./Introduction/Introduction";
 
 const App: React.FC = () => {
   const activePage = useAppSelector((state) => state.app.activePage);
@@ -44,6 +45,8 @@ const App: React.FC = () => {
     return <Loading />;
   } else if (!user) {
     return <div className="">Error when fetch user data</div>;
+  } else if(user.isNew) {
+    return <Introduction />
   } else {
     switch (activePage) {
       case "mine":

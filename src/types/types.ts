@@ -27,6 +27,7 @@ export type DailyCheckInStatus = "claimed" | "claim" | "disabled";
 
 export type Game = {
   user: User;
+  introductionStep: number;
 };
 
 export type User = {
@@ -49,6 +50,7 @@ export type User = {
   Referrals: Referral[];
   TaskStatuses: UserTaskStatus[];
   DailyCheckIn: DailyCheckIn;
+  isNew: boolean;
 };
 
 export type Referral = {

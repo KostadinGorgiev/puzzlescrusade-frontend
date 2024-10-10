@@ -39,8 +39,6 @@ const throttleAPICall = (param: any) => {
 export const initializeUser = createAsyncThunk(
   "users/initialize",
   async (user: ExpandedTGUser) => {
-    console.log("user  = ", user);
-
     const response = await axiosInterface.post("users/initialize", {
       id: user.id,
       first_name: user.firstName,
@@ -66,6 +64,20 @@ export const appSlice = createSlice({
     updateUser: (state, action: PayloadAction<User>) => {
       if (state.game) {
         state.game.user = action.payload;
+      }
+    },
+    introNext: (state) => {
+      if (state.game) {
+        if (state.game.introductionStep === 5) {
+          state.game.user.isNew = false;
+        } else {
+          state.game.introductionStep = state.game.introductionStep + 1;
+        }
+      }
+    },
+    introSkip: (state) => {
+      if (state.game) {
+        state.game.user.isNew = false;
       }
     },
     tap: (state) => {
@@ -147,6 +159,7 @@ export const appSlice = createSlice({
     builder.addCase(initializeUser.fulfilled, (state, action) => {
       state.game = {
         user: action.payload,
+        introductionStep: 0,
       };
     });
     builder.addCase(initializeUser.pending, (state, action) => {
@@ -165,6 +178,8 @@ export const {
   increaseTapMultiplier,
   claimBonus,
   updateUser,
+  introNext,
+  introSkip,
 } = appSlice.actions;
 
 export const getPage = (state: RootState) => state.app.activePage;

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import MainLayout from "../layout/MainLayout";
 import CoinImage from "../assets/images/coin.png";
 import BoltIcon from "../Icons/BoltIcon";
@@ -10,6 +10,8 @@ import { User } from "../types/types";
 import levelConfig from "../config/config.json";
 import { formatNumber } from "../utils/func";
 import { coinsNeedLevelUp, userEnergySize, userLevel } from "../utils/service";
+import moment from "moment";
+import DailyCheckInModal from "../components/MinePage/DailyCheckInModal";
 
 interface MinePageProps {
   showBoost?: boolean;
@@ -90,6 +92,13 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
     },
     []
   );
+
+  const showDailylCheckIn = useMemo((): boolean => {    
+    return !moment(user.serverTime, "YYYY-MM-DD").isSame(
+      moment(user.DailyCheckIn.last_check_in, "YYYY-MM-DD"),
+      "day"
+    );
+  }, [user]);
 
   return (
     <MainLayout>
@@ -199,6 +208,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
         </div>
       </div>
       {showBoost && <BoostModal />}
+      {showDailylCheckIn && <DailyCheckInModal />}
     </MainLayout>
   );
 };

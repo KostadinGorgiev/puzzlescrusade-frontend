@@ -10,9 +10,6 @@ const DailyCheckInPage: React.FC = () => {
   const user = useAppSelector((state) => state.app.game?.user) as User
 
   const getDayStatus = (day: number): DailyCheckInStatus => {
-    console.log(moment(user.serverTime, 'YYYY-MM-DD').isSame(moment(user.DailyCheckIn.last_check_in, 'YYYY-MM-DD'), 'day'), day);
-    console.log(moment(user.serverTime, 'YYYY-MM-DD').diff(moment(user.DailyCheckIn.last_check_in, 'YYYY-MM-DD'), 'day') === 1, day);
-    
     if (moment(user.serverTime, 'YYYY-MM-DD').isSame(moment(user.DailyCheckIn.last_check_in, 'YYYY-MM-DD'), 'day')) {
       if (user.DailyCheckIn.checkedin_count > day) {
         return 'claimed'

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import BackgroundComponent from "../Layout/Background";
 import Step1 from "./Step1";
@@ -8,12 +8,14 @@ import Step3 from "./Step3";
 import Step4 from "./Step4";
 import Step5 from "./Step5";
 import Step6 from "./Step6";
+import Step1Image from '../../assets/images/introduction/step1.png'
 
 const Introduction: React.FC = () => {
   const step = useAppSelector(
     (state) => state.app.game?.introductionStep
   ) as number;
   const dispatch = useAppDispatch();
+  const [imageLoading, setImageLoading] = useState(false);
 
   const RenderStep: React.FC = () => {
     switch (step) {
@@ -33,6 +35,13 @@ const Introduction: React.FC = () => {
         return <Step1 />;
     }
   };
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+    }
+    img.src = Step1Image; // by setting an src, you trigger browser download
+  }, [])
 
   return (
     <div className="relative bg-black min-h-screen w-screen">

@@ -54,7 +54,7 @@ const DailyCheckInModal: React.FC = () => {
   };
 
   return (
-    <div className="absolute top-0 w-screen h-fit min-h-screen bg-[#171819e5] z-[1000]">
+    <div className="absolute top-0 w-screen h-fit min-h-screen bg-[#171819e5] z-[1000] c-modal">
       <div className="absolute top-[15.2vw] w-screen h-[27.69vw] bg-gradient-to-t from-[#171819] to-transparent"></div>
       <div className="absolute top-[42.89vw] w-screen h-[calc(100vh-42.89vw)] bg-[#171819]"></div>
       <div className="pt-[28.53vw] px-[6.13vw] pb-[18.66vw] absolute top-0 left-0 w-screen max-h-screen overflow-auto">

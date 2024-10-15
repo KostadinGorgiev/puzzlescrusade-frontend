@@ -1,8 +1,12 @@
-import React from 'react'
-import MainLayout from '../layout/MainLayout'
-import CardImage from '../assets/images/Card_back.png'
+import React, { useState } from "react";
+import MainLayout from "../layout/MainLayout";
+import levelConfig from "../config/config.json";
+import HeroComponent from "../components/CardsPage/HeroComponent";
+import HeroModal from "../components/CardsPage/HeroModal";
 
 const CardsPage: React.FC = () => {
+  const [selectedHero, setSelectedHero] = useState<(typeof levelConfig.heros)[0] | null>(null);
+
   return (
     <MainLayout>
       <div className="pt-[7.2vw] px-[5.6vw] w-screen flex flex-col items-center">
@@ -14,45 +18,22 @@ const CardsPage: React.FC = () => {
           <br /> world of Puzzles Crusade and mint NFT Heroes.
         </div>
         <div className="relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45.33vw] h-[22.13vw] rounded-[2.66vw] border-[#FAB648] border-[0.26vw] flex items-center justify-center z-10 leading-tight">
-            <div className="text-[6.4vw] font-bold text-[#FA6648] text-center">
-              Comming soon
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-x-[8.26vw] gap-y-[6.93vw]">
-            <div className="flex justify-center rounded-[2.6vw] blur-[5px] overflow-hidden">
-              <img
-                src={CardImage}
-                alt="Card"
-                className="w-[40.26vw] h-[57.33vw]"
+          <div className="w-screen flex flex-wrap justify-center gap-x-[8.26vw] gap-y-[6.93vw]">
+            {levelConfig.heros.map((hero, index) => (
+              <HeroComponent
+                hero={hero}
+                onClick={() => setSelectedHero(hero)}
+                key={index}
               />
-            </div>
-            <div className="flex justify-center rounded-[2.6vw] blur-[5px] overflow-hidden">
-              <img
-                src={CardImage}
-                alt="Card"
-                className="w-[40.26vw] h-[57.33vw]"
-              />
-            </div>
-            <div className="flex justify-center rounded-[2.6vw] blur-[5px] overflow-hidden">
-              <img
-                src={CardImage}
-                alt="Card"
-                className="w-[40.26vw] h-[57.33vw]"
-              />
-            </div>
-            <div className="flex justify-center rounded-[2.6vw] blur-[5px] overflow-hidden">
-              <img
-                src={CardImage}
-                alt="Card"
-                className="w-[40.26vw] h-[57.33vw]"
-              />
-            </div>
+            ))}
           </div>
         </div>
       </div>
+      {selectedHero && (
+        <HeroModal hero={selectedHero} onClose={() => setSelectedHero(null)} />
+      )}
     </MainLayout>
-  )
-}
+  );
+};
 
-export default CardsPage
+export default CardsPage;

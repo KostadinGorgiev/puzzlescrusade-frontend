@@ -7,6 +7,7 @@ import {
   ExpandedTGUser,
   Game,
   User,
+  UserCard,
 } from "../types/types";
 import axiosInterface from "../utils/axios";
 import levelConfig from "../config/config.json";
@@ -154,6 +155,15 @@ export const appSlice = createSlice({
         state.game.user.DailyCheckIn = action.payload;
       }
     },
+    updateHeroCards: (
+      state,
+      action: PayloadAction<{ card: UserCard[]; balance: number }>
+    ) => {
+      if (state.game) {
+        state.game.user.Cards = action.payload.card;
+        state.game.user.coin_balance = action.payload.balance;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(initializeUser.fulfilled, (state, action) => {
@@ -180,6 +190,7 @@ export const {
   updateUser,
   introNext,
   introSkip,
+  updateHeroCards,
 } = appSlice.actions;
 
 export const getPage = (state: RootState) => state.app.activePage;

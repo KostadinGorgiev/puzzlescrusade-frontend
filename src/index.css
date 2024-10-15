@@ -31,3 +31,11 @@ code {
 .tap-number {
   animation: TapNumber 1000ms forwards;
 }
+
+.main-layout {
+  overflow: auto;
+}
+
+.main-layout:has(.c-modal) {
+  overflow: hidden;
+}

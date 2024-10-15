@@ -50,6 +50,8 @@ export type User = {
   Referrals: Referral[];
   TaskStatuses: UserTaskStatus[];
   DailyCheckIn: DailyCheckIn;
+  Cards: UserCard[];
+  CardClaim: CardClaim;
   isNew: boolean;
 };
 
@@ -91,12 +93,31 @@ export type DailyCheckIn = {
   last_check_in: string;
 };
 
+export type CardClaim = {
+  id: number;
+  user_id: number;
+  last_claim: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UserCard = {
+  id: number;
+  user_id: number;
+  card_slug: string;
+  card_level: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type UserLevel = {
   title: string;
   from: number;
   to: number;
   index?: number;
 };
+
+export type HeroType = "light" | "dark" | "volcano" | "forest" | "ocean";
 
 export interface ExpandedTGUser extends TGUser {
   startParam?: string;

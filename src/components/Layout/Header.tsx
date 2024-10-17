@@ -1,6 +1,7 @@
 import React from 'react'
 import ProfileImage from '../../assets/images/profile.png'
 import CommentInfoIcon from '../../Icons/CommentInfoIcon'
+import BanBugIcon from '../../Icons/BanBugIcon'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { changePage } from '../../store/appSlice'
 import { User } from '../../types/types'
@@ -30,7 +31,8 @@ const Header: React.FC = () => {
         </div>
       </div>
       <button className="outline-none border-none pl-[1.46vw] py-[1.46vw] pr-[3.86vw] rounded-l-full bg-[#FA6648]">
-        <CommentInfoIcon fill="#EAEAEA" className="w-[4.53vw] h-[4.53vw]" />
+        {/* <CommentInfoIcon fill="#EAEAEA" className="w-[4.53vw] h-[4.53vw]" /> */}
+        <BanBugIcon fill="#EAEAEA" className="w-[4.53vw] h-[4.53vw]" />
       </button>
     </div>
   )

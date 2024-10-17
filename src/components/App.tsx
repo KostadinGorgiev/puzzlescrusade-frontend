@@ -8,11 +8,16 @@ import MinePage from "../pages/MinePage";
 import ProfilePage from "../pages/ProfilePage";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { useInitData } from "@telegram-apps/sdk-react";
-import { initializeUser, setLoading } from "../store/appSlice";
+import {
+  claimCardProfitSocket,
+  initializeUser,
+  setLoading,
+} from "../store/appSlice";
 import useRecoverEnergy from "../hooks/useRecoverEnergy";
 import { ExpandedTGUser } from "../types/types";
 import Loading from "./Loading/Loading";
 import Introduction from "./Introduction/Introduction";
+import socketIo from "socket.io-client";
 
 const App: React.FC = () => {
   const activePage = useAppSelector((state) => state.app.activePage);
@@ -39,14 +44,28 @@ const App: React.FC = () => {
           dispatch(setLoading(false));
         }, 3000);
       });
+    initSocket();
   }, [initUser]);
+
+  const initSocket = () => {
+    if (initUser) {
+      const socket = socketIo(`${process.env.REACT_APP_API_URL}`);
+
+      socket.on("connect", () => {
+        socket.emit("addUser", { userId: initUser.id });
+      });
+      socket.on("card_profit", (data) => {
+        dispatch(claimCardProfitSocket(data.coin));
+      });
+    }
+  };
 
   if (loading) {
     return <Loading />;
   } else if (!user) {
     return <div className="">Error when fetch user data</div>;
-  } else if(user.isNew) {
-    return <Introduction />
+  } else if (user.isNew) {
+    return <Introduction />;
   } else {
     switch (activePage) {
       case "mine":

@@ -13,6 +13,7 @@ import axiosInterface from "../utils/axios";
 import levelConfig from "../config/config.json";
 import { userEnergySize } from "../utils/service";
 import { callTapApi } from "./apiCall";
+import { Socket } from "socket.io-client";
 
 // define variables for interval
 var tapInterval: NodeJS.Timeout;
@@ -21,12 +22,16 @@ interface AppState {
   activePage: ActivePage;
   loading: boolean;
   game: Game | null;
+  socket: any;
+  cardProfitModalVisible: boolean;
 }
 
 const initialState: AppState = {
   activePage: "mine",
   game: null,
   loading: false,
+  socket: null,
+  cardProfitModalVisible: true,
 };
 
 // throttled synchroize call for backend data update
@@ -58,6 +63,12 @@ export const appSlice = createSlice({
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
+    },
+    setCardProfitModalVisible: (state, action: PayloadAction<boolean>) => {
+      state.cardProfitModalVisible = action.payload;
+    },
+    setSocket: (state, action: PayloadAction<Socket>) => {
+      state.socket = action.payload;
     },
     changePage: (state, action: PayloadAction<ActivePage>) => {
       state.activePage = action.payload;
@@ -164,6 +175,17 @@ export const appSlice = createSlice({
         state.game.user.coin_balance = action.payload.balance;
       }
     },
+    claimCardProfit: (state, action: PayloadAction<number>) => {
+      if (state.game) {
+        state.game.user.coin_balance = action.payload;
+      }
+    },
+    claimCardProfitSocket: (state, action: PayloadAction<number>) => {
+      if (state.game) {
+        state.game.user.coin_balance =
+          state.game.user.coin_balance + action.payload;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(initializeUser.fulfilled, (state, action) => {
@@ -180,6 +202,8 @@ export const appSlice = createSlice({
 
 export const {
   setLoading,
+  setCardProfitModalVisible,
+  setSocket,
   changePage,
   tap,
   recoverEnergy,
@@ -191,6 +215,8 @@ export const {
   introNext,
   introSkip,
   updateHeroCards,
+  claimCardProfit,
+  claimCardProfitSocket,
 } = appSlice.actions;
 
 export const getPage = (state: RootState) => state.app.activePage;

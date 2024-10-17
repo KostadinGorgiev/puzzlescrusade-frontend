@@ -5,13 +5,14 @@ import BoltIcon from "../Icons/BoltIcon";
 import RocketLunchIcon from "../Icons/RocketLunchIcon";
 import BoostModal from "../components/MinePage/BoostModal";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { changePage, tap } from "../store/appSlice";
+import { changePage, setCardProfitModalVisible, tap } from "../store/appSlice";
 import { User } from "../types/types";
 import levelConfig from "../config/config.json";
 import { formatNumber } from "../utils/func";
 import { coinsNeedLevelUp, userEnergySize, userLevel } from "../utils/service";
 import moment from "moment";
 import DailyCheckInModal from "../components/MinePage/DailyCheckInModal";
+import CardProfitModal from "../components/MinePage/CardProfitModal";
 
 interface MinePageProps {
   showBoost?: boolean;
@@ -20,6 +21,9 @@ interface MinePageProps {
 const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.app.game?.user) as User;
+  const cardProfitModalVisible = useAppSelector(
+    (state) => state.app.cardProfitModalVisible
+  );
   const coinImageRef = useRef<HTMLImageElement>(null);
   const [numbers, setNumbers] = useState<any[]>([]);
 
@@ -93,7 +97,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
     []
   );
 
-  const showDailylCheckIn = useMemo((): boolean => {    
+  const showDailylCheckIn = useMemo((): boolean => {
     return !moment(user.serverTime, "YYYY-MM-DD").isSame(
       moment(user.DailyCheckIn.last_check_in, "YYYY-MM-DD"),
       "day"
@@ -136,7 +140,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
             className="w-[14.13vw] h-[14.13vw] flex-none"
           />
           <span className="text-[9.86vw] text-white font-bold">
-            {user.coin_balance.toLocaleString()}
+            {Math.floor(user.coin_balance).toLocaleString()}
           </span>
         </div>
         <div className="px-[2.13vw] mb-[8.93vw]">
@@ -209,6 +213,11 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
       </div>
       {showBoost && <BoostModal />}
       {showDailylCheckIn && <DailyCheckInModal />}
+      {cardProfitModalVisible && (
+        <CardProfitModal
+          onClose={() => dispatch(setCardProfitModalVisible(false))}
+        />
+      )}
     </MainLayout>
   );
 };

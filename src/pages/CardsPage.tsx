@@ -5,11 +5,13 @@ import HeroComponent from "../components/CardsPage/HeroComponent";
 import HeroModal from "../components/CardsPage/HeroModal";
 
 const CardsPage: React.FC = () => {
-  const [selectedHero, setSelectedHero] = useState<(typeof levelConfig.heros)[0] | null>(null);
+  const [selectedHero, setSelectedHero] = useState<
+    (typeof levelConfig.heros)[0] | null
+  >(null);
 
   return (
     <MainLayout>
-      <div className="pt-[7.2vw] px-[5.6vw] w-screen flex flex-col items-center">
+      <div className="py-[7.2vw] px-[5.6vw] w-screen flex flex-col items-center">
         <div className="text-[6.4vw] font-bold text-[#EAEAEA] mb-[5.6vw]">
           Build your deck
         </div>
@@ -22,7 +24,13 @@ const CardsPage: React.FC = () => {
             {levelConfig.heros.map((hero, index) => (
               <HeroComponent
                 hero={hero}
-                onClick={() => setSelectedHero(hero)}
+                onClick={() => {
+                  document.querySelector(".main-layout")?.scrollTo({
+                    top: 0,
+                    behavior: "auto",
+                  });
+                  setSelectedHero(hero);
+                }}
                 key={index}
               />
             ))}

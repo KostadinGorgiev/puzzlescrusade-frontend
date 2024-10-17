@@ -65,7 +65,7 @@ const ProfilePage: React.FC = () => {
                 Balance
               </div>
               <div className="relative text-[4.26vw] font-bold text-[#FA6648] leading-none">
-                {user.coin_balance.toLocaleString()}
+                {Math.floor(user.coin_balance).toLocaleString()}
               </div>
             </div>
             <div className="relative flex flex-col gap-[0.53vw] items-center justify-center h-[14.93vw]">

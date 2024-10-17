@@ -1,4 +1,5 @@
 import { User as TGUser } from "@telegram-apps/sdk-react";
+import { Socket } from "socket.io-client";
 
 export type ActivePage =
   | "mine"

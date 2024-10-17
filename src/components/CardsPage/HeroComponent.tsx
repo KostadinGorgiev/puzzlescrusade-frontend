@@ -6,7 +6,11 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { User } from "../../types/types";
 import axiosInterface from "../../utils/axios";
 import { updateHeroCards } from "../../store/appSlice";
-import ElbowbeardSmallImage from "../../assets/images/heros/small/elbowbeard.png";
+import EmberionSmallImage from "../../assets/images/heros/small/emberion.png";
+import LioraSmallImage from "../../assets/images/heros/small/liora.png";
+import SylvarraSmallImage from "../../assets/images/heros/small/sylvarra.png";
+import VeldarSmallImage from "../../assets/images/heros/small/veldar.png";
+import VornakSmallImage from "../../assets/images/heros/small/vornak.png";
 
 interface HeroComponentProps {
   hero: (typeof levelConfig.heros)[0];
@@ -14,11 +18,11 @@ interface HeroComponentProps {
 }
 
 const heroImages: { [key: string]: string } = {
-  light: ElbowbeardSmallImage,
-  dark: ElbowbeardSmallImage,
-  volcano: ElbowbeardSmallImage,
-  forest: ElbowbeardSmallImage,
-  ocean: ElbowbeardSmallImage,
+  light: LioraSmallImage,
+  dark: SylvarraSmallImage,
+  volcano: EmberionSmallImage,
+  forest: VeldarSmallImage,
+  ocean: VornakSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
@@ -86,7 +90,9 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
               <DragonIcon fill="#674B1F" className="w-[2.62vw] h-[2.62vw]" />
             </div>
             <div className="text-[2.66vw] font-bold text-[#EAEAEA]">
-              {hero.level[userHeroCard.card_level + 1].cost}
+              {userHeroCard.card_level < hero.level.length - 1
+                ? hero.level[userHeroCard.card_level + 1]?.cost
+                : "MAX"}
             </div>
           </div>
         </div>

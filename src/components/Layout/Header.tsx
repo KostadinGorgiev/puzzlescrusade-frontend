@@ -44,7 +44,7 @@ const Header: React.FC = () => {
         <button className="outline-none border-none pl-[1.46vw] py-[1.46vw] pr-[3.86vw] rounded-l-full bg-[#FA6648] flex gap-2 items-center">
           {/* <CommentInfoIcon fill="#EAEAEA" className="w-[4.53vw] h-[4.53vw]" /> */}
           <BanBugIcon fill="#EAEAEA" className="w-[4.53vw] h-[4.53vw]" />
-          <div className="text-white text-[4.8vw]">REPORT A BUG</div>
+          <div className="text-white text-[3.5vw]">REPORT A BUG</div>
         </button>
       </a>
     </div>

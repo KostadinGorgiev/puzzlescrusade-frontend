@@ -4,7 +4,6 @@ import TriAngleIcon from "../Icons/TriAngleIcon";
 import CalendarIcon from "../Icons/CalendarIcon";
 import { Task, TaskStatus, User } from "../types/types";
 import XIcon from "../Icons/XIcon";
-import YoutubeIcon from "../Icons/YoutubeIcon";
 import TelegramIcon from "../Icons/TelegramIcon";
 import CheckCircleIcon from "../Icons/CheckCircleIcon";
 import AngleRightIcon from "../Icons/AngleRightIcon";
@@ -30,19 +29,13 @@ const EarnPage: React.FC = () => {
       icon: <XIcon className="flex-none w-[6.4vw] h-[5.78vw]" />,
       title: "Follow Puzzles Crusade on X",
       type: "twitter",
-      url: "https://exampletwitter.com",
-    },
-    {
-      icon: <YoutubeIcon className="flex-none w-[6.4vw] h-[4.5vw]" />,
-      title: "Subscribe on YouTube",
-      type: "youtube",
-      url: "https://exampleyoutube.com",
+      url: "https://x.com/PuzzlesCrusade",
     },
     {
       icon: <TelegramIcon className="flex-none w-[6.4vw] h-[5.28vw]" />,
       title: "Join Puzzles Crusade community",
       type: "telegram",
-      url: "https://exampletelegram.com",
+      url: "https://t.me/+B6TJZU_kFFNhYWYy",
     },
   ];
 
@@ -190,7 +183,9 @@ const EarnPage: React.FC = () => {
                           className="w-[4.22vw] h-[4.22vw]"
                         />
                       </div>
-                      <div className="text-[2.93vw] font-bold text-[#FAB648]">1000 Puzzles</div>
+                      <div className="text-[2.93vw] font-bold text-[#FAB648]">
+                        1000 Puzzles
+                      </div>
                     </div>
                   )}
                 </div>

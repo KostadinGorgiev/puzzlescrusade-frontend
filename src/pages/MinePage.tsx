@@ -104,6 +104,21 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
     );
   }, [user]);
 
+  const profitPerHour = useMemo(() => {
+    let profitPerHour = 0;
+    for (let index = 0; index < user.Cards.length; index++) {
+      const card = user.Cards[index];
+      const hero = levelConfig.heros.find(
+        (hero) => hero.slug === card.card_slug
+      );
+      if (hero) {
+        profitPerHour += hero.level[card.card_level].profit;
+      }
+    }
+
+    return profitPerHour;
+  }, [user]);
+
   return (
     <MainLayout>
       <div className="p-[6.13vw]">
@@ -126,10 +141,10 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
           </div> */}
           <div className="w-full h-[11.2vw] p-[1.6vw] flex flex-col items-center gap-[1.6vw] rounded-[1.6vw] bg-[#4B4955] bg-opacity-70 cursor-pointer">
             <span className="text-[2.4vw] font-medium text-[#EAEAEA] leading-none">
-              Coins to level up
+              Profit per Hour
             </span>
             <span className="text-[4vw] font-bold text-[#FAB648] leading-none">
-              {formatNumber(coinsNeedLevelUp(user.level_point))}
+              {formatNumber(profitPerHour)}
             </span>
           </div>
         </div>

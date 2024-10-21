@@ -44,6 +44,18 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
     return user.Cards.find((e) => e.card_slug === hero.slug);
   }, [user, hero]) as UserCard;
 
+  const upgradable = useMemo(() => {
+    if (userHeroCard) {
+      if (userHeroCard.card_level < hero.level.length - 1) {
+        return hero.level[userHeroCard.card_level + 1].cost < user.coin_balance;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }, [user, userHeroCard, hero]);
+
   const handleUpgradeCard = async () => {
     if (user.coin_balance > hero.level[userHeroCard.card_level + 1].cost) {
       let result = await axiosInterface.post("card/upgrade", {
@@ -150,12 +162,20 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
           </div>
           {hero.level.length - 1 > userHeroCard.card_level && (
             <div
-              className="w-full h-[18.13vw] rounded-[2.66vw] bg-gradient-to-b from-[#FB6648] to-[#FAB648] items-center justify-center gap-[2.66vw] flex"
+              className={`w-full h-[18.13vw] rounded-[2.66vw] items-center justify-center gap-[2.66vw] flex ${
+                upgradable
+                  ? "bg-gradient-to-b from-[#FB6648] to-[#FAB648]"
+                  : "bg-[#aaaaaa]"
+              }`}
               onClick={() => handleUpgradeCard()}
             >
-              <div className="rounded-full w-[10.66vw] h-[10.66vw] flex items-center justify-center bg-[#FAB648]">
+              <div
+                className={`rounded-full w-[10.66vw] h-[10.66vw] flex items-center justify-center ${
+                  upgradable ? "bg-[#FAB648]" : "bg-[#aaaaaa]"
+                }`}
+              >
                 <DragonIcon
-                  fill="#674B1F"
+                  fill={upgradable ? "#674B1F" : "#eaeaea"}
                   className="w-[10.09vw] h-[10.09vw]"
                 />
               </div>

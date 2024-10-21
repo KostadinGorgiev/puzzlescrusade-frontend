@@ -50,6 +50,18 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
     return user.Cards.find((e) => e.card_slug === hero.slug);
   }, [user, hero]);
 
+  const upgradable = useMemo(() => {
+    if (userHeroCard) {
+      if (userHeroCard.card_level < hero.level.length - 1) {
+        return hero.level[userHeroCard.card_level + 1].cost < user.coin_balance;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }, [user, userHeroCard, hero]);
+
   if (userHeroCard) {
     return (
       <div
@@ -86,10 +98,21 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
               Lvl. {userHeroCard.card_level + 1}
             </div>
             <div className="h-[4.26vw] w-[0.26vw] bg-[#eaeaea4d] mr-[1.33vw]"></div>
-            <div className="rounded-full w-[3.2vw] h-[3.2vw] flex items-center justify-center bg-[#FAB648] mr-[1.33vw]">
-              <DragonIcon fill="#674B1F" className="w-[2.62vw] h-[2.62vw]" />
+            <div
+              className={`rounded-full w-[3.2vw] h-[3.2vw] flex items-center justify-center mr-[1.33vw] ${
+                upgradable ? "bg-[#FAB648]" : "bg-[#EAEAEA]"
+              }`}
+            >
+              <DragonIcon
+                fill={upgradable ? "#674B1F" : "#aaaaaa"}
+                className="w-[2.62vw] h-[2.62vw]"
+              />
             </div>
-            <div className="text-[2.66vw] font-bold text-[#EAEAEA]">
+            <div
+              className={`text-[2.66vw] font-bold ${
+                upgradable ? "text-[#FAB648]" : "text-[#EAEAEA]"
+              }`}
+            >
               {userHeroCard.card_level < hero.level.length - 1
                 ? hero.level[userHeroCard.card_level + 1]?.cost
                 : "MAX"}

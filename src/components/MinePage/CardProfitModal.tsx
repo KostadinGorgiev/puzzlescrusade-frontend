@@ -42,6 +42,7 @@ const CardProfitModal: React.FC<CardProfitModalProps> = ({ onClose }) => {
     let result = await axiosInterface.post("card/claim", {
       id: user.t_user_id,
       time: user.serverTime,
+      last_claim: user.CardClaim.last_claim,
     });
     if (result.data.success)
       dispatch(claimCardProfit(result.data.coin_balance));

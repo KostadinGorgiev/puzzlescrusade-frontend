@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { User } from "../../types/types";
 import axiosInterface from "../../utils/axios";
 import { updateHeroCards } from "../../store/appSlice";
-import EmberionSmallImage from "../../assets/images/heros/small/emberion.png";
+import KaelarSmallImage from "../../assets/images/heros/small/kaelar.png";
 import LioraSmallImage from "../../assets/images/heros/small/liora.png";
 import SylvarraSmallImage from "../../assets/images/heros/small/sylvarra.png";
 import VeldarSmallImage from "../../assets/images/heros/small/veldar.png";
@@ -20,7 +20,7 @@ interface HeroComponentProps {
 const heroImages: { [key: string]: string } = {
   light: LioraSmallImage,
   dark: SylvarraSmallImage,
-  volcano: EmberionSmallImage,
+  volcano: KaelarSmallImage,
   forest: VeldarSmallImage,
   ocean: VornakSmallImage,
 };

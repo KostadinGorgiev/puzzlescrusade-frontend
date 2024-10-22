@@ -7,7 +7,7 @@ import FriendsPage from "../pages/FriendsPage";
 import MinePage from "../pages/MinePage";
 import ProfilePage from "../pages/ProfilePage";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { useInitData } from "@telegram-apps/sdk-react";
+import { useInitData, useMiniApp } from "@telegram-apps/sdk-react";
 import {
   claimCardProfitSocket,
   initializeUser,
@@ -23,6 +23,7 @@ const App: React.FC = () => {
   const activePage = useAppSelector((state) => state.app.activePage);
   const [initUser, setInitUser] = useState<ExpandedTGUser | null>(null);
   const initData = useInitData();
+  const miniApp = useMiniApp();
 
   const loading = useAppSelector((state) => state.app.loading);
   const user = useAppSelector((state) => state.app.game?.user);
@@ -30,6 +31,12 @@ const App: React.FC = () => {
   const setupEnergyRecover = useRecoverEnergy();
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (miniApp) {
+      miniApp.setHeaderColor("#232323");
+    }
+  }, [miniApp]);
 
   useEffect(() => {
     if (initData?.user) {

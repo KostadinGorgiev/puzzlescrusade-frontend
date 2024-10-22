@@ -2,14 +2,13 @@ import React, { useMemo } from "react";
 import { HeroType, User, UserCard } from "../../types/types";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import levelConfig from "../../config/config.json";
-import ElbowbeardBigImage from "../../assets/images/heros/big/elbowbeard.png";
 import DarknessIcon from "../../Icons/DarknessIcon";
 import ArrowUpIcon from "../../Icons/ArrowUpIcon";
 import DragonIcon from "../../Icons/DragonIcon";
 import axiosInterface from "../../utils/axios";
 import { updateHeroCards } from "../../store/appSlice";
 import CircleXMarkIcon from "../../Icons/CircleXMarkIcon";
-import EmberionBigImage from "../../assets/images/heros/small/emberion.png";
+import KaelarBigImage from "../../assets/images/heros/small/kaelar.png";
 import LioraBigImage from "../../assets/images/heros/small/liora.png";
 import SylvarraBigImage from "../../assets/images/heros/small/sylvarra.png";
 import VeldarBigImage from "../../assets/images/heros/small/veldar.png";
@@ -23,7 +22,7 @@ interface HeroModalProps {
 const heroImages: { [key: string]: string } = {
   light: LioraBigImage,
   dark: SylvarraBigImage,
-  volcano: EmberionBigImage,
+  volcano: KaelarBigImage,
   forest: VeldarBigImage,
   ocean: VornakBigImage,
 };

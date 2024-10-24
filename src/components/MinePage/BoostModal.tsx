@@ -18,7 +18,7 @@ import {
 } from "../../store/appSlice";
 
 const BoostModal: React.FC = () => {
-  const [visible, setVisible] = useState<boolean>(true);
+  const [visible, setVisible] = useState<boolean>(false);
   const user = useAppSelector((state) => state.app.game?.user) as User;
   const dispatch = useAppDispatch();
 

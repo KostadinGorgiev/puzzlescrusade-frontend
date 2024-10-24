@@ -37,6 +37,10 @@ const BoostModal: React.FC = () => {
       energy_point: user.energy_point,
     });
     setVisible(true);
+    document.querySelector(".main-layout")?.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
     dispatch(increaseEnergySize());
   };
 
@@ -54,6 +58,10 @@ const BoostModal: React.FC = () => {
       boost_type: "energy_recovery_level",
     });
     setVisible(true);
+    document.querySelector(".main-layout")?.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
     dispatch(increaseRecovery());
   };
 
@@ -71,6 +79,10 @@ const BoostModal: React.FC = () => {
       boost_type: "tap_multipler_level",
     });
     setVisible(true);
+    document.querySelector(".main-layout")?.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
     dispatch(increaseTapMultiplier());
   };
 

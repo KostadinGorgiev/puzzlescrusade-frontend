@@ -177,16 +177,20 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
         </div>
         <div className="flex justify-center mb-[10.4vw]">
           <div className="relative">
-            <img
-              ref={coinImageRef}
-              src={CoinImage}
-              alt="Coin"
-              className={`w-[63.2vw] h-[63.2vw] ease-linear duration-150 transition-all`}
+            <div
+              className="w-[63.2vw] h-[63.2vw]"
               onMouseDown={handleMouseDown}
               onTouchStart={handleTouchStart}
               onMouseUp={handleMouseUp}
               onTouchEnd={handleTouchEnd}
-            />
+            >
+              <img
+                ref={coinImageRef}
+                src={CoinImage}
+                alt="Coin"
+                className={`w-[63.2vw] h-[63.2vw] ease-linear duration-150 transition-all select-none`}
+              />
+            </div>
             <div>
               {numbers.map((item, index) => (
                 <div

@@ -164,7 +164,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
               {userLevel(user.level_point).title}
             </span>
             <span className="text-[2.4vw] font-medium text-[#EAEAEA]">
-              {user.level_point.toLocaleString()}/
+              {Math.floor(user.level_point).toLocaleString()}/
               {userLevel(user.level_point).to.toLocaleString()}
             </span>
           </div>

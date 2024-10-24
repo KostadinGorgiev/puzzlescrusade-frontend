@@ -175,15 +175,21 @@ export const appSlice = createSlice({
         state.game.user.coin_balance = action.payload.balance;
       }
     },
-    claimCardProfit: (state, action: PayloadAction<number>) => {
+    claimCardProfit: (
+      state,
+      action: PayloadAction<{ coin_balance: number; level_point: number }>
+    ) => {
       if (state.game) {
-        state.game.user.coin_balance = action.payload;
+        state.game.user.coin_balance = action.payload.coin_balance;
+        state.game.user.level_point = action.payload.level_point;
       }
     },
     claimCardProfitSocket: (state, action: PayloadAction<number>) => {
       if (state.game) {
         state.game.user.coin_balance =
           state.game.user.coin_balance + action.payload;
+        state.game.user.level_point =
+          state.game.user.level_point + action.payload;
       }
     },
   },

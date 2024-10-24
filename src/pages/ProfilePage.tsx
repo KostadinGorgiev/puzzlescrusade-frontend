@@ -1,17 +1,17 @@
-import React from 'react'
-import ProfileImage from '../assets/images/profile.png'
-import CardImage from '../assets/images/Card_back.png'
-import CircleXMarkIcon from '../Icons/CircleXMarkIcon'
-import { useAppDispatch, useAppSelector } from '../hooks'
-import { changePage } from '../store/appSlice'
-import { useInitData } from '@telegram-apps/sdk-react'
-import { User } from '../types/types'
-import { userLevel } from '../utils/service'
+import React from "react";
+import ProfileImage from "../assets/images/profile.png";
+import CardImage from "../assets/images/Card_back.png";
+import CircleXMarkIcon from "../Icons/CircleXMarkIcon";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { changePage } from "../store/appSlice";
+import { useInitData } from "@telegram-apps/sdk-react";
+import { User } from "../types/types";
+import { userLevel } from "../utils/service";
 
 const ProfilePage: React.FC = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.app.game?.user) as User;
-  const initData = useInitData()
+  const initData = useInitData();
 
   return (
     <div className="w-screen h-fit min-h-screen bg-[radial-gradient(#4B4955,#171819)]">
@@ -20,7 +20,7 @@ const ProfilePage: React.FC = () => {
           <CircleXMarkIcon
             fill="#fa6648"
             className="w-[6.4vw] h-[6.4vw] absolute top-[8.26vw] right-[6.13vw]"
-            onClick={() => dispatch(changePage('mine'))}
+            onClick={() => dispatch(changePage("mine"))}
           />
           <div className="w-[23.46vw] h-[23.46vw] rounded-full bg-white overflow-hidden mb-[4.26vw]">
             <img
@@ -75,7 +75,7 @@ const ProfilePage: React.FC = () => {
                 Progress
               </div>
               <div className="relative text-[4.26vw] font-bold text-[#FA6648] leading-none">
-                {user.level_point.toLocaleString()}
+                {Math.floor(user.level_point).toLocaleString()}
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ const ProfilePage: React.FC = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProfilePage
+export default ProfilePage;

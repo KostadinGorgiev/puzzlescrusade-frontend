@@ -20,20 +20,22 @@ const CardsPage: React.FC = () => {
           <br /> world of Puzzles Crusade and mint NFT Heroes.
         </div>
         <div className="relative">
-          <div className="w-screen flex flex-wrap justify-center gap-x-[8.26vw] gap-y-[6.93vw]">
-            {levelConfig.heros.map((hero, index) => (
-              <HeroComponent
-                hero={hero}
-                onClick={() => {
-                  document.querySelector(".main-layout")?.scrollTo({
-                    top: 0,
-                    behavior: "auto",
-                  });
-                  setSelectedHero(hero);
-                }}
-                key={index}
-              />
-            ))}
+          <div className="w-screen">
+            <div className="grid grid-cols-2 gap-x-[8.26vw] gap-y-[6.93vw] w-fit m-auto">
+              {levelConfig.heros.map((hero, index) => (
+                <HeroComponent
+                  hero={hero}
+                  onClick={() => {
+                    document.querySelector(".main-layout")?.scrollTo({
+                      top: 0,
+                      behavior: "auto",
+                    });
+                    setSelectedHero(hero);
+                  }}
+                  key={index}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

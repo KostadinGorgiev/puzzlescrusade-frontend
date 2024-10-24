@@ -45,7 +45,12 @@ const CardProfitModal: React.FC<CardProfitModalProps> = ({ onClose }) => {
       last_claim: user.CardClaim.last_claim,
     });
     if (result.data.success)
-      dispatch(claimCardProfit(result.data.coin_balance));
+      dispatch(
+        claimCardProfit({
+          coin_balance: result.data.coin_balance,
+          level_point: result.data.level_point,
+        })
+      );
     onClose();
   };
 

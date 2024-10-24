@@ -49,30 +49,34 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
     (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
       if (!matchMedia("(hover: none)").matches) {
         dispatch(tap());
-        if (coinImageRef.current) {
-          coinImageRef.current.style.scale = "0.9";
-          const { clientX, clientY } = e;
-          const { left, top } = coinImageRef.current.getBoundingClientRect();
-          addRandomNumber(clientX - left, clientY - top);
+        if (user.energy_point >= 1) {
+          if (coinImageRef.current) {
+            coinImageRef.current.style.scale = "0.9";
+            const { clientX, clientY } = e;
+            const { left, top } = coinImageRef.current.getBoundingClientRect();
+            addRandomNumber(clientX - left, clientY - top);
+          }
         }
       }
     },
-    [dispatch, addRandomNumber]
+    [dispatch, addRandomNumber, user]
   );
 
   const handleTouchStart = useCallback(
     (e: React.TouchEvent<HTMLImageElement>) => {
       if (matchMedia("(hover: none)").matches) {
         dispatch(tap());
-        if (coinImageRef.current) {
-          coinImageRef.current.style.scale = "0.9";
-          const touch = e.touches[0];
-          const { left, top } = coinImageRef.current.getBoundingClientRect();
-          addRandomNumber(touch.clientX - left, touch.clientY - top);
+        if (user.energy_point >= 1) {
+          if (coinImageRef.current) {
+            coinImageRef.current.style.scale = "0.9";
+            const touch = e.touches[0];
+            const { left, top } = coinImageRef.current.getBoundingClientRect();
+            addRandomNumber(touch.clientX - left, touch.clientY - top);
+          }
         }
       }
     },
-    [dispatch, addRandomNumber]
+    [dispatch, addRandomNumber, user]
   );
 
   const handleMouseUp = useCallback(

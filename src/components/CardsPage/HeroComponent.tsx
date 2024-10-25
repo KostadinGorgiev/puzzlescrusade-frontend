@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import CardImage from "../../assets/images/Card_back.png";
 import levelConfig from "../../config/config.json";
 import DragonIcon from "../../Icons/DragonIcon";
@@ -28,13 +28,17 @@ const heroImages: { [key: string]: string } = {
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
   const user = useAppSelector((state) => state.app.game?.user) as User;
   const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState(false);
 
-  const handleUnlockHeroCard = async () => {
+  const handleUnlockHeroCard = useCallback(async () => {
     if (user.coin_balance > hero.level[0].cost) {
+      if(loading) return;
+      setLoading(true);
       let result = await axiosInterface.post("card/unlock", {
         id: user.t_user_id,
         card_slug: hero.slug,
       });
+      setLoading(false);
       if (result.data.success) {
         dispatch(
           updateHeroCards({
@@ -44,7 +48,7 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
         );
       }
     }
-  };
+  },[loading, user, hero, dispatch]);
 
   const userHeroCard = useMemo(() => {
     return user.Cards.find((e) => e.card_slug === hero.slug);

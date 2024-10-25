@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import BoltIcon from "../../Icons/BoltIcon";
 import ArrowLineIcon from "../../Icons/ArrowLineIcon";
 import DragonIcon from "../../Icons/DragonIcon";
@@ -20,6 +20,7 @@ import {
 const BoostModal: React.FC = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const user = useAppSelector((state) => state.app.game?.user) as User;
+  const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
 
   const canBuyEnergySize = (): boolean => {
@@ -30,19 +31,22 @@ const BoostModal: React.FC = () => {
     );
   };
 
-  const buyEnergySize = async () => {
+  const buyEnergySize = useCallback(async () => {
+    if (loading) return;
+    setLoading(true);
     await axiosInterface.post("users/boost", {
       id: user.t_user_id,
       boost_type: "energy_size_level",
       energy_point: user.energy_point,
     });
+    setLoading(false);
     setVisible(true);
     document.querySelector(".main-layout")?.scrollTo({
       top: 0,
       behavior: "auto",
     });
     dispatch(increaseEnergySize());
-  };
+  }, [loading, user, dispatch]);
 
   const canBuyRecovery = (): boolean => {
     return (
@@ -52,18 +56,21 @@ const BoostModal: React.FC = () => {
     );
   };
 
-  const buyRecovery = async () => {
+  const buyRecovery = useCallback(async () => {
+    if (loading) return;
+    setLoading(true);
     await axiosInterface.post("users/boost", {
       id: user.t_user_id,
       boost_type: "energy_recovery_level",
     });
+    setLoading(false);
     setVisible(true);
     document.querySelector(".main-layout")?.scrollTo({
       top: 0,
       behavior: "auto",
     });
     dispatch(increaseRecovery());
-  };
+  }, [loading, user, dispatch]);
 
   const canBuyTapMultiplier = (): boolean => {
     return (
@@ -73,18 +80,21 @@ const BoostModal: React.FC = () => {
     );
   };
 
-  const buyTapMultiplier = async () => {
+  const buyTapMultiplier = useCallback(async () => {
+    if (loading) return;
+    setLoading(true);
     await axiosInterface.post("users/boost", {
       id: user.t_user_id,
       boost_type: "tap_multipler_level",
     });
+    setLoading(false);
     setVisible(true);
     document.querySelector(".main-layout")?.scrollTo({
       top: 0,
       behavior: "auto",
     });
     dispatch(increaseTapMultiplier());
-  };
+  }, [loading, user, dispatch]);
 
   return (
     <>

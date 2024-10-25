@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { User } from "../../types/types";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import axiosInterface from "../../utils/axios";
@@ -15,6 +15,7 @@ interface CardProfitModalProps {
 const CardProfitModal: React.FC<CardProfitModalProps> = ({ onClose }) => {
   const user = useAppSelector((state) => state.app.game?.user) as User;
   const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState(false);
 
   const profitAmount = useMemo(() => {
     let diffHrs =
@@ -38,12 +39,15 @@ const CardProfitModal: React.FC<CardProfitModalProps> = ({ onClose }) => {
     return profitPerHour * diffHrs;
   }, [user]);
 
-  const handleClaimCardProfit = async () => {
+  const handleClaimCardProfit = useCallback(async () => {
+    if (loading) return;
+    setLoading(true);
     let result = await axiosInterface.post("card/claim", {
       id: user.t_user_id,
       time: user.serverTime,
       last_claim: user.CardClaim.last_claim,
     });
+    setLoading(false);
     if (result.data.success)
       dispatch(
         claimCardProfit({
@@ -52,7 +56,7 @@ const CardProfitModal: React.FC<CardProfitModalProps> = ({ onClose }) => {
         })
       );
     onClose();
-  };
+  },[loading, user, dispatch, onClose]);
 
   if (Math.floor(profitAmount) > 0) {
     return (

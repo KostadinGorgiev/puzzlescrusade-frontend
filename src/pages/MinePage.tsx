@@ -29,7 +29,8 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
 
   const levelProgress = () => {
     let level = userLevel(user.level_point);
-    return ((user.level_point - level.from) * 100) / (level.to - level.from);
+    return ((user.level_point) * 100) / (level.to);
+    // return ((user.level_point - level.from) * 100) / (level.to - level.from);
   };
 
   const addRandomNumber = useCallback((x: number, y: number) => {

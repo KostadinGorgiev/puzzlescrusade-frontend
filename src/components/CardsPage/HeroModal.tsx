@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { HeroType, User, UserCard } from "../../types/types";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import levelConfig from "../../config/config.json";
@@ -38,6 +38,7 @@ const heroTypeIcons: { [key: string]: React.ReactNode } = {
 const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
   const user = useAppSelector((state) => state.app.game?.user) as User;
   const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState(false);
 
   const userHeroCard: UserCard = useMemo(() => {
     return user.Cards.find((e) => e.card_slug === hero.slug);
@@ -55,12 +56,15 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
     }
   }, [user, userHeroCard, hero]);
 
-  const handleUpgradeCard = async () => {
+  const handleUpgradeCard = useCallback(async () => {
     if (user.coin_balance > hero.level[userHeroCard.card_level + 1].cost) {
+      if(loading) return;
+      setLoading(true);
       let result = await axiosInterface.post("card/upgrade", {
         id: user.t_user_id,
         card_slug: hero.slug,
       });
+      setLoading(false)
       if (result.data.success) {
         dispatch(
           updateHeroCards({
@@ -71,7 +75,7 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
         onClose();
       }
     }
-  };
+  }, [loading, dispatch, user, hero, onClose, userHeroCard]);
 
   return (
     <div className="absolute top-0 w-screen h-fit min-h-screen bg-[#171819e5] z-[1000] c-modal">

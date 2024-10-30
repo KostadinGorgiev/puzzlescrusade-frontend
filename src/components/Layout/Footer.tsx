@@ -8,7 +8,6 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { changePage } from "../../store/appSlice";
 
 const Footer: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const activePage = useAppSelector((state) => state.app.activePage);
   const dispatch = useAppDispatch();
 
@@ -52,35 +51,22 @@ const Footer: React.FC = () => {
           </span>
         </div>
         <div
-          className={`w-[12.8vw] h-[12.8vw] px-[1.33vw] pt-[1.33vw] pb-[0.8vw] flex flex-col items-center rounded-[1.6vw] cursor-pointer relative${
+          className={`w-[12.8vw] h-[12.8vw] px-[1.33vw] pt-[1.33vw] pb-[0.8vw] flex flex-col items-center rounded-[1.6vw] cursor-pointer relative ${
             activePage === "friends" ? "bg-[#FA6648]" : ""
           }`}
-          // onClick={() => dispatch(changePage('friends'))}
-          onClick={() => {
-            setVisible(true);
-            setTimeout(() => {
-              setVisible(false);
-            }, 2000);
-          }}
+          onClick={() => dispatch(changePage("friends"))}
         >
           <PeopleGroupIcon
-            // fill={activePage === 'friends' ? '#221E33' : '#AAAAAA'}
-            fill={activePage === "friends" ? "#221E33" : "#4b4955"}
+            fill={activePage === "friends" ? "#221E33" : "#AAAAAA"}
             className="w-[7.2vw] h-[7.2vw] mb-[0,74vw] flex-none"
           />
           <span
             className={`text-[2.66vw] font-medium ${
-              // activePage === 'friends' ? 'text-[#221E33]' : 'text-[#AAAAAA]'
-              activePage === "friends" ? "text-[#221E33]" : "text-[#4b4955]"
+              activePage === "friends" ? "text-[#221E33]" : "text-[#AAAAAA]"
             }`}
           >
             Friends
           </span>
-          {visible && (
-            <span className="absolute top-0 left-1/2 text-[2.66vw] font-medium text-[#82828b] px-[1.06vw] py-[0.53vw] w-fit bg-[#35313f] rounded-[1.06vw] -translate-x-1/2 -translate-y-[8vw] whitespace-nowrap">
-              Coming Soon
-            </span>
-          )}
         </div>
         <div
           className={`w-[12.8vw] h-[12.8vw] px-[1.33vw] pt-[1.33vw] pb-[0.8vw] flex flex-col items-center rounded-[1.6vw] cursor-pointer ${

@@ -24,7 +24,7 @@ const ProfilePage: React.FC = () => {
           />
           <div className="w-[23.46vw] h-[23.46vw] rounded-full bg-white overflow-hidden mb-[4.26vw]">
             <img
-              src={ProfileImage}
+              src={user.photo_url ? user.photo_url : ProfileImage}
               alt="Elbowbeard"
               className="w-full h-full"
             />

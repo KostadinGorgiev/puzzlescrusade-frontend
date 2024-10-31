@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import MainLayout from "../layout/MainLayout";
 import CoinImage from "../assets/images/coin.png";
+import CoinDoubleImage from "../assets/images/coin_double.png";
 import BoltIcon from "../Icons/BoltIcon";
 import RocketLunchIcon from "../Icons/RocketLunchIcon";
 import BoostModal from "../components/MinePage/BoostModal";
@@ -191,7 +192,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
             >
               <img
                 ref={coinImageRef}
-                src={CoinImage}
+                src={CoinDoubleImage}
                 alt="Coin"
                 className={`w-[63.2vw] h-[63.2vw] ease-linear duration-150 transition-all select-none`}
               />
@@ -203,7 +204,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
                   style={{ position: "absolute", left: item.x, top: item.y }}
                   className="tap-number text-[9.86vw] text-white font-bold"
                 >
-                  +{levelConfig.tapMultipler[user.tap_multipler_level].to}
+                  +{levelConfig.tapMultipler[user.tap_multipler_level].to * 2}
                 </div>
               ))}
             </div>

@@ -11,6 +11,7 @@ import LioraSmallImage from "../../assets/images/heros/small/liora.png";
 import SylvarraSmallImage from "../../assets/images/heros/small/sylvarra.png";
 import VeldarSmallImage from "../../assets/images/heros/small/veldar.png";
 import VornakSmallImage from "../../assets/images/heros/small/vornak.png";
+import JackSmallImage from "../../assets/images/heros/small/jack.png";
 
 interface HeroComponentProps {
   hero: (typeof levelConfig.heros)[0];
@@ -23,6 +24,7 @@ const heroImages: { [key: string]: string } = {
   volcano: KaelarSmallImage,
   forest: VeldarSmallImage,
   ocean: VornakSmallImage,
+  jack: JackSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {

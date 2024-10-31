@@ -13,6 +13,7 @@ import LioraBigImage from "../../assets/images/heros/small/liora.png";
 import SylvarraBigImage from "../../assets/images/heros/small/sylvarra.png";
 import VeldarBigImage from "../../assets/images/heros/small/veldar.png";
 import VornakBigImage from "../../assets/images/heros/small/vornak.png";
+import JackBigImage from "../../assets/images/heros/small/jack.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -25,6 +26,7 @@ const heroImages: { [key: string]: string } = {
   volcano: KaelarBigImage,
   forest: VeldarBigImage,
   ocean: VornakBigImage,
+  jack: JackBigImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

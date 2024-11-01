@@ -103,8 +103,9 @@ const ProfilePage: React.FC = () => {
             </div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <span className="text-[4.26vw] font-bold text-[#FAB648]">
-                You don't have
-                <br /> any heroes yet.
+                Your heroes will show up here,
+                <br />
+                when you bring them to max level.
               </span>
             </div>
           </div>

@@ -84,7 +84,7 @@ const FriendsPage: React.FC = () => {
           </div>
           <TriAngleIcon className="w-[3.2vw] h-[3.2vw] mb-[3.46vw]" />
           <div className="text-[4.26vw] font-light text-white mb-[4.13vw] leading-none">
-            Referrals
+            Referrals ({user.Referrals.length})
           </div>
         </div>
         <div className="pt-[3.6vw] border-t-[0.26vw] border-[#FAB648] flex flex-col">

@@ -12,6 +12,7 @@ import SylvarraSmallImage from "../../assets/images/heros/small/sylvarra.png";
 import VeldarSmallImage from "../../assets/images/heros/small/veldar.png";
 import VornakSmallImage from "../../assets/images/heros/small/vornak.png";
 import JackSmallImage from "../../assets/images/heros/small/jack.png";
+import AegironSmallImage from "../../assets/images/heros/small/aegiron.png";
 
 interface HeroComponentProps {
   hero: (typeof levelConfig.heros)[0];
@@ -25,6 +26,7 @@ const heroImages: { [key: string]: string } = {
   forest: VeldarSmallImage,
   ocean: VornakSmallImage,
   jack: JackSmallImage,
+  aegiron: AegironSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
@@ -34,7 +36,7 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
 
   const handleUnlockHeroCard = useCallback(async () => {
     if (user.coin_balance > hero.level[0].cost) {
-      if(loading) return;
+      if (loading) return;
       setLoading(true);
       let result = await axiosInterface.post("card/unlock", {
         id: user.t_user_id,
@@ -50,7 +52,7 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
         );
       }
     }
-  },[loading, user, hero, dispatch]);
+  }, [loading, user, hero, dispatch]);
 
   const userHeroCard = useMemo(() => {
     return user.Cards.find((e) => e.card_slug === hero.slug);

@@ -14,6 +14,7 @@ import SylvarraBigImage from "../../assets/images/heros/small/sylvarra.png";
 import VeldarBigImage from "../../assets/images/heros/small/veldar.png";
 import VornakBigImage from "../../assets/images/heros/small/vornak.png";
 import JackBigImage from "../../assets/images/heros/small/jack.png";
+import AegironBigImage from "../../assets/images/heros/small/aegiron.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -27,6 +28,7 @@ const heroImages: { [key: string]: string } = {
   forest: VeldarBigImage,
   ocean: VornakBigImage,
   jack: JackBigImage,
+  aegiron: AegironBigImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

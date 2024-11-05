@@ -11,7 +11,7 @@ import {
 } from "../types/types";
 import axiosInterface from "../utils/axios";
 import levelConfig from "../config/config.json";
-import { userEnergySize } from "../utils/service";
+import { userEnergySize, userLevel } from "../utils/service";
 import { callTapApi } from "./apiCall";
 import { Socket } from "socket.io-client";
 
@@ -24,6 +24,7 @@ interface AppState {
   game: Game | null;
   socket: any;
   cardProfitModalVisible: boolean;
+  levelUpScreenVisible: boolean;
 }
 
 const initialState: AppState = {
@@ -32,6 +33,7 @@ const initialState: AppState = {
   loading: false,
   socket: null,
   cardProfitModalVisible: true,
+  levelUpScreenVisible: false,
 };
 
 // throttled synchroize call for backend data update
@@ -95,6 +97,15 @@ export const appSlice = createSlice({
     tap: (state) => {
       if (state.game) {
         if (state.game.user.energy_point >= 1) {
+          if (
+            handleCheckLevelUpScreen(
+              state.game.user.level_point,
+              state.game.user.level_point +
+                levelConfig.tapMultipler[state.game.user.tap_multipler_level].to
+            )
+          ) {
+            state.levelUpScreenVisible = true;
+          }
           state.game.user.coin_balance =
             state.game.user.coin_balance +
             levelConfig.tapMultipler[state.game.user.tap_multipler_level].to;
@@ -153,6 +164,17 @@ export const appSlice = createSlice({
     },
     claimBonus: (state, action: PayloadAction<DailyCheckIn>) => {
       if (state.game) {
+        if (
+          handleCheckLevelUpScreen(
+            state.game.user.level_point,
+            state.game.user.level_point +
+              levelConfig.dailyCheckInAmount[
+                state.game.user.DailyCheckIn.checkedin_count
+              ]
+          )
+        ) {
+          state.levelUpScreenVisible = true;
+        }
         state.game.user.coin_balance =
           state.game.user.coin_balance +
           levelConfig.dailyCheckInAmount[
@@ -180,17 +202,39 @@ export const appSlice = createSlice({
       action: PayloadAction<{ coin_balance: number; level_point: number }>
     ) => {
       if (state.game) {
+        if (
+          handleCheckLevelUpScreen(
+            state.game.user.level_point,
+            action.payload.level_point
+          )
+        ) {
+          state.levelUpScreenVisible = true;
+        }
         state.game.user.coin_balance = action.payload.coin_balance;
         state.game.user.level_point = action.payload.level_point;
       }
     },
     claimCardProfitSocket: (state, action: PayloadAction<number>) => {
       if (state.game) {
+        if (
+          handleCheckLevelUpScreen(
+            state.game.user.level_point,
+            state.game.user.level_point + action.payload
+          )
+        ) {
+          state.levelUpScreenVisible = true;
+        }
         state.game.user.coin_balance =
           state.game.user.coin_balance + action.payload;
         state.game.user.level_point =
           state.game.user.level_point + action.payload;
       }
+    },
+    showLevelUpScreen: (state) => {
+      state.levelUpScreenVisible = true;
+    },
+    closeLevelUpScreen: (state) => {
+      state.levelUpScreenVisible = false;
     },
   },
   extraReducers: (builder) => {
@@ -205,6 +249,13 @@ export const appSlice = createSlice({
     });
   },
 });
+
+const handleCheckLevelUpScreen = (
+  prevLevelPoint: number,
+  levelPoint: number
+): boolean => {
+  return userLevel(prevLevelPoint).title !== userLevel(levelPoint).title;
+};
 
 export const {
   setLoading,
@@ -223,6 +274,7 @@ export const {
   updateHeroCards,
   claimCardProfit,
   claimCardProfitSocket,
+  closeLevelUpScreen,
 } = appSlice.actions;
 
 export const getPage = (state: RootState) => state.app.activePage;

@@ -47,9 +47,9 @@ const App: React.FC = () => {
   useEffect(() => {
     if (initUser)
       dispatch(initializeUser(initUser)).then(() => {
-        setTimeout(() => {
-          dispatch(setLoading(false));
-        }, 3000);
+        // setTimeout(() => {
+        dispatch(setLoading(false));
+        // }, 3000);
       });
     initSocket();
   }, [initUser]);

@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { User } from "../../types/types";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import axiosInterface from "../../utils/axios";
-import MinerImage from "../../assets/images/introduction/step2.png";
+import MinerImage from "../../assets/images/collect/fennel.png";
 import DragonIcon from "../../Icons/DragonIcon";
 import levelConfig from "../../config/config.json";
 import moment from "moment";
@@ -64,7 +64,7 @@ const CardProfitModal: React.FC<CardProfitModalProps> = ({ onClose }) => {
         <img
           src={MinerImage}
           alt="Miner"
-          className="absolute top-[6.93vw] left-[12vw] w-[76.26vw] h-[112vw]"
+          className="absolute top-[6.93vw] left-[0.7vw] w-[98.66vw] h-auto"
         />
         <div className="absolute top-[62.93vw] w-screen h-[20.05vw] bg-gradient-to-t from-[#171819] to-transparent"></div>
         <div className="absolute top-[82.98vw] w-screen h-[calc(100vh-82.98vw)] bg-[#171819]"></div>

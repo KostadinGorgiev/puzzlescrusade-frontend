@@ -98,14 +98,6 @@ const FriendsPage: React.FC = () => {
           <TriAngleIcon className="w-[3.2vw] h-[3.2vw] mb-[3.46vw]" />
           <div className="text-[4.26vw] font-light text-white mb-[4.13vw] leading-none w-full text-center relative">
             Referrals ({user.total_referral_count})
-            {user.Referrals.length < user.total_referral_count && (
-              <span
-                className="text-[3.5vw] font-normal absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer"
-                onClick={() => onLoadMoreReferrals()}
-              >
-                Load More
-              </span>
-            )}
           </div>
         </div>
         <div className="pt-[3.6vw] border-t-[0.26vw] border-[#FAB648] flex flex-col">
@@ -155,12 +147,21 @@ const FriendsPage: React.FC = () => {
             </div>
           ))}
         </div>
+        {user.Referrals.length < user.total_referral_count && (
+          <div
+            className="text-[3.5vw] font-normal text-white cursor-pointer mb-[5.33vw] mx-auto w-fit"
+            onClick={() => onLoadMoreReferrals()}
+          >
+            Load More
+          </div>
+        )}
         <div className="fixed left-0 bottom-[25.33vw] px-[5.86vw] w-screen">
           <input
             type="text"
-            className="h-[0px] border-none outline-none"
+            className="h-[0px] border-none outline-none hidden"
             value={`${process.env.REACT_APP_BOT_URL}?startapp=ref${user.t_user_id}`}
             ref={ref}
+            readOnly
           />
           <div className="flex gap-[5.6vw]">
             <div

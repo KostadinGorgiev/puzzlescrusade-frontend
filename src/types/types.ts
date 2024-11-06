@@ -49,6 +49,7 @@ export type User = {
   serverTime: string;
   photo_url?: string;
   Referrals: Referral[];
+  total_referral_count: number;
   TaskStatuses: UserTaskStatus[];
   DailyCheckIn: DailyCheckIn;
   Cards: UserCard[];

@@ -8,6 +8,7 @@ import {
   Game,
   User,
   UserCard,
+  Referral,
 } from "../types/types";
 import axiosInterface from "../utils/axios";
 import levelConfig from "../config/config.json";
@@ -236,6 +237,14 @@ export const appSlice = createSlice({
     closeLevelUpScreen: (state) => {
       state.levelUpScreenVisible = false;
     },
+    loadMoreReferrals: (state, action: PayloadAction<Referral[]>) => {
+      if (state.game) {
+        state.game.user.Referrals = [
+          ...state.game.user.Referrals,
+          ...action.payload,
+        ];
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(initializeUser.fulfilled, (state, action) => {
@@ -275,6 +284,7 @@ export const {
   claimCardProfit,
   claimCardProfitSocket,
   closeLevelUpScreen,
+  loadMoreReferrals,
 } = appSlice.actions;
 
 export const getPage = (state: RootState) => state.app.activePage;

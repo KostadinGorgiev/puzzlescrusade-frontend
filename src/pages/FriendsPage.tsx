@@ -6,17 +6,21 @@ import ProfileImage from "../assets/images/profile.png";
 import UserAddIcon from "../Icons/UserAddIcon";
 import CopyAltIcon from "../Icons/CopyAltIcon";
 import { useUtils } from "@telegram-apps/sdk-react";
-import { useAppSelector } from "../hooks";
-import { User } from "../types/types";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { Referral, User } from "../types/types";
 import { userLevel } from "../utils/service";
 import { formatNumber } from "../utils/func";
 import CheckIcon from "../Icons/CheckIcon";
+import axiosInterface from "../utils/axios";
+import { loadMoreReferrals } from "../store/appSlice";
 
 const FriendsPage: React.FC = () => {
   const [showCopiedIcon, setShowCopiedIcon] = useState<boolean>(false);
+  const [page, setPage] = useState(1);
   const user = useAppSelector((state) => state.app.game?.user) as User;
   const ref = useRef<HTMLInputElement>(null);
   const utils = useUtils();
+  const dispatch = useAppDispatch();
 
   const copyReferralLink = () => {
     if (ref.current) {
@@ -28,6 +32,15 @@ const FriendsPage: React.FC = () => {
         setShowCopiedIcon(false);
       }, 1000);
     }
+  };
+
+  const onLoadMoreReferrals = async () => {
+    let referrals = await axiosInterface.post("users/referrals", {
+      id: user.t_user_id,
+      page: page + 1,
+    });
+    setPage((prev) => prev + 1);
+    dispatch(loadMoreReferrals(referrals.data.results as Referral[]));
   };
 
   return (
@@ -83,8 +96,16 @@ const FriendsPage: React.FC = () => {
             It is always a good idea to invite your friends
           </div>
           <TriAngleIcon className="w-[3.2vw] h-[3.2vw] mb-[3.46vw]" />
-          <div className="text-[4.26vw] font-light text-white mb-[4.13vw] leading-none">
-            Referrals ({user.Referrals.length})
+          <div className="text-[4.26vw] font-light text-white mb-[4.13vw] leading-none w-full text-center relative">
+            Referrals ({user.total_referral_count})
+            {user.Referrals.length < user.total_referral_count && (
+              <span
+                className="text-[3.5vw] font-normal absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer"
+                onClick={() => onLoadMoreReferrals()}
+              >
+                Load More
+              </span>
+            )}
           </div>
         </div>
         <div className="pt-[3.6vw] border-t-[0.26vw] border-[#FAB648] flex flex-col">
@@ -112,7 +133,7 @@ const FriendsPage: React.FC = () => {
                     &#x2022; {userLevel(referral.User.level_point).title}
                   </div>
                 </div>
-                <div className="flex items-center gap-[2.4vw]">
+                <div className="flex items-center gap-[2.4vw] w-[25vw] justify-center">
                   <div className="rounded-full w-[5.86vw] h-[5.86vw] flex items-center justify-center bg-[#FAB648]">
                     <DragonIcon
                       fill="#674B1F"

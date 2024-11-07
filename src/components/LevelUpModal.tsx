@@ -31,7 +31,7 @@ const LevelUpModal: React.FC = () => {
           <div className="text-[4.26vw] leading-none text-[#EAEAEA] font-medium mb-[1.6vw]">
             Your rank has been upgraded to
           </div>
-          <div className="text-[9.33vw] text-[#FAB648] font-bold leading-none mb-[6.13vw]">
+          <div className="text-[9.33vw] text-[#FAB648] font-bold leading-none mb-[6.13vw] text-center">
             {userLevel(user.level_point).title}
           </div>
           <div className="relative h-[7.46vw] mb-[9.33vw]">

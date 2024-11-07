@@ -17,7 +17,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, bg = "image" }) => {
   );
   return (
     <>
-      <div className="relative bg-black min-h-screen w-screen">
+      <div className="relative bg-black min-h-screen w-screen font-Articulat-CF">
         <BackgroundComponent bg={bg} />
         <div className={`relative z-20 h-screen main-layout`}>
           <Header />

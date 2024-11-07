@@ -1,5 +1,5 @@
 import React from "react";
-import Step1Image from '../../assets/images/introduction/step1.png'
+import Step1Image from "../../assets/images/introduction/SCR_1.png";
 
 const Step1: React.FC = () => {
   return (
@@ -9,18 +9,21 @@ const Step1: React.FC = () => {
           <div className="text-[9.6vw] leading-none font-bold text-[#EAEAEA] pl-[8.26vw] mb-[5.33vw]">
             Welcome to
             <br />
-            <span className="text-[#FAB648]">Wallachia!</span>
+            <span className="text-[#FAB648]">Puzzles Crusade!</span>
           </div>
           <div className="text-[4vw] leading-[5.06vw] px-[8.26vw] text-[#EAEAEA]">
-            Your journey to saving Wallachia begins here. Train your heroes,
-            discover their amazing special skills, and collect as many Gold
-            Dragons as possible. When the times come, you will need to throw
-            everything into battle!
+            Tap, earn Gold Dragons, and unlock hero
+            <br /> cards. Level up your heroes and build strong
+            <br /> teams to open Battle Mode.
           </div>
         </div>
       </div>
-      <div className="w-screen h-[112vw] absolute bottom-0 left-0 overflow-hidden z-0">
-        <img src={Step1Image} alt="Intro" className="w-[157.33vw] h-[221.86vw] absolute left-0 top-0 max-w-none -translate-x-[45.6vw]" />
+      <div className="w-screen h-[113.6vw] absolute bottom-0 left-0 overflow-hidden z-0">
+        <img
+          src={Step1Image}
+          alt="Intro"
+          className="w-full h-full absolute left-0 top-0 max-w-none"
+        />
       </div>
     </>
   );

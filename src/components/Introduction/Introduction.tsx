@@ -44,16 +44,16 @@ const Introduction: React.FC = () => {
   }, [])
 
   return (
-    <div className="relative bg-black min-h-screen w-screen">
+    <div className="relative bg-black min-h-screen w-screen font-Articulat-CF">
       <BackgroundComponent bg={"image"} />
       <div className="relative z-20 h-screen overflow-auto">
         <div className="h-screen min-h-[188.26vw] flex flex-col overflow-hidden relative z-20">
-          <div className="flex justify-end pt-[7.2vw] pr-[5.6vw] pb-[10.66vw] relative z-20">
+          <div className="flex justify-start pt-[3.46vw] pl-[6.13vw] pb-[16.53vw] relative z-20 invisible">
             <button
-              className="w-[25.86vw] h-[8.8vw] rounded-[2.66vw] flex items-center justify-center border border-[#AAAAAA]"
+              className="w-[18.66vw] h-[6.66vw] rounded-[1.06vw] flex items-center justify-center border border-[#AAAAAA]"
               onClick={() => dispatch(introSkip())}
             >
-              <span className="text-[3.73vw] font-bold text-[#AAAAAA]">
+              <span className="text-[2.93vw] font-bold text-[#AAAAAA]">
                 Skip
               </span>
             </button>

@@ -12,6 +12,7 @@ import { changePage, updateUser } from "../store/appSlice";
 import axiosInterface from "../utils/axios";
 import { useUtils } from "@telegram-apps/sdk-react";
 import DragonIcon from "../Icons/DragonIcon";
+import levelConfig from "../config/config.json";
 
 interface TaskStatusComponentProps {
   status: TaskStatus;
@@ -196,7 +197,7 @@ const EarnPage: React.FC = () => {
                         />
                       </div>
                       <div className="text-[2.93vw] font-bold text-[#FAB648]">
-                        1000 Puzzles
+                        10000 Dragons
                       </div>
                     </div>
                   )}

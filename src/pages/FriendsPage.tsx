@@ -161,7 +161,6 @@ const FriendsPage: React.FC = () => {
             className="h-[0px] border-none outline-none hidden"
             value={`${process.env.REACT_APP_BOT_URL}?startapp=ref${user.t_user_id}`}
             ref={ref}
-            readOnly
           />
           <div className="flex gap-[5.6vw]">
             <div

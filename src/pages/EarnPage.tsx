@@ -47,7 +47,7 @@ const EarnPage: React.FC = () => {
       icon: <XIcon className="flex-none w-[6.4vw] h-[5.78vw]" />,
       title: "Watch, Like and RT the video",
       type: "twitter-2",
-      url: "https://x.com/PuzzlesCrusade/status/1854847353968075110",
+      url: "https://bit.ly/3CixipT",
     },
   ];
 

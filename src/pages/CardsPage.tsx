@@ -15,7 +15,7 @@ const CardsPage: React.FC = () => {
         <div className="text-[6.4vw] font-bold text-[#EAEAEA] mb-[5.6vw]">
           Build your deck
         </div>
-        <div className="text-[3.2vw] font-medium text-[#AAAAAA] mb-[4.8vw]">
+        <div className="text-[3.2vw] font-medium text-[#AAAAAA] mb-[4.8vw] text-center">
           Train your skills to explore and conquer the amazing
           <br /> world of Puzzles Crusade and mint NFT Heroes.
         </div>

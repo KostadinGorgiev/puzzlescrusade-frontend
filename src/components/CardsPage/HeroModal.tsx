@@ -62,13 +62,13 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
 
   const handleUpgradeCard = useCallback(async () => {
     if (user.coin_balance > hero.level[userHeroCard.card_level + 1].cost) {
-      if(loading) return;
+      if (loading) return;
       setLoading(true);
       let result = await axiosInterface.post("card/upgrade", {
         id: user.t_user_id,
         card_slug: hero.slug,
       });
-      setLoading(false)
+      setLoading(false);
       if (result.data.success) {
         dispatch(
           updateHeroCards({
@@ -117,29 +117,33 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
           <div className="text-[4vw] font-normal text-[#AAAAAA] mb-[4.26vw] leading-none">
             Profit per Hour
           </div>
-          {hero.level.length - 1 > userHeroCard.card_level && (
-            <div className="h-[14.13vw] flex items-center px-[5.86vw] rounded-[2.66vw] bg-[#212326] mb-[1.6vw]">
-              <ArrowUpIcon className="w-[7.13vw] h-[4.1vw] mr-[4.26vw]" />
-              <span className="text-[8vw] font-bold text-[#FAB648] mr-[4vw]">{`+ ${
-                hero.level[userHeroCard.card_level].increase
-              } `}</span>
-              <div className="rounded-full w-[9.6vw] h-[9.6vw] flex items-center justify-center bg-[#FAB648]">
-                <DragonIcon fill="#674B1F" className="w-[9.02vw] h-[9.02vw]" />
+          {hero.level.length - 1 > userHeroCard.card_level ? (
+            <>
+              <div className="h-[14.13vw] flex items-center px-[5.86vw] rounded-[2.66vw] bg-[#212326] mb-[1.6vw]">
+                <ArrowUpIcon className="w-[7.13vw] h-[4.1vw] mr-[4.26vw]" />
+                <span className="text-[8vw] font-bold text-[#FAB648] mr-[4vw]">{`+ ${
+                  hero.level[userHeroCard.card_level].increase
+                } `}</span>
+                <div className="rounded-full w-[9.6vw] h-[9.6vw] flex items-center justify-center bg-[#FAB648]">
+                  <DragonIcon
+                    fill="#674B1F"
+                    className="w-[9.02vw] h-[9.02vw]"
+                  />
+                </div>
               </div>
-            </div>
-          )}
-          <div className="flex gap-[1.6vw] items-center mb-[6.93vw]">
-            <div className="flex items-center gap-[1.2vw] opacity-40">
-              <div className="text-[4vw] font-bold text-[#EAEAEA]">
-                +{hero.level[userHeroCard.card_level].profit}
-              </div>
-              <div className="rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center bg-[#FAB648]">
-                <DragonIcon fill="#674B1F" className="w-[4.22vw] h-[4.22vw]" />
-              </div>
-            </div>
+              <div className="flex gap-[1.6vw] items-center mb-[6.93vw]">
+                <div className="flex items-center gap-[1.2vw] opacity-40">
+                  <div className="text-[4vw] font-bold text-[#EAEAEA]">
+                    +{hero.level[userHeroCard.card_level].profit}
+                  </div>
+                  <div className="rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center bg-[#FAB648]">
+                    <DragonIcon
+                      fill="#674B1F"
+                      className="w-[4.22vw] h-[4.22vw]"
+                    />
+                  </div>
+                </div>
 
-            {hero.level.length - 1 > userHeroCard.card_level && (
-              <>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-[4vw] h-[1.98vw] flex-none"
@@ -164,10 +168,24 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
                     />
                   </div>
                 </div>
-              </>
-            )}
-          </div>
-          {hero.level.length - 1 > userHeroCard.card_level && (
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="h-[14.13vw] flex items-center px-[5.86vw] rounded-[2.66vw] bg-[#212326] mb-[13.33vw]">
+                <span className="text-[8vw] font-bold text-[#FAB648] mr-[4vw]">{`+ ${
+                  hero.level[userHeroCard.card_level].profit
+                } `}</span>
+                <div className="rounded-full w-[9.6vw] h-[9.6vw] flex items-center justify-center bg-[#FAB648]">
+                  <DragonIcon
+                    fill="#674B1F"
+                    className="w-[9.02vw] h-[9.02vw]"
+                  />
+                </div>
+              </div>
+            </>
+          )}
+          {hero.level.length - 1 > userHeroCard.card_level ? (
             <div
               className={`w-full h-[18.13vw] rounded-[2.66vw] items-center justify-center gap-[2.66vw] flex ${
                 upgradable
@@ -188,6 +206,12 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
               </div>
               <span className="text-[10.66vw] font-bold text-white">
                 {hero.level[userHeroCard.card_level + 1].cost}
+              </span>
+            </div>
+          ) : (
+            <div className="w-full h-[18.13vw] rounded-[2.66vw] items-center justify-center gap-[2.66vw] flex bg-[#aaaaaa]">
+              <span className="text-[10.66vw] font-bold text-white">
+                Max Level
               </span>
             </div>
           )}

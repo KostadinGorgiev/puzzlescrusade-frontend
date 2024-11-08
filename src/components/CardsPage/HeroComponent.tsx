@@ -101,31 +101,35 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
             </span>
           </div>
           <div className="w-full h-[0.26vw] flex-none bg-[#eaeaea4d] mb-[1.6vw]"></div>
-          <div className="flex items-center justify-start w-full">
-            <div className="w-[9.86vw] text-center text-[2.4vw] font-extrabold text-white">
-              Lvl. {userHeroCard.card_level + 1}
+          {userHeroCard.card_level < hero.level.length - 1 ? (
+            <div className="flex items-center justify-start w-full">
+              <div className="w-[9.86vw] text-center text-[2.4vw] font-extrabold text-white">
+                Lvl. {userHeroCard.card_level + 1}
+              </div>
+              <div className="h-[4.26vw] w-[0.26vw] bg-[#eaeaea4d] mr-[1.33vw]"></div>
+              <div
+                className={`rounded-full w-[3.2vw] h-[3.2vw] flex items-center justify-center mr-[1.33vw] ${
+                  upgradable ? "bg-[#FAB648]" : "bg-[#EAEAEA]"
+                }`}
+              >
+                <DragonIcon
+                  fill={upgradable ? "#674B1F" : "#aaaaaa"}
+                  className="w-[2.62vw] h-[2.62vw]"
+                />
+              </div>
+              <div
+                className={`text-[2.66vw] font-bold ${
+                  upgradable ? "text-[#FAB648]" : "text-[#EAEAEA]"
+                }`}
+              >
+                {hero.level[userHeroCard.card_level + 1]?.cost}
+              </div>
             </div>
-            <div className="h-[4.26vw] w-[0.26vw] bg-[#eaeaea4d] mr-[1.33vw]"></div>
-            <div
-              className={`rounded-full w-[3.2vw] h-[3.2vw] flex items-center justify-center mr-[1.33vw] ${
-                upgradable ? "bg-[#FAB648]" : "bg-[#EAEAEA]"
-              }`}
-            >
-              <DragonIcon
-                fill={upgradable ? "#674B1F" : "#aaaaaa"}
-                className="w-[2.62vw] h-[2.62vw]"
-              />
+          ) : (
+            <div className="text-[3.2vw] font-bold leading-none text-[#4B4955] w-full text-center">
+              Max Level
             </div>
-            <div
-              className={`text-[2.66vw] font-bold ${
-                upgradable ? "text-[#FAB648]" : "text-[#EAEAEA]"
-              }`}
-            >
-              {userHeroCard.card_level < hero.level.length - 1
-                ? hero.level[userHeroCard.card_level + 1]?.cost
-                : "MAX"}
-            </div>
-          </div>
+          )}
         </div>
       </div>
     );
@@ -148,7 +152,7 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
             <div className="rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center bg-[#FAB648]">
               <DragonIcon fill="#674B1F" className="w-[4.22vw] h-[4.22vw]" />
             </div>
-            <div className="text-[2.93vw] font-bold text-[#FAB648]">
+            <div className="text-[2.93vw] font-bold text-[#FAB648] tracking-tight">
               {hero.level[0].cost} Dragons
             </div>
           </div>

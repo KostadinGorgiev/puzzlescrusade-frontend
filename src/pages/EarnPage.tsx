@@ -37,6 +37,18 @@ const EarnPage: React.FC = () => {
       type: "telegram",
       url: "https://t.me/+B6TJZU_kFFNhYWYy",
     },
+    {
+      icon: <XIcon className="flex-none w-[6.4vw] h-[5.78vw]" />,
+      title: "Watch, Like and RT the video",
+      type: "twitter-1",
+      url: "https://bit.ly/4eh39EQ",
+    },
+    {
+      icon: <XIcon className="flex-none w-[6.4vw] h-[5.78vw]" />,
+      title: "Watch, Like and RT the video",
+      type: "twitter-2",
+      url: "https://x.com/PuzzlesCrusade/status/1854847353968075110",
+    },
   ];
 
   const TaskStatusComponent: React.FC<TaskStatusComponentProps> = ({

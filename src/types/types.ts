@@ -13,12 +13,11 @@ export type ActivePage =
 
 export type LayoutBackground = "image" | "gradient-color";
 
-export type UserTaskType = "twitter" | "youtube" | "telegram";
 
 export type Task = {
   icon: React.ReactNode;
   title: string;
-  type: UserTaskType;
+  type: string;
   url: string;
 };
 
@@ -69,7 +68,7 @@ export type Referral = {
 export type UserTaskStatus = {
   id: number;
   user_id: number;
-  task: UserTaskType;
+  task: string;
   status: TaskStatus;
   createdAt: string;
   updatedAt: string;

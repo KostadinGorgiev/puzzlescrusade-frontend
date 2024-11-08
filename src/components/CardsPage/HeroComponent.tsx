@@ -13,6 +13,7 @@ import VeldarSmallImage from "../../assets/images/heros/small/veldar.png";
 import VornakSmallImage from "../../assets/images/heros/small/vornak.png";
 import JackSmallImage from "../../assets/images/heros/small/jack.png";
 import AegironSmallImage from "../../assets/images/heros/small/aegiron.png";
+import DrektharSmallImage from "../../assets/images/heros/small/drekthar.png";
 
 interface HeroComponentProps {
   hero: (typeof levelConfig.heros)[0];
@@ -27,6 +28,7 @@ const heroImages: { [key: string]: string } = {
   ocean: VornakSmallImage,
   jack: JackSmallImage,
   aegiron: AegironSmallImage,
+  drekthar: DrektharSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {

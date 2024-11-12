@@ -13,7 +13,6 @@ export type ActivePage =
 
 export type LayoutBackground = "image" | "gradient-color";
 
-
 export type Task = {
   icon: React.ReactNode;
   title: string;
@@ -22,6 +21,16 @@ export type Task = {
 };
 
 export type TaskStatus = "todo" | "done" | "claim";
+
+export type DynamicTask = {
+  id: number;
+  title: string;
+  link: string;
+  type: string;
+  bonus_amount: number;
+  createdAt: string;
+  updatedAt: string;
+};
 
 export type DailyCheckInStatus = "claimed" | "claim" | "disabled";
 
@@ -50,6 +59,7 @@ export type User = {
   Referrals: Referral[];
   total_referral_count: number;
   TaskStatuses: UserTaskStatus[];
+  UserTaskStatuses: DynamicUserTaskStatus[];
   DailyCheckIn: DailyCheckIn;
   Cards: UserCard[];
   CardClaim: CardClaim;
@@ -69,6 +79,15 @@ export type UserTaskStatus = {
   id: number;
   user_id: number;
   task: string;
+  status: TaskStatus;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DynamicUserTaskStatus = {
+  id: number;
+  user_id: number;
+  task_id: number;
   status: TaskStatus;
   createdAt: string;
   updatedAt: string;

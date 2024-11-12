@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainLayout from "../layout/MainLayout";
 import TriAngleIcon from "../Icons/TriAngleIcon";
 import CalendarIcon from "../Icons/CalendarIcon";
-import { Task, TaskStatus, User } from "../types/types";
+import { DynamicTask, Task, TaskStatus, User } from "../types/types";
 import XIcon from "../Icons/XIcon";
 import TelegramIcon from "../Icons/TelegramIcon";
 import CheckCircleIcon from "../Icons/CheckCircleIcon";
@@ -52,6 +52,13 @@ const EarnPage: React.FC = () => {
     },
   ];
 
+  const taskIcon: any = {
+    twitter: <XIcon className="flex-none w-[6.4vw] h-[5.78vw]" />,
+    telegram: <TelegramIcon className="flex-none w-[6.4vw] h-[5.28vw]" />,
+  };
+
+  const [tasks, setTasks] = useState<DynamicTask[]>([]);
+
   const TaskStatusComponent: React.FC<TaskStatusComponentProps> = ({
     status,
     onClick,
@@ -96,15 +103,16 @@ const EarnPage: React.FC = () => {
     let status = taskStatus(task);
     if (!loading) {
       if (status === "todo") {
-        console.log("click task here", task);
         utils.openLink(task.url);
         await axiosInterface.post("task/complete", {
-          id: user.t_user_id,
+          user_id: user.t_user_id,
+          dynamic: false,
           task_type: task.type,
         });
       } else if (status === "claim") {
         await axiosInterface.post("task/claim", {
-          id: user.t_user_id,
+          user_id: user.t_user_id,
+          dynamic: false,
           task_type: task.type,
         });
       }
@@ -113,7 +121,32 @@ const EarnPage: React.FC = () => {
           id: user.t_user_id,
         },
       });
-      console.log(response);
+      dispatch(updateUser(response.data.user as User));
+    }
+  };
+
+  const handleUserTaskClick = async (task: DynamicTask) => {
+    const status = userTaskStatus(task);
+    if (!loading) {
+      if (status === "todo") {
+        utils.openLink(task?.link || "");
+        await axiosInterface.post("task/complete", {
+          user_id: user.t_user_id,
+          dynamic: true,
+          task_id: task.id,
+        });
+      } else if (status === "claim") {
+        await axiosInterface.post("task/claim", {
+          user_id: user.t_user_id,
+          dynamic: true,
+          task_id: task.id,
+        });
+      }
+      let response = await axiosInterface.get("task/list", {
+        params: {
+          id: user.t_user_id,
+        },
+      });
       dispatch(updateUser(response.data.user as User));
     }
   };
@@ -126,6 +159,28 @@ const EarnPage: React.FC = () => {
       return user.TaskStatuses[index].status;
     } else {
       return "todo";
+    }
+  };
+
+  const userTaskStatus = (task: DynamicTask): TaskStatus => {
+    let index = user.UserTaskStatuses.findIndex(
+      (uTask) => uTask.task_id === task.id
+    );
+    if (index !== -1) {
+      return user.UserTaskStatuses[index].status;
+    } else {
+      return "todo";
+    }
+  };
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    let response = await axiosInterface.get("admin/task/list");
+    if (response.data.success) {
+      setTasks(response.data.tasks);
     }
   };
 
@@ -172,6 +227,46 @@ const EarnPage: React.FC = () => {
           </div>
         </div>
         <div className="pt-[3.6vw] border-t-[0.26vw] border-[#FAB648] flex flex-col">
+          {tasks.map((task, index) => (
+            <div className="flex flex-col" key={index}>
+              <div className="flex items-center">
+                <div className="flex items-center justify-center w-[15.6vw]">
+                  {taskIcon[task.type]}
+                </div>
+                <div className="flex-1">
+                  <div
+                    className={`flex-1 font-medium text-[#AAAAAA] leading-none ${
+                      userTaskStatus(task) === "todo"
+                        ? "text-[3.2vw]"
+                        : "text-[3.7vw]"
+                    }`}
+                  >
+                    {task.title}
+                  </div>
+                  {userTaskStatus(task) === "todo" && (
+                    <div className="flex items-center gap-[2.17vw] mt-[0.8vw]">
+                      <div className="rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center bg-[#FAB648]">
+                        <DragonIcon
+                          fill="#674B1F"
+                          className="w-[4.22vw] h-[4.22vw]"
+                        />
+                      </div>
+                      <div className="text-[2.93vw] font-bold text-[#FAB648]">
+                        {task.bonus_amount} Dragons
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="flex items-center justify-center w-[24.26vw]">
+                  <TaskStatusComponent
+                    status={userTaskStatus(task)}
+                    onClick={() => handleUserTaskClick(task)}
+                  />
+                </div>
+              </div>
+              <div className="w-full border-t-[0.13vw] border-[#AAAAAA] my-[3.46vw] opacity-30"></div>
+            </div>
+          ))}
           {taskList.map((task, index) => (
             <div className="flex flex-col" key={index}>
               <div className="flex items-center">

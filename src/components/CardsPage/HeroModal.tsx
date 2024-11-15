@@ -17,6 +17,7 @@ import JackBigImage from "../../assets/images/heros/small/jack.png";
 import AegironBigImage from "../../assets/images/heros/small/aegiron.png";
 import DrektharBigImage from "../../assets/images/heros/small/drekthar.png";
 import MorgathBigImage from "../../assets/images/heros/small/morgath.png";
+import FennelBigImage from "../../assets/images/heros/small/fennel.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -33,6 +34,7 @@ const heroImages: { [key: string]: string } = {
   aegiron: AegironBigImage,
   drekthar: DrektharBigImage,
   morgath: MorgathBigImage,
+  fennel: FennelBigImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

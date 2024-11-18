@@ -187,6 +187,7 @@ export const appSlice = createSlice({
             state.game.user.DailyCheckIn.checkedin_count
           ];
         state.game.user.DailyCheckIn = action.payload;
+        state.activePage = 'earn';
       }
     },
     updateHeroCards: (

@@ -16,7 +16,7 @@ import AegironSmallImage from "../../assets/images/heros/small/aegiron.png";
 import DrektharSmallImage from "../../assets/images/heros/small/drekthar.png";
 import MorgathSmallImage from "../../assets/images/heros/small/morgath.png";
 import FennelSmallImage from "../../assets/images/heros/small/fennel.png";
-import RuxandraRedtideSmallImage from "../../assets/images/heros/small/fennel.png";
+import RuxandraRedtideSmallImage from "../../assets/images/heros/small/ruxandra_redtide.png";
 
 interface HeroComponentProps {
   hero: (typeof levelConfig.heros)[0];

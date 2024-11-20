@@ -16,6 +16,7 @@ import AegironSmallImage from "../../assets/images/heros/small/aegiron.png";
 import DrektharSmallImage from "../../assets/images/heros/small/drekthar.png";
 import MorgathSmallImage from "../../assets/images/heros/small/morgath.png";
 import FennelSmallImage from "../../assets/images/heros/small/fennel.png";
+import RuxandraRedtideSmallImage from "../../assets/images/heros/small/fennel.png";
 
 interface HeroComponentProps {
   hero: (typeof levelConfig.heros)[0];
@@ -33,6 +34,7 @@ const heroImages: { [key: string]: string } = {
   drekthar: DrektharSmallImage,
   morgath: MorgathSmallImage,
   fennel: FennelSmallImage,
+  ruxandra_redtide: RuxandraRedtideSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
@@ -41,24 +43,21 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
   const [loading, setLoading] = useState(false);
 
   const handleUnlockHeroCard = useCallback(async () => {
-    if (user.coin_balance > hero.level[0].cost) {
-      if (loading) return;
-      setLoading(true);
-      let result = await axiosInterface.post("card/unlock", {
-        id: user.t_user_id,
-        card_slug: hero.slug,
-      });
-      setLoading(false);
-      if (result.data.success) {
-        dispatch(
-          updateHeroCards({
-            card: result.data.cards,
-            balance: result.data.balance,
-          })
-        );
-      }
+    setLoading(true);
+    let result = await axiosInterface.post("card/unlock", {
+      id: user.t_user_id,
+      card_slug: hero.slug,
+    });
+    setLoading(false);
+    if (result.data.success) {
+      dispatch(
+        updateHeroCards({
+          card: result.data.cards,
+          balance: result.data.balance,
+        })
+      );
     }
-  }, [loading, user, hero, dispatch]);
+  }, [user, hero, dispatch]);
 
   const userHeroCard = useMemo(() => {
     return user.Cards.find((e) => e.card_slug === hero.slug);
@@ -75,6 +74,49 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
       return false;
     }
   }, [user, userHeroCard, hero]);
+
+  const cardCondition = useMemo(() => {
+    if (hero.condition) {
+      switch (hero.condition.type) {
+        case "card": {
+          const userCard = user.Cards.find(
+            (card) => card.card_slug === hero.condition.targetCard
+          );
+          if (userCard && userCard.card_level >= hero.condition.cardLevel - 1) {
+            return {
+              conditional: true,
+              conditionPass: true,
+              text: "",
+            };
+          }
+
+          let card = levelConfig.heros.find(
+            (e) => e.slug === hero.condition.targetCard
+          );
+          if (!card) {
+            console.warn("no card defined for condition", hero.slug);
+          }
+
+          return {
+            conditional: true,
+            conditionPass: false,
+            text: `Need ${card?.name} card at level ${hero.condition.cardLevel}`,
+          };
+        }
+        default: {
+          console.warn("condition not implemented yet for card", hero.slug);
+
+          return {
+            conditional: false,
+          };
+        }
+      }
+    } else {
+      return {
+        conditional: false,
+      };
+    }
+  }, [hero, user.Cards]);
 
   if (userHeroCard) {
     return (
@@ -148,20 +190,52 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
           className="w-[40.26vw] h-[57.33vw] border-[0.26vw] border-[#FAB648] rounded-[2.6vw] blur-[5px] overflow-hidden"
         />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32.26vw] h-[15.46vw] border-[0.26vw] border-[#FAB648] rounded-[2.66vw] pt-[1.86vw] pb-[2.93vw] px-[3.46vw] bg-[#171819e5]"
-          onClick={() => handleUnlockHeroCard()}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32.26vw] h-[15.46vw] border-[0.26vw] border-[#FAB648] rounded-[2.66vw] pt-[1.86vw] pb-[2.93vw] px-[3.46vw] bg-[#171819e5] min-h-fit"
+          onClick={() => {
+            if (user.coin_balance > hero.level[0].cost) {
+              if (loading) return;
+              if (cardCondition.conditional && !cardCondition.conditionPass)
+                return;
+              handleUnlockHeroCard();
+            }
+          }}
         >
           <div className="text-center text-[3.73vw] font-bold text-[#FA6648]">
             Unlock card
           </div>
-          <div className="flex items-center justify-center gap-[0.8vw]">
-            <div className="rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center bg-[#FAB648]">
-              <DragonIcon fill="#674B1F" className="w-[4.22vw] h-[4.22vw]" />
+          {cardCondition.conditional && !cardCondition.conditionPass ? (
+            <div className="text-center text-[2.93vw] font-bold tracking-tight text-[#EAEAEA]">
+              {cardCondition.text}
             </div>
-            <div className="text-[2.93vw] font-bold text-[#FAB648] tracking-tight">
-              {hero.level[0].cost} Dragons
+          ) : (
+            <div className="flex items-center justify-center gap-[0.8vw]">
+              <div
+                className={`rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center ${
+                  user.coin_balance > hero.level[0].cost
+                    ? "bg-[#FAB648]"
+                    : "bg-[#aaaaaa]"
+                }`}
+              >
+                <DragonIcon
+                  fill={
+                    user.coin_balance > hero.level[0].cost
+                      ? "#674B1F"
+                      : "#eaeaea"
+                  }
+                  className="w-[4.22vw] h-[4.22vw]"
+                />
+              </div>
+              <div
+                className={`text-[2.93vw] font-bold tracking-tight ${
+                  user.coin_balance > hero.level[0].cost
+                    ? "text-[#FAB648]"
+                    : "text-[#EAEAEA]"
+                }`}
+              >
+                {hero.level[0].cost} Dragons
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );

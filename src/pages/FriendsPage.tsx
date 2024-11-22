@@ -48,12 +48,13 @@ const FriendsPage: React.FC = () => {
       <div className="pt-[7.2vw] px-[4.13vw] pb-[16vw]">
         <div className="flex flex-col items-center px-[2vw]">
           <div className="text-[6.4vw] font-bold text-[#EAEAEA] mb-[5.6vw]">
-            Invite your friends
+            Invite All Your Friends
           </div>
           <div className="text-[3.2vw] font-medium text-[#AAAAAA] text-center mb-[8vw]">
-            And experience together the amazing world of Puzzles
+            Get ahead of everyone else by sharing your unique link.
             <br />
-            Crusade, while winning amazing prizes.
+            The more friends you bring in, the higher you'll climb <br />
+            on the Airdrop leaderboard.
           </div>
           <div className="w-full flex justify-between gap-[4vw] mb-[5.06vw]">
             <div className="h-[21.86vw] flex-1 rounded-[2.66vw] bg-[#4B4955] p-[2.66vw]">
@@ -92,8 +93,11 @@ const FriendsPage: React.FC = () => {
             </div>
           </div>
           <div className="text-[3.2vw] font-medium text-[#EAEAEA] text-center mb-[8.53vw]">
-            More bonuses for referrals are coming. <br />
-            It is always a good idea to invite your friends
+            Share your link with as many people as possible
+            <br />
+            and post it on social media. More exclusive referral
+            <br />
+            bonuses are coming for you and your friends only.
           </div>
           <TriAngleIcon className="w-[3.2vw] h-[3.2vw] mb-[3.46vw]" />
           <div className="text-[4.26vw] font-light text-white mb-[4.13vw] leading-none w-full text-center relative">

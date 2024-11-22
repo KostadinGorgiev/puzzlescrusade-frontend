@@ -189,11 +189,13 @@ const EarnPage: React.FC = () => {
       <div className="pt-[7.2vw] px-[4.13vw] pb-[3.46vw]">
         <div className="flex flex-col items-center px-[2vw]">
           <div className="text-[6.4vw] font-bold text-[#EAEAEA] mb-[5.6vw]">
-            Earn extra coins
+            Earn Extra Gold Dragons
           </div>
           <div className="text-[3.2vw] font-medium text-[#AAAAAA] text-center mb-[8vw]">
-            Complete tasks to earn more coins and don’t forget to
-            <br /> check in daily for your gifts and chests.
+            Players who complete all quests get a special boost for the
+            <br />
+            airdrop. Make sure you check the new quests each <br />
+            day to stay on top.
           </div>
           <div
             className="h-[21.86vw] flex-1 rounded-[2.66vw] bg-[#FAB648] px-[4.8vw] pt-[2.93vw] pb-[4.8vw] mb-[5.06vw] w-full"
@@ -206,8 +208,7 @@ const EarnPage: React.FC = () => {
                   Daily Check-in bonus
                 </div>
                 <div className="text-[3.2vw] font-medium text-[#221E33] leading-tight">
-                  Enter the game every day and get a<br /> nice and well
-                  deserved coin boost.
+                  Log in daily for a well-deserved boost.
                 </div>
               </div>
               <div className="flex items-center h-full">
@@ -223,7 +224,7 @@ const EarnPage: React.FC = () => {
             <TriAngleIcon className="w-[3.2vw] h-[3.2vw] absolute left-1/2 -translate-x-1/2 rotate-180" />
           </div>
           <div className="text-[4.26vw] font-light text-white mb-[3.2vw] leading-none">
-            Tasks
+            Quests
           </div>
         </div>
         <div className="pt-[3.6vw] border-t-[0.26vw] border-[#FAB648] flex flex-col">

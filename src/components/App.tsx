@@ -64,6 +64,9 @@ const App: React.FC = () => {
       socket.on("card_profit", (data) => {
         dispatch(claimCardProfitSocket(data.coin));
       });
+      socket.on("ternimate_session", (data) => {
+        miniApp.close();
+      });
     }
   };
 

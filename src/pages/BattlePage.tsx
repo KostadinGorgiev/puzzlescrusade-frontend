@@ -10,13 +10,13 @@ const BattlePage: React.FC = () => {
             Easy rider
           </div>
           <div className="text-[3.2vw] font-medium text-[#AAAAAA] text-center">
-            Make sure you max your heroes and be ready when we
+            Maximize your heroes and be prepared for Wallachia’s grand
             <br />
-            open Wallachia for you. First day when we open the gates
+            opening. Gaining early access offers significant advantages.
             <br />
-            comes with a great advantage. Follow closely our updates
+            Make sure to be there from day one. Stay tuned for updates
             <br />
-            and don't miss out
+            and don’t miss out!
           </div>
         </div>
       </div>

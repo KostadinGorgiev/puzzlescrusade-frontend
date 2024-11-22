@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
                 : "text-[#AAAAAA]"
             }`}
           >
-            Earn
+            Earn+
           </span>
         </div>
         <div

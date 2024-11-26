@@ -22,7 +22,7 @@ var tapInterval: NodeJS.Timeout;
 interface AppState {
   activePage: ActivePage;
   loading: boolean;
-  game: Game | null;
+  game: Game;
   socket: any;
   cardProfitModalVisible: boolean;
   levelUpScreenVisible: boolean;
@@ -30,7 +30,11 @@ interface AppState {
 
 const initialState: AppState = {
   activePage: "mine",
-  game: null,
+  game: {
+    user: undefined,
+    introductionStep: 0,
+    tasks: [],
+  },
   loading: false,
   socket: null,
   cardProfitModalVisible: true,
@@ -60,6 +64,11 @@ export const initializeUser = createAsyncThunk(
   }
 );
 
+export const fetchTasks = createAsyncThunk("admin/task/list", async () => {
+  const response = await axiosInterface.get("admin/task/list");
+  return response.data.tasks;
+});
+
 export const appSlice = createSlice({
   name: "app",
   initialState,
@@ -77,12 +86,10 @@ export const appSlice = createSlice({
       state.activePage = action.payload;
     },
     updateUser: (state, action: PayloadAction<User>) => {
-      if (state.game) {
-        state.game.user = action.payload;
-      }
+      state.game.user = action.payload;
     },
     introNext: (state) => {
-      if (state.game) {
+      if (state.game.user) {
         if (state.game.introductionStep === 5) {
           state.game.user.isNew = false;
         } else {
@@ -91,12 +98,12 @@ export const appSlice = createSlice({
       }
     },
     introSkip: (state) => {
-      if (state.game) {
+      if (state.game.user) {
         state.game.user.isNew = false;
       }
     },
     tap: (state) => {
-      if (state.game) {
+      if (state.game.user) {
         if (state.game.user.energy_point >= 1) {
           if (
             handleCheckLevelUpScreen(
@@ -127,7 +134,7 @@ export const appSlice = createSlice({
       }
     },
     recoverEnergy: (state) => {
-      if (state.game) {
+      if (state.game.user) {
         if (
           userEnergySize(state.game.user.energy_size_level) >
           state.game.user.energy_point
@@ -136,7 +143,7 @@ export const appSlice = createSlice({
       }
     },
     increaseEnergySize: (state) => {
-      if (state.game) {
+      if (state.game.user) {
         state.game.user.coin_balance =
           state.game.user.coin_balance -
           levelConfig.energySize[state.game.user.energy_size_level + 1].cost;
@@ -145,7 +152,7 @@ export const appSlice = createSlice({
       }
     },
     increaseRecovery: (state) => {
-      if (state.game) {
+      if (state.game.user) {
         state.game.user.coin_balance =
           state.game.user.coin_balance -
           levelConfig.recovery[state.game.user.energy_recovery_level + 1].cost;
@@ -154,7 +161,7 @@ export const appSlice = createSlice({
       }
     },
     increaseTapMultiplier: (state) => {
-      if (state.game) {
+      if (state.game.user) {
         state.game.user.coin_balance =
           state.game.user.coin_balance -
           levelConfig.tapMultipler[state.game.user.tap_multipler_level + 1]
@@ -164,7 +171,7 @@ export const appSlice = createSlice({
       }
     },
     claimBonus: (state, action: PayloadAction<DailyCheckIn>) => {
-      if (state.game) {
+      if (state.game.user) {
         if (
           handleCheckLevelUpScreen(
             state.game.user.level_point,
@@ -187,14 +194,14 @@ export const appSlice = createSlice({
             state.game.user.DailyCheckIn.checkedin_count
           ];
         state.game.user.DailyCheckIn = action.payload;
-        state.activePage = 'earn';
+        state.activePage = "earn";
       }
     },
     updateHeroCards: (
       state,
       action: PayloadAction<{ card: UserCard[]; balance: number }>
     ) => {
-      if (state.game) {
+      if (state.game.user) {
         state.game.user.Cards = action.payload.card;
         state.game.user.coin_balance = action.payload.balance;
       }
@@ -203,7 +210,7 @@ export const appSlice = createSlice({
       state,
       action: PayloadAction<{ coin_balance: number; level_point: number }>
     ) => {
-      if (state.game) {
+      if (state.game.user) {
         if (
           handleCheckLevelUpScreen(
             state.game.user.level_point,
@@ -217,7 +224,7 @@ export const appSlice = createSlice({
       }
     },
     claimCardProfitSocket: (state, action: PayloadAction<number>) => {
-      if (state.game) {
+      if (state.game.user) {
         if (
           handleCheckLevelUpScreen(
             state.game.user.level_point,
@@ -239,7 +246,7 @@ export const appSlice = createSlice({
       state.levelUpScreenVisible = false;
     },
     loadMoreReferrals: (state, action: PayloadAction<Referral[]>) => {
-      if (state.game) {
+      if (state.game.user) {
         state.game.user.Referrals = [
           ...state.game.user.Referrals,
           ...action.payload,
@@ -249,13 +256,14 @@ export const appSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(initializeUser.fulfilled, (state, action) => {
-      state.game = {
-        user: action.payload,
-        introductionStep: 0,
-      };
+      state.game.user = action.payload;
+      state.game.introductionStep = 0;
     });
     builder.addCase(initializeUser.pending, (state, action) => {
       state.loading = true;
+    });
+    builder.addCase(fetchTasks.fulfilled, (state, action) => {
+      state.game.tasks = action.payload;
     });
   },
 });

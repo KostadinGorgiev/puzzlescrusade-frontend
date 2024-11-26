@@ -35,8 +35,9 @@ export type DynamicTask = {
 export type DailyCheckInStatus = "claimed" | "claim" | "disabled";
 
 export type Game = {
-  user: User;
+  user?: User;
   introductionStep: number;
+  tasks: DynamicTask[];
 };
 
 export type User = {

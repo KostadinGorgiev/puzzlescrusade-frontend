@@ -18,6 +18,7 @@ import { ExpandedTGUser } from "../types/types";
 import Loading from "./Loading/Loading";
 import Introduction from "./Introduction/Introduction";
 import socketIo from "socket.io-client";
+import ErrorPage from "../pages/ErrorPage";
 
 const App: React.FC = () => {
   const activePage = useAppSelector((state) => state.app.activePage);
@@ -73,7 +74,7 @@ const App: React.FC = () => {
   if (loading) {
     return <Loading />;
   } else if (!user) {
-    return <div className="">Error when fetch user data</div>;
+    return <ErrorPage />;
   } else if (user.isNew) {
     return <Introduction />;
   } else {

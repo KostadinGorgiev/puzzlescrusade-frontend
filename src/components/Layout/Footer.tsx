@@ -32,8 +32,6 @@ const Footer: React.FC = () => {
     });
   }, [userTaskStatus, tasks]);
 
-  console.log(notifyEarnTab);
-
   useEffect(() => {
     dispatch(fetchTasks());
   }, []);

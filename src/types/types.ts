@@ -20,7 +20,7 @@ export type Task = {
   url: string;
 };
 
-export type TaskStatus = "todo" | "done" | "claim";
+export type TaskStatus = "todo" | "done" | "verify" | "claim";
 
 export type DynamicTask = {
   id: number;
@@ -28,6 +28,7 @@ export type DynamicTask = {
   link: string;
   type: string;
   bonus_amount: number;
+  password?: string;
   createdAt: string;
   updatedAt: string;
 };

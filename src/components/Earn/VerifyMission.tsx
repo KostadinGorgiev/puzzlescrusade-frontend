@@ -5,6 +5,7 @@ import { DynamicTask, User } from "../../types/types";
 import axiosInterface from "../../utils/axios";
 import { useAppSelector } from "../../hooks";
 import CircleCloseIcon from "../../Icons/CircleCloseIcon";
+import { useUtils } from "@telegram-apps/sdk-react";
 
 interface VerifyMissionProps {
   task: DynamicTask;
@@ -13,6 +14,7 @@ interface VerifyMissionProps {
 
 const VerifyMission: React.FC<VerifyMissionProps> = ({ task, onComplete }) => {
   const user = useAppSelector((state) => state.app.game?.user) as User;
+  const utils = useUtils();
   const [password, setPassword] = useState("");
   const [hasError, setHasError] = useState(false);
 
@@ -37,14 +39,19 @@ const VerifyMission: React.FC<VerifyMissionProps> = ({ task, onComplete }) => {
           {taskIcon[task.type]}
         </div>
         <div className="flex-1 text-[5.33vw] font-bold text-[#EAEAEA]">
-          Welcome to Wallachia
+          {task.title}
         </div>
-        <button className="w-[6.66vw] h-[6.66vw] outline-none border-none bg-[#4B4955] rounded-full flex items-center justify-center">
+        <button
+          className="w-[6.66vw] h-[6.66vw] outline-none border-none bg-[#4B4955] rounded-full flex items-center justify-center"
+          onClick={() => {
+            utils.openLink(task?.link || "");
+          }}
+        >
           <ShareIcon className="w-[3.2vw] h-[3.2vw]" />
         </button>
       </div>
       <div className="mb-[4vw] text-[3.73vw] font-medium text-[#AAAAAA]">
-        Enter the magic word
+        {task.question}
       </div>
       <div
         className={`w-full h-[11.46vw] rounded-[1.6vw] bg-[#4B4955] border-[0.26vw] p-[2.66vw] flex items-center mb-[2.66vw] ${

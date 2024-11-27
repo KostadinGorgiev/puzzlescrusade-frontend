@@ -29,6 +29,7 @@ export type DynamicTask = {
   type: string;
   bonus_amount: number;
   password?: string;
+  question?: string;
   createdAt: string;
   updatedAt: string;
 };

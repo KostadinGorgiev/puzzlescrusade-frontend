@@ -12,8 +12,8 @@ import { changePage, updateUser } from "../store/appSlice";
 import axiosInterface from "../utils/axios";
 import { useBackButton, useUtils } from "@telegram-apps/sdk-react";
 import DragonIcon from "../Icons/DragonIcon";
-import ShareIcon from "../Icons/ShareIcon";
 import VerifyMission from "../components/Earn/VerifyMission";
+import YoutubeIcon from "../Icons/YoutubeIcon";
 
 interface TaskStatusComponentProps {
   status: TaskStatus;
@@ -23,6 +23,7 @@ interface TaskStatusComponentProps {
 export const taskIcon: any = {
   twitter: <XIcon className="flex-none w-[6.4vw] h-[5.78vw]" />,
   telegram: <TelegramIcon className="flex-none w-[6.4vw] h-[5.28vw]" />,
+  youtube: <YoutubeIcon className="flex-none w-[6.4vw] h-[5.28vw]" />,
 };
 
 const EarnPage: React.FC = () => {

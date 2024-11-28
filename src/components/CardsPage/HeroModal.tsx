@@ -19,6 +19,7 @@ import DrektharBigImage from "../../assets/images/heros/small/drekthar.png";
 import MorgathBigImage from "../../assets/images/heros/small/morgath.png";
 import FennelBigImage from "../../assets/images/heros/small/fennel.png";
 import RuxandraRedtideBigImage from "../../assets/images/heros/small/ruxandra_redtide.png";
+import RakaniBigImage from "../../assets/images/heros/small/rakani.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -37,6 +38,7 @@ const heroImages: { [key: string]: string } = {
   morgath: MorgathBigImage,
   fennel: FennelBigImage,
   ruxandra_redtide: RuxandraRedtideBigImage,
+  rakani: RakaniBigImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

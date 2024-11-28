@@ -17,6 +17,7 @@ import DrektharSmallImage from "../../assets/images/heros/small/drekthar.png";
 import MorgathSmallImage from "../../assets/images/heros/small/morgath.png";
 import FennelSmallImage from "../../assets/images/heros/small/fennel.png";
 import RuxandraRedtideSmallImage from "../../assets/images/heros/small/ruxandra_redtide.png";
+import RakaniSmallImage from "../../assets/images/heros/small/rakani.png";
 
 interface HeroComponentProps {
   hero: (typeof levelConfig.heros)[0];
@@ -35,6 +36,7 @@ const heroImages: { [key: string]: string } = {
   morgath: MorgathSmallImage,
   fennel: FennelSmallImage,
   ruxandra_redtide: RuxandraRedtideSmallImage,
+  rakani: RakaniSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {

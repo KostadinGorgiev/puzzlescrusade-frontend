@@ -26,11 +26,11 @@ interface HeroModalProps {
 }
 
 const heroImages: { [key: string]: string } = {
-  light: LioraBigImage,
-  dark: SylvarraBigImage,
-  volcano: KaelarBigImage,
-  forest: VeldarBigImage,
-  ocean: VornakBigImage,
+  liora: LioraBigImage,
+  sylvarra: SylvarraBigImage,
+  kaelar: KaelarBigImage,
+  veldar: VeldarBigImage,
+  vornak: VornakBigImage,
   jack: JackBigImage,
   aegiron: AegironBigImage,
   drekthar: DrektharBigImage,

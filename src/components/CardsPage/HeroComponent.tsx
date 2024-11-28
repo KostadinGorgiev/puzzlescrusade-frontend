@@ -24,11 +24,11 @@ interface HeroComponentProps {
 }
 
 const heroImages: { [key: string]: string } = {
-  light: LioraSmallImage,
-  dark: SylvarraSmallImage,
-  volcano: KaelarSmallImage,
-  forest: VeldarSmallImage,
-  ocean: VornakSmallImage,
+  liora: LioraSmallImage,
+  sylvarra: SylvarraSmallImage,
+  kaelar: KaelarSmallImage,
+  veldar: VeldarSmallImage,
+  vornak: VornakSmallImage,
   jack: JackSmallImage,
   aegiron: AegironSmallImage,
   drekthar: DrektharSmallImage,

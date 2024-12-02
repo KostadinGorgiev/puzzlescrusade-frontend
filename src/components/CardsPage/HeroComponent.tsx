@@ -18,9 +18,11 @@ import MorgathSmallImage from "../../assets/images/heros/small/morgath.png";
 import FennelSmallImage from "../../assets/images/heros/small/fennel.png";
 import RuxandraRedtideSmallImage from "../../assets/images/heros/small/ruxandra_redtide.png";
 import RakaniSmallImage from "../../assets/images/heros/small/rakani.png";
+import SplashSmallImage from "../../assets/images/heros/small/splash.png";
+import moment from "moment-timezone";
 
 interface HeroComponentProps {
-  hero: (typeof levelConfig.heros)[0];
+  hero: any;
   onClick: () => void;
 }
 
@@ -37,6 +39,7 @@ const heroImages: { [key: string]: string } = {
   fennel: FennelSmallImage,
   ruxandra_redtide: RuxandraRedtideSmallImage,
   rakani: RakaniSmallImage,
+  splash: SplashSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
@@ -104,6 +107,34 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
             conditionPass: false,
             text: `Need ${card?.name} card at level ${hero.condition.cardLevel}`,
           };
+        }
+        case "referral": {
+          let count = 0;
+          user.Referrals.forEach((referral) => {
+            if (
+              moment
+                .tz(referral.createdAt, user.serverTimezone)
+                .isAfter(
+                  moment.tz(hero.condition.launchTime, user.serverTimezone),
+                  "seconds"
+                )
+            ) {
+              count++;
+            }
+          });
+          if (count >= hero.condition.count) {
+            return {
+              conditional: true,
+              conditionPass: true,
+              text: "",
+            };
+          } else {
+            return {
+              conditional: true,
+              conditionPass: false,
+              text: `Invite ${hero.condition.count} more friend`,
+            };
+          }
         }
         default: {
           console.warn("condition not implemented yet for card", hero.slug);

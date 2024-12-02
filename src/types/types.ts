@@ -58,6 +58,7 @@ export type User = {
   createdAt: string;
   updatedAt: string;
   serverTime: string;
+  serverTimezone: string;
   photo_url?: string;
   Referrals: Referral[];
   total_referral_count: number;

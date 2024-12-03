@@ -96,7 +96,7 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
   }, [loading, dispatch, user, hero, onClose, userHeroCard]);
 
   return (
-    <div className="absolute top-0 w-screen h-fit min-h-screen bg-[#171819e5] z-[1000] c-modal">
+    <div className="fixed top-0 w-screen h-fit min-h-screen bg-[#171819e5] z-[1000] c-modal">
       <img
         src={heroImages[userHeroCard.card_slug]}
         alt={hero.name}

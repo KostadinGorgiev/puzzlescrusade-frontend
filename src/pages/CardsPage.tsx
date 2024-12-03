@@ -28,10 +28,6 @@ const CardsPage: React.FC = () => {
                 <HeroComponent
                   hero={hero}
                   onClick={() => {
-                    document.querySelector(".main-layout")?.scrollTo({
-                      top: 0,
-                      behavior: "auto",
-                    });
                     setSelectedHero(hero);
                   }}
                   key={index}

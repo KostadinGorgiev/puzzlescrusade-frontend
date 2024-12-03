@@ -57,6 +57,7 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
   const user = useAppSelector((state) => state.app.game?.user) as User;
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   const userHeroCard: UserCard = useMemo(() => {
     return user.Cards.find((e) => e.card_slug === hero.slug);
@@ -95,15 +96,36 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
     }
   }, [loading, dispatch, user, hero, onClose, userHeroCard]);
 
+  const handleClose = () => {
+    setHidden(true);
+    setTimeout(() => {
+      onClose();
+    }, 190);
+  };
+
   return (
-    <div className="fixed top-0 w-screen h-fit min-h-screen bg-[#171819e5] z-[1000] c-modal face-in-animation">
+    <div
+      className={`fixed top-0 w-screen h-fit min-h-screen bg-[#171819e5] z-[1000] c-modal ${
+        hidden ? "face-out-animation" : "face-in-animation"
+      }`}
+    >
       <img
         src={heroImages[userHeroCard.card_slug]}
         alt={hero.name}
-        className="absolute top-0 left-0 w-[100vw] h-[100vw] hero-modal-content"
+        className={`absolute top-0 left-0 w-[100vw] h-[100vw] ${
+          hidden ? "hero-modal-content-close" : "hero-modal-content"
+        }`}
       />
-      <div className="absolute top-[62.93vw] w-screen h-[20.05vw] bg-gradient-to-t from-[#171819] to-transparent face-in-animation"></div>
-      <div className="absolute top-[82.98vw] w-screen h-[calc(100vh-82.98vw)] bg-[#171819] face-in-animation"></div>
+      <div
+        className={`absolute top-[62.93vw] w-screen h-[20.05vw] bg-gradient-to-t from-[#171819] to-transparent ${
+          hidden ? "face-out-animation" : "face-in-animation"
+        }`}
+      ></div>
+      <div
+        className={`absolute top-[82.98vw] w-screen h-[calc(100vh-82.98vw)] bg-[#171819] ${
+          hidden ? "face-out-animation" : "face-in-animation"
+        }`}
+      ></div>
       <div className="pt-[77.06vw] px-[7.73vw] pb-[8.8vw] absolute top-0 left-0 w-screen max-h-screen overflow-auto hero-modal-content">
         <div className="flex flex-col items-center">
           <div className="text-[9.6vw] font-bold text-[#EAEAEA] leading-none mb-[1.33vw]">
@@ -235,7 +257,7 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
       <CircleXMarkIcon
         fill="#fa6648"
         className="w-[6.4vw] h-[6.4vw] absolute top-[8.26vw] right-[6.13vw]"
-        onClick={() => onClose()}
+        onClick={() => handleClose()}
       />
     </div>
   );

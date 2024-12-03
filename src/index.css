@@ -42,12 +42,22 @@ code {
 
 .face-in-animation {
   animation-name: FadeIn;
-  animation-duration: 1s;
+  animation-duration: 0.7s;
+}
+
+.face-out-animation {
+  animation-name: FadeOut;
+  animation-duration: 0.2s;
 }
 
 .hero-modal-content {
   animation-name: HeroModalContent;
-  animation-duration: 1s;
+  animation-duration: 0.7s;
+}
+
+.hero-modal-content-close {
+  animation-name: HeroModalContentClose;
+  animation-duration: 0.2s;
 }
 
 @keyframes HeroModalContent {
@@ -59,11 +69,29 @@ code {
   }
 }
 
+@keyframes HeroModalContentClose {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 100vh;
+  }
+}
+
 @keyframes FadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes FadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

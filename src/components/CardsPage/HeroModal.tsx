@@ -21,6 +21,7 @@ import FennelBigImage from "../../assets/images/heros/small/fennel.png";
 import RuxandraRedtideBigImage from "../../assets/images/heros/small/ruxandra_redtide.png";
 import RakaniBigImage from "../../assets/images/heros/small/rakani.png";
 import SplashBigImage from "../../assets/images/heros/small/splash.png";
+import ElaraBigImage from "../../assets/images/heros/small/elara.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -41,6 +42,7 @@ const heroImages: { [key: string]: string } = {
   ruxandra_redtide: RuxandraRedtideBigImage,
   rakani: RakaniBigImage,
   splash: SplashBigImage,
+  elara: ElaraBigImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

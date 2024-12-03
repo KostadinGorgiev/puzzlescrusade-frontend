@@ -99,6 +99,7 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
   const handleClose = () => {
     setHidden(true);
     setTimeout(() => {
+      setHidden(false);
       onClose();
     }, 190);
   };

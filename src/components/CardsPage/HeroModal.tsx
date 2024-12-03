@@ -99,7 +99,6 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
   const handleClose = () => {
     setHidden(true);
     setTimeout(() => {
-      setHidden(false);
       onClose();
     }, 190);
   };
@@ -113,8 +112,8 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
       <img
         src={heroImages[userHeroCard.card_slug]}
         alt={hero.name}
-        className={`absolute top-0 left-0 w-[100vw] h-[100vw] ${
-          hidden ? "hero-modal-content-close" : "hero-modal-content"
+        className={`absolute left-0 w-[100vw] h-[100vw] ${
+          hidden ? "top-[100vh] hero-modal-content-close" : "top-0 hero-modal-content"
         }`}
       />
       <div

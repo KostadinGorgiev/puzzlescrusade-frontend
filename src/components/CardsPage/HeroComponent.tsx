@@ -20,6 +20,7 @@ import RuxandraRedtideSmallImage from "../../assets/images/heros/small/ruxandra_
 import RakaniSmallImage from "../../assets/images/heros/small/rakani.png";
 import SplashSmallImage from "../../assets/images/heros/small/splash.png";
 import ElaraSmallImage from "../../assets/images/heros/small/elara.png";
+import AqualonSmallImage from "../../assets/images/heros/small/aqualon.png";
 import moment from "moment-timezone";
 
 interface HeroComponentProps {
@@ -42,6 +43,7 @@ const heroImages: { [key: string]: string } = {
   rakani: RakaniSmallImage,
   splash: SplashSmallImage,
   elara: ElaraSmallImage,
+  aqualon: AqualonSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {

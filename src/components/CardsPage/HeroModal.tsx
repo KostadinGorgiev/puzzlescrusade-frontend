@@ -22,6 +22,7 @@ import RuxandraRedtideBigImage from "../../assets/images/heros/small/ruxandra_re
 import RakaniBigImage from "../../assets/images/heros/small/rakani.png";
 import SplashBigImage from "../../assets/images/heros/small/splash.png";
 import ElaraBigImage from "../../assets/images/heros/small/elara.png";
+import AqualonBigImage from "../../assets/images/heros/small/aqualon.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -43,6 +44,7 @@ const heroImages: { [key: string]: string } = {
   rakani: RakaniBigImage,
   splash: SplashBigImage,
   elara: ElaraBigImage,
+  aqualon: AqualonBigImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

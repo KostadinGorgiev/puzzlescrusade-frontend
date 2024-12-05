@@ -23,6 +23,7 @@ import RakaniBigImage from "../../assets/images/heros/small/rakani.png";
 import SplashBigImage from "../../assets/images/heros/small/splash.png";
 import ElaraBigImage from "../../assets/images/heros/small/elara.png";
 import AqualonBigImage from "../../assets/images/heros/small/aqualon.png";
+import WillowBigImage from "../../assets/images/heros/small/willow.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -45,6 +46,7 @@ const heroImages: { [key: string]: string } = {
   splash: SplashBigImage,
   elara: ElaraBigImage,
   aqualon: AqualonBigImage,
+  willow: WillowBigImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

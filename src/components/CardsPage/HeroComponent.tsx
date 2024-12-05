@@ -21,6 +21,7 @@ import RakaniSmallImage from "../../assets/images/heros/small/rakani.png";
 import SplashSmallImage from "../../assets/images/heros/small/splash.png";
 import ElaraSmallImage from "../../assets/images/heros/small/elara.png";
 import AqualonSmallImage from "../../assets/images/heros/small/aqualon.png";
+import WillowSmallImage from "../../assets/images/heros/small/willow.png";
 import moment from "moment-timezone";
 
 interface HeroComponentProps {
@@ -44,6 +45,7 @@ const heroImages: { [key: string]: string } = {
   splash: SplashSmallImage,
   elara: ElaraSmallImage,
   aqualon: AqualonSmallImage,
+  willow: WillowSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {

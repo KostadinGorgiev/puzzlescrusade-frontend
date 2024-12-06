@@ -24,6 +24,7 @@ import SplashBigImage from "../../assets/images/heros/small/splash.png";
 import ElaraBigImage from "../../assets/images/heros/small/elara.png";
 import AqualonBigImage from "../../assets/images/heros/small/aqualon.png";
 import WillowBigImage from "../../assets/images/heros/small/willow.png";
+import PollenBigImage from "../../assets/images/heros/small/pollen.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -47,6 +48,7 @@ const heroImages: { [key: string]: string } = {
   elara: ElaraBigImage,
   aqualon: AqualonBigImage,
   willow: WillowBigImage,
+  pollen: PollenBigImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {
@@ -117,7 +119,9 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
         src={heroImages[userHeroCard.card_slug]}
         alt={hero.name}
         className={`absolute left-0 w-[100vw] h-[100vw] ${
-          hidden ? "top-[100vh] hero-modal-content-close" : "top-0 hero-modal-content"
+          hidden
+            ? "top-[100vh] hero-modal-content-close"
+            : "top-0 hero-modal-content"
         }`}
       />
       <div

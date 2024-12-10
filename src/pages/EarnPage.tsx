@@ -121,7 +121,11 @@ const EarnPage: React.FC = () => {
   };
 
   const handleCompleteTask = async (task: DynamicTask) => {
-    utils.openLink(task?.link || "");
+    if (task.type == "telegram") {
+      utils.openTelegramLink(task?.link || "");
+    } else {
+      utils.openLink(task?.link || "");
+    }
     await axiosInterface.post("task/complete", {
       user_id: user.t_user_id,
       task_id: task.id,
@@ -137,7 +141,7 @@ const EarnPage: React.FC = () => {
     if (response.data.success === false && response.data.tgMember === false) {
       setShowTelegramError(true);
       setIsErrorFading(false);
-      
+
       setTimeout(() => {
         setIsErrorFading(true);
         setTimeout(() => {
@@ -224,11 +228,10 @@ const EarnPage: React.FC = () => {
                     </div>
                     <div className="flex-1">
                       <div
-                        className={`flex-1 font-medium text-[#AAAAAA] leading-none ${
-                          userTaskStatus(task) === "todo"
+                        className={`flex-1 font-medium text-[#AAAAAA] leading-none ${userTaskStatus(task) === "todo"
                             ? "text-[3.2vw]"
                             : "text-[3.7vw]"
-                        }`}
+                          }`}
                       >
                         {task.title}
                       </div>
@@ -261,9 +264,8 @@ const EarnPage: React.FC = () => {
         </div>
       </div>
       {showTelegramError && (
-        <div className={`px-[13.33vw] fixed w-screen bottom-[25.33vw] z-30 ${
-          isErrorFading ? 'slide-top-out-animation' : 'slide-top-animation'
-        }`}>
+        <div className={`px-[13.33vw] fixed w-screen bottom-[25.33vw] z-30 ${isErrorFading ? 'slide-top-out-animation' : 'slide-top-animation'
+          }`}>
           <div className="w-full h-[8.8vw] rounded-[1.6vw] bg-[#171819f3] flex items-center justify-center border-[0.26vw] border-[#EAEAEA]">
             <span className="text-[2.6vw] font-medium text-[#AAAAAA]">
               Quest not completed.

@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'development') {
   if (shouldMock) {
     const initDataRaw = new URLSearchParams([
       ['user', JSON.stringify({
-        id: 99281932,
+        id: 6469354442,
         first_name: 'Andrew',
         last_name: 'Rogue',
         username: 'rogue',

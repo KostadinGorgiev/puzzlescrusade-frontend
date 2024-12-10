@@ -35,6 +35,8 @@ const EarnPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedTask, setSelectedTask] = useState<DynamicTask | null>(null);
   const [showVerify, setShowVerify] = useState<boolean>(false);
+  const [showTelegramError, setShowTelegramError] = useState<boolean>(false);
+  const [isErrorFading, setIsErrorFading] = useState<boolean>(false);
 
   const TaskStatusComponent: React.FC<TaskStatusComponentProps> = ({
     status,
@@ -128,10 +130,22 @@ const EarnPage: React.FC = () => {
   };
 
   const handleClaimTask = async (task: DynamicTask) => {
-    await axiosInterface.post("task/claim", {
+    const response = await axiosInterface.post("task/claim", {
       user_id: user.t_user_id,
       task_id: task.id,
     });
+    if (response.data.success === false && response.data.tgMember === false) {
+      setShowTelegramError(true);
+      setIsErrorFading(false);
+      
+      setTimeout(() => {
+        setIsErrorFading(true);
+        setTimeout(() => {
+          setShowTelegramError(false);
+          setIsErrorFading(false);
+        }, 300); // Animation duration
+      }, 3000);
+    }
     fetchTaskList();
   };
 
@@ -246,6 +260,17 @@ const EarnPage: React.FC = () => {
           )}
         </div>
       </div>
+      {showTelegramError && (
+        <div className={`px-[13.33vw] fixed w-screen bottom-[25.33vw] z-30 ${
+          isErrorFading ? 'slide-top-out-animation' : 'slide-top-animation'
+        }`}>
+          <div className="w-full h-[8.8vw] rounded-[1.6vw] bg-[#171819f3] flex items-center justify-center border-[0.26vw] border-[#EAEAEA]">
+            <span className="text-[2.6vw] font-medium text-[#AAAAAA]">
+              Quest not completed.
+            </span>
+          </div>
+        </div>
+      )}
     </MainLayout>
   );
 };

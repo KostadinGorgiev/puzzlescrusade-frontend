@@ -26,6 +26,7 @@ import AqualonBigImage from "../../assets/images/heros/small/aqualon.png";
 import WillowBigImage from "../../assets/images/heros/small/willow.png";
 import PollenBigImage from "../../assets/images/heros/small/pollen.png";
 import DariusBigImage from "../../assets/images/heros/small/darius.png";
+import ThalricBigImage from "../../assets/images/heros/small/thalric.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -51,6 +52,7 @@ const heroImages: { [key: string]: string } = {
   willow: WillowBigImage,
   pollen: PollenBigImage,
   darius_stormblade: DariusBigImage,
+  thalric: ThalricBigImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

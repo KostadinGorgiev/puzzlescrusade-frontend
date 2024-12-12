@@ -25,6 +25,7 @@ import WillowSmallImage from "../../assets/images/heros/small/willow.png";
 import PollenSmallImage from "../../assets/images/heros/small/pollen.png";
 import DariusSmallImage from "../../assets/images/heros/small/darius.png";
 import ThalricSmallImage from "../../assets/images/heros/small/thalric.png";
+import FelwynSmallImage from "../../assets/images/heros/small/felwyn.png";
 import moment from "moment-timezone";
 
 interface HeroComponentProps {
@@ -52,6 +53,7 @@ const heroImages: { [key: string]: string } = {
   pollen: PollenSmallImage,
   darius_stormblade: DariusSmallImage,
   thalric: ThalricSmallImage,
+  felwyn: FelwynSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {

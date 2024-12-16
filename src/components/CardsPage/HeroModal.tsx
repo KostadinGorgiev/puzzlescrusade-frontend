@@ -29,6 +29,7 @@ import DariusBigImage from "../../assets/images/heros/small/darius.png";
 import ThalricBigImage from "../../assets/images/heros/small/thalric.png";
 import FelwynSmallImage from "../../assets/images/heros/small/felwyn.png";
 import ZiraSmallImage from "../../assets/images/heros/small/zira.png";
+import NivaraSmallImage from "../../assets/images/heros/small/zira.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -57,6 +58,7 @@ const heroImages: { [key: string]: string } = {
   thalric: ThalricBigImage,
   felwyn: FelwynSmallImage,
   zira: ZiraSmallImage,
+  nivara: NivaraSmallImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

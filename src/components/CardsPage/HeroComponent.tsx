@@ -27,6 +27,7 @@ import DariusSmallImage from "../../assets/images/heros/small/darius.png";
 import ThalricSmallImage from "../../assets/images/heros/small/thalric.png";
 import FelwynSmallImage from "../../assets/images/heros/small/felwyn.png";
 import ZiraSmallImage from "../../assets/images/heros/small/zira.png";
+import NivaraSmallImage from "../../assets/images/heros/small/zira.png";
 import moment from "moment-timezone";
 
 interface HeroComponentProps {
@@ -56,6 +57,7 @@ const heroImages: { [key: string]: string } = {
   thalric: ThalricSmallImage,
   felwyn: FelwynSmallImage,
   zira: ZiraSmallImage,
+  nivara: NivaraSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {

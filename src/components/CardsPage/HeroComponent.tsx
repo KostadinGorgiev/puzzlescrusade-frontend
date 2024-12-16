@@ -27,7 +27,7 @@ import DariusSmallImage from "../../assets/images/heros/small/darius.png";
 import ThalricSmallImage from "../../assets/images/heros/small/thalric.png";
 import FelwynSmallImage from "../../assets/images/heros/small/felwyn.png";
 import ZiraSmallImage from "../../assets/images/heros/small/zira.png";
-import NivaraSmallImage from "../../assets/images/heros/small/zira.png";
+import NivaraSmallImage from "../../assets/images/heros/small/nivara.png";
 import moment from "moment-timezone";
 
 interface HeroComponentProps {

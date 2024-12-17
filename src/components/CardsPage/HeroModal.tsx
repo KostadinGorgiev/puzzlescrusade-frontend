@@ -30,6 +30,7 @@ import ThalricBigImage from "../../assets/images/heros/small/thalric.png";
 import FelwynSmallImage from "../../assets/images/heros/small/felwyn.png";
 import ZiraSmallImage from "../../assets/images/heros/small/zira.png";
 import NivaraSmallImage from "../../assets/images/heros/small/nivara.png";
+import VoltrynSmallImage from "../../assets/images/heros/small/voltryn.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -59,6 +60,7 @@ const heroImages: { [key: string]: string } = {
   felwyn: FelwynSmallImage,
   zira: ZiraSmallImage,
   nivara: NivaraSmallImage,
+  voltryn: VoltrynSmallImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

@@ -32,6 +32,7 @@ import ZiraSmallImage from "../../assets/images/heros/small/zira.png";
 import NivaraSmallImage from "../../assets/images/heros/small/nivara.png";
 import VoltrynSmallImage from "../../assets/images/heros/small/voltryn.png";
 import TentaculusSmallImage from "../../assets/images/heros/small/tentaculus.png";
+import GengSmallImage from "../../assets/images/heros/small/geng.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -63,6 +64,7 @@ const heroImages: { [key: string]: string } = {
   nivara: NivaraSmallImage,
   voltryn: VoltrynSmallImage,
   tentaculus: TentaculusSmallImage,
+  geng: GengSmallImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {

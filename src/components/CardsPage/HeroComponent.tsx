@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import CardImage from "../../assets/images/Card_back.png";
 import levelConfig from "../../config/config.json";
 import DragonIcon from "../../Icons/DragonIcon";
@@ -38,6 +38,12 @@ interface HeroComponentProps {
   onClick: () => void;
 }
 
+type CardConditionType = {
+  conditional: boolean;
+  conditionPass?: boolean;
+  text?: string;
+};
+
 const heroImages: { [key: string]: string } = {
   liora: LioraSmallImage,
   sylvarra: SylvarraSmallImage,
@@ -70,6 +76,9 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
   const user = useAppSelector((state) => state.app.game?.user) as User;
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
+  const [cardCondition, setCardCondition] = useState<CardConditionType>({
+    conditional: false,
+  });
 
   const handleUnlockHeroCard = useCallback(async () => {
     setLoading(true);
@@ -104,7 +113,7 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
     }
   }, [user, userHeroCard, hero]);
 
-  const cardCondition = useMemo(() => {
+  useEffect(() => {
     if (hero.condition) {
       switch (hero.condition.type) {
         case "card": {
@@ -112,11 +121,11 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
             (card) => card.card_slug === hero.condition.targetCard
           );
           if (userCard && userCard.card_level >= hero.condition.cardLevel - 1) {
-            return {
+            setCardCondition({
               conditional: true,
               conditionPass: true,
               text: "",
-            };
+            });
           }
 
           let card = levelConfig.heros.find(
@@ -126,54 +135,52 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
             console.warn("no card defined for condition", hero.slug);
           }
 
-          return {
+          setCardCondition({
             conditional: true,
             conditionPass: false,
             text: `Need ${card?.name} card at level ${hero.condition.cardLevel}`,
-          };
+          });
+          break;
         }
         case "referral": {
-          let count = 0;
-          user.Referrals.forEach((referral) => {
-            if (
-              moment
-                .tz(referral.createdAt, user.serverTimezone)
-                .isAfter(
-                  moment.tz(hero.condition.launchTime, user.serverTimezone),
-                  "seconds"
-                )
-            ) {
-              count++;
-            }
-          });
-          if (count >= hero.condition.count) {
-            return {
-              conditional: true,
-              conditionPass: true,
-              text: "",
-            };
-          } else {
-            return {
-              conditional: true,
-              conditionPass: false,
-              text: `Invite ${hero.condition.count} more friend`,
-            };
-          }
+          checkCardCondition(user.id, hero.slug);
+          break;
         }
         default: {
           console.warn("condition not implemented yet for card", hero.slug);
 
-          return {
+          setCardCondition({
             conditional: false,
-          };
+          });
         }
       }
     } else {
-      return {
+      setCardCondition({
         conditional: false,
-      };
+      });
     }
   }, [hero, user.Cards]);
+
+  const checkCardCondition = async (userId: number, cardSlug: string) => {
+    const result = await axiosInterface.post("task/card-referral-status", {
+      user_id: user.id,
+      card_slug: hero.slug,
+    });
+    const hasReferral = result.data.success;
+    if (hasReferral) {
+      setCardCondition({
+        conditional: true,
+        conditionPass: true,
+        text: "",
+      });
+    } else {
+      setCardCondition({
+        conditional: true,
+        conditionPass: false,
+        text: `Invite ${hero.condition.count} more friend`,
+      });
+    }
+  };
 
   if (userHeroCard) {
     return (

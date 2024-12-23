@@ -114,6 +114,10 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
   }, [user, userHeroCard, hero]);
 
   useEffect(() => {
+    checkCardCondition();
+  }, [hero, user.Cards]);
+
+  const checkCardCondition = async () => {
     if (hero.condition) {
       switch (hero.condition.type) {
         case "card": {
@@ -126,6 +130,7 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
               conditionPass: true,
               text: "",
             });
+            return;
           }
 
           let card = levelConfig.heros.find(
@@ -140,10 +145,11 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
             conditionPass: false,
             text: `Need ${card?.name} card at level ${hero.condition.cardLevel}`,
           });
+          return;
           break;
         }
         case "referral": {
-          checkCardCondition(user.id, hero.slug);
+          checkCardReferral(user.id, hero.slug);
           break;
         }
         default: {
@@ -152,16 +158,18 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
           setCardCondition({
             conditional: false,
           });
+          return;
         }
       }
     } else {
       setCardCondition({
         conditional: false,
       });
+      return;
     }
-  }, [hero, user.Cards]);
+  };
 
-  const checkCardCondition = async (userId: number, cardSlug: string) => {
+  const checkCardReferral = async (userId: number, cardSlug: string) => {
     const result = await axiosInterface.post("task/card-referral-status", {
       user_id: user.id,
       card_slug: hero.slug,
@@ -220,9 +228,8 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
               </div>
               <div className="h-[4.26vw] w-[0.26vw] bg-[#eaeaea4d] mr-[1.33vw]"></div>
               <div
-                className={`rounded-full w-[3.2vw] h-[3.2vw] flex items-center justify-center mr-[1.33vw] ${
-                  upgradable ? "bg-[#FAB648]" : "bg-[#EAEAEA]"
-                }`}
+                className={`rounded-full w-[3.2vw] h-[3.2vw] flex items-center justify-center mr-[1.33vw] ${upgradable ? "bg-[#FAB648]" : "bg-[#EAEAEA]"
+                  }`}
               >
                 <DragonIcon
                   fill={upgradable ? "#674B1F" : "#aaaaaa"}
@@ -230,9 +237,8 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
                 />
               </div>
               <div
-                className={`text-[2.66vw] font-bold ${
-                  upgradable ? "text-[#FAB648]" : "text-[#EAEAEA]"
-                }`}
+                className={`text-[2.66vw] font-bold ${upgradable ? "text-[#FAB648]" : "text-[#EAEAEA]"
+                  }`}
               >
                 {hero.level[userHeroCard.card_level + 1]?.cost}
               </div>
@@ -274,11 +280,10 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
           ) : (
             <div className="flex items-center justify-center gap-[0.8vw]">
               <div
-                className={`rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center ${
-                  user.coin_balance > hero.level[0].cost
-                    ? "bg-[#FAB648]"
-                    : "bg-[#aaaaaa]"
-                }`}
+                className={`rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center ${user.coin_balance > hero.level[0].cost
+                  ? "bg-[#FAB648]"
+                  : "bg-[#aaaaaa]"
+                  }`}
               >
                 <DragonIcon
                   fill={
@@ -290,11 +295,10 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
                 />
               </div>
               <div
-                className={`text-[2.93vw] font-bold tracking-tight ${
-                  user.coin_balance > hero.level[0].cost
-                    ? "text-[#FAB648]"
-                    : "text-[#EAEAEA]"
-                }`}
+                className={`text-[2.93vw] font-bold tracking-tight ${user.coin_balance > hero.level[0].cost
+                  ? "text-[#FAB648]"
+                  : "text-[#EAEAEA]"
+                  }`}
               >
                 {hero.level[0].cost} Dragons
               </div>

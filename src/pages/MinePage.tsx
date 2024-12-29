@@ -204,7 +204,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
                   style={{ position: "absolute", left: item.x, top: item.y }}
                   className="tap-number text-[9.86vw] text-white font-bold"
                 >
-                  +{levelConfig.tapMultipler[user.tap_multipler_level].to * 2}
+                  +{levelConfig.tapMultipler[user.tap_multipler_level].to * 3}
                 </div>
               ))}
             </div>

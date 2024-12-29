@@ -89,205 +89,857 @@
     { "title": "Eternal Crusader", "from": 1000000000, "to": 10000000000 }
   ],
   "taskBonus": {
-    "twitter": 1000,
-    "youtube": 1000,
-    "telegram": 1000
+    "twitter": 10000,
+    "youtube": 10000,
+    "telegram": 10000,
+    "twitter-1": 10000,
+    "twitter-2": 10000
   },
   "heros": [
     {
-      "slug": "light",
+      "slug": "liora",
       "name": "Liora",
       "title": "The Warrior Queen of Valor",
       "description": "An enchanting mage, conjuring sharp shards of frost.",
       "type": "light",
       "level": [
-        { "cost": 5000, "profit": 49, "increase": 14 },
-        { "cost": 956, "profit": 63, "increase": 17 },
-        { "cost": 4530, "profit": 80, "increase": 22 },
-        { "cost": 11320, "profit": 102, "increase": 27 },
-        { "cost": 35430, "profit": 129, "increase": 35 },
-        { "cost": 76156, "profit": 164, "increase": 44 },
-        { "cost": 103657, "profit": 208, "increase": 56 },
-        { "cost": 135389, "profit": 264, "increase": 72 },
-        { "cost": 171352, "profit": 336, "increase": 90 },
-        { "cost": 211545, "profit": 426, "increase": 115 },
-        { "cost": 255970, "profit": 541, "increase": 145 },
-        { "cost": 304625, "profit": 686, "increase": 185 },
-        { "cost": 357512, "profit": 871, "increase": 235 },
-        { "cost": 414629, "profit": 1106, "increase": 297 },
-        { "cost": 475977, "profit": 1403, "increase": 378 },
-        { "cost": 541556, "profit": 1781, "increase": 479 },
-        { "cost": 611366, "profit": 2260, "increase": 608 },
-        { "cost": 685407, "profit": 2868, "increase": 771 },
-        { "cost": 763679, "profit": 3639, "increase": 979 },
-        { "cost": 846182, "profit": 4618, "increase": 1242 },
-        { "cost": 932915, "profit": 5860, "increase": 1576 },
-        { "cost": 1023880, "profit": 7436, "increase": 2000 },
-        { "cost": 1119075, "profit": 9436, "increase": 2539 },
-        { "cost": 1218501, "profit": 11975, "increase": 3220 },
-        { "cost": 1322159, "profit": 15195, "increase": 4088 },
-        { "cost": 1430047, "profit": 19283, "increase": 5186 },
-        { "cost": 1542166, "profit": 24469, "increase": 6581 },
-        { "cost": 1658516, "profit": 31050, "increase": 8352 },
-        { "cost": 1779097, "profit": 39402, "increase": 10597 },
-        { "cost": 1903908, "profit": 50000, "increase": 0 }
+        { "cost": 5000, "profit": 99, "increase": 7 },
+        { "cost": 1117, "profit": 106, "increase": 5 },
+        { "cost": 1290, "profit": 111, "increase": 12 },
+        { "cost": 1560, "profit": 123, "increase": 5 },
+        { "cost": 1994, "profit": 128, "increase": 10 },
+        { "cost": 2667, "profit": 138, "increase": 9 },
+        { "cost": 3794, "profit": 147, "increase": 11 },
+        { "cost": 5564, "profit": 158, "increase": 11 },
+        { "cost": 8539, "profit": 169, "increase": 9 },
+        { "cost": 14023, "profit": 178, "increase": 17 },
+        { "cost": 23495, "profit": 195, "increase": 15 },
+        { "cost": 43129, "profit": 210, "increase": 12 },
+        { "cost": 81203, "profit": 222, "increase": 15 },
+        { "cost": 160230, "profit": 237, "increase": 20 },
+        { "cost": 341035, "profit": 257, "increase": 18 },
+        { "cost": 733923, "profit": 275, "increase": 14 },
+        { "cost": 1723903, "profit": 289, "increase": 22 },
+        { "cost": 4120392, "profit": 311, "increase": 22 },
+        { "cost": 10233945, "profit": 333, "increase": 27 },
+        { "cost": 17892364, "profit": 360, "increase": 0 }
       ]
     },
     {
-      "slug": "dark",
+      "slug": "sylvarra",
       "name": "Sylvarra",
       "title": "The Shadow Assassin",
       "description": "A cunning rogue, harnessing darkness to pursue her prey.",
       "type": "dark",
       "level": [
-        { "cost": 5000, "profit": 49, "increase": 14 },
-        { "cost": 956, "profit": 63, "increase": 17 },
-        { "cost": 4530, "profit": 80, "increase": 22 },
-        { "cost": 11320, "profit": 102, "increase": 27 },
-        { "cost": 35430, "profit": 129, "increase": 35 },
-        { "cost": 76156, "profit": 164, "increase": 44 },
-        { "cost": 103657, "profit": 208, "increase": 56 },
-        { "cost": 135389, "profit": 264, "increase": 72 },
-        { "cost": 171352, "profit": 336, "increase": 90 },
-        { "cost": 211545, "profit": 426, "increase": 115 },
-        { "cost": 255970, "profit": 541, "increase": 145 },
-        { "cost": 304625, "profit": 686, "increase": 185 },
-        { "cost": 357512, "profit": 871, "increase": 235 },
-        { "cost": 414629, "profit": 1106, "increase": 297 },
-        { "cost": 475977, "profit": 1403, "increase": 378 },
-        { "cost": 541556, "profit": 1781, "increase": 479 },
-        { "cost": 611366, "profit": 2260, "increase": 608 },
-        { "cost": 685407, "profit": 2868, "increase": 771 },
-        { "cost": 763679, "profit": 3639, "increase": 979 },
-        { "cost": 846182, "profit": 4618, "increase": 1242 },
-        { "cost": 932915, "profit": 5860, "increase": 1576 },
-        { "cost": 1023880, "profit": 7436, "increase": 2000 },
-        { "cost": 1119075, "profit": 9436, "increase": 2539 },
-        { "cost": 1218501, "profit": 11975, "increase": 3220 },
-        { "cost": 1322159, "profit": 15195, "increase": 4088 },
-        { "cost": 1430047, "profit": 19283, "increase": 5186 },
-        { "cost": 1542166, "profit": 24469, "increase": 6581 },
-        { "cost": 1658516, "profit": 31050, "increase": 8352 },
-        { "cost": 1779097, "profit": 39402, "increase": 10597 },
-        { "cost": 1903908, "profit": 50000, "increase": 0 }
-      ]
+        { "cost": 5000, "profit": 221, "increase": 17 },
+        { "cost": 2207, "profit": 238, "increase": 19 },
+        { "cost": 2551, "profit": 257, "increase": 20 },
+        { "cost": 3100, "profit": 277, "increase": 26 },
+        { "cost": 3945, "profit": 303, "increase": 16 },
+        { "cost": 5350, "profit": 319, "increase": 20 },
+        { "cost": 7487, "profit": 339, "increase": 27 },
+        { "cost": 11097, "profit": 366, "increase": 22 },
+        { "cost": 17234, "profit": 388, "increase": 13 },
+        { "cost": 27898, "profit": 401, "increase": 52 },
+        { "cost": 41695, "profit": 453, "increase": 33 },
+        { "cost": 85647, "profit": 486, "increase": 37 },
+        { "cost": 162852, "profit": 523, "increase": 37 },
+        { "cost": 320089, "profit": 560, "increase": 39 },
+        { "cost": 665333, "profit": 599, "increase": 44 },
+        { "cost": 1451892, "profit": 643, "increase": 48 },
+        { "cost": 3354678, "profit": 691, "increase": 46 },
+        { "cost": 8073192, "profit": 737, "increase": 53 },
+        { "cost": 22668340, "profit": 790, "increase": 59 },
+        { "cost": 36813902, "profit": 849, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "liora",
+        "cardLevel": 3
+      }
     },
     {
-      "slug": "volcano",
+      "slug": "kaelar",
       "name": "Kaelar",
       "title": "The Bone Collector",
       "description": "A savage warrior, fueled by the souls of the fallen.",
       "type": "volcano",
       "level": [
-        { "cost": 5000, "profit": 49, "increase": 14 },
-        { "cost": 956, "profit": 63, "increase": 17 },
-        { "cost": 4530, "profit": 80, "increase": 22 },
-        { "cost": 11320, "profit": 102, "increase": 27 },
-        { "cost": 35430, "profit": 129, "increase": 35 },
-        { "cost": 76156, "profit": 164, "increase": 44 },
-        { "cost": 103657, "profit": 208, "increase": 56 },
-        { "cost": 135389, "profit": 264, "increase": 72 },
-        { "cost": 171352, "profit": 336, "increase": 90 },
-        { "cost": 211545, "profit": 426, "increase": 115 },
-        { "cost": 255970, "profit": 541, "increase": 145 },
-        { "cost": 304625, "profit": 686, "increase": 185 },
-        { "cost": 357512, "profit": 871, "increase": 235 },
-        { "cost": 414629, "profit": 1106, "increase": 297 },
-        { "cost": 475977, "profit": 1403, "increase": 378 },
-        { "cost": 541556, "profit": 1781, "increase": 479 },
-        { "cost": 611366, "profit": 2260, "increase": 608 },
-        { "cost": 685407, "profit": 2868, "increase": 771 },
-        { "cost": 763679, "profit": 3639, "increase": 979 },
-        { "cost": 846182, "profit": 4618, "increase": 1242 },
-        { "cost": 932915, "profit": 5860, "increase": 1576 },
-        { "cost": 1023880, "profit": 7436, "increase": 2000 },
-        { "cost": 1119075, "profit": 9436, "increase": 2539 },
-        { "cost": 1218501, "profit": 11975, "increase": 3220 },
-        { "cost": 1322159, "profit": 15195, "increase": 4088 },
-        { "cost": 1430047, "profit": 19283, "increase": 5186 },
-        { "cost": 1542166, "profit": 24469, "increase": 6581 },
-        { "cost": 1658516, "profit": 31050, "increase": 8352 },
-        { "cost": 1779097, "profit": 39402, "increase": 10597 },
-        { "cost": 1903908, "profit": 50000, "increase": 0 }
-      ]
+        { "cost": 5000, "profit": 69, "increase": 4 },
+        { "cost": 836, "profit": 73, "increase": 6 },
+        { "cost": 966, "profit": 79, "increase": 8 },
+        { "cost": 1177, "profit": 87, "increase": 6 },
+        { "cost": 1475, "profit": 93, "increase": 6 },
+        { "cost": 2001, "profit": 99, "increase": 4 },
+        { "cost": 2790, "profit": 103, "increase": 8 },
+        { "cost": 4157, "profit": 111, "increase": 6 },
+        { "cost": 6523, "profit": 117, "increase": 11 },
+        { "cost": 10257, "profit": 128, "increase": 13 },
+        { "cost": 18209, "profit": 141, "increase": 7 },
+        { "cost": 32671, "profit": 148, "increase": 10 },
+        { "cost": 61005, "profit": 158, "increase": 10 },
+        { "cost": 119672, "profit": 168, "increase": 14 },
+        { "cost": 250248, "profit": 182, "increase": 9 },
+        { "cost": 534902, "profit": 191, "increase": 14 },
+        { "cost": 1278934, "profit": 205, "increase": 18 },
+        { "cost": 3010820, "profit": 223, "increase": 16 },
+        { "cost": 7420998, "profit": 239, "increase": 20 },
+        { "cost": 13131331, "profit": 259, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "sylvarra",
+        "cardLevel": 4
+      }
     },
     {
-      "slug": "forest",
+      "slug": "veldar",
       "name": "Veldar",
       "title": "The Flora’s Faithful Voice",
       "description": "A powerful druid, commanding the forces of the forest.",
       "type": "forest",
       "level": [
-        { "cost": 5000, "profit": 49, "increase": 14 },
-        { "cost": 956, "profit": 63, "increase": 17 },
-        { "cost": 4530, "profit": 80, "increase": 22 },
-        { "cost": 11320, "profit": 102, "increase": 27 },
-        { "cost": 35430, "profit": 129, "increase": 35 },
-        { "cost": 76156, "profit": 164, "increase": 44 },
-        { "cost": 103657, "profit": 208, "increase": 56 },
-        { "cost": 135389, "profit": 264, "increase": 72 },
-        { "cost": 171352, "profit": 336, "increase": 90 },
-        { "cost": 211545, "profit": 426, "increase": 115 },
-        { "cost": 255970, "profit": 541, "increase": 145 },
-        { "cost": 304625, "profit": 686, "increase": 185 },
-        { "cost": 357512, "profit": 871, "increase": 235 },
-        { "cost": 414629, "profit": 1106, "increase": 297 },
-        { "cost": 475977, "profit": 1403, "increase": 378 },
-        { "cost": 541556, "profit": 1781, "increase": 479 },
-        { "cost": 611366, "profit": 2260, "increase": 608 },
-        { "cost": 685407, "profit": 2868, "increase": 771 },
-        { "cost": 763679, "profit": 3639, "increase": 979 },
-        { "cost": 846182, "profit": 4618, "increase": 1242 },
-        { "cost": 932915, "profit": 5860, "increase": 1576 },
-        { "cost": 1023880, "profit": 7436, "increase": 2000 },
-        { "cost": 1119075, "profit": 9436, "increase": 2539 },
-        { "cost": 1218501, "profit": 11975, "increase": 3220 },
-        { "cost": 1322159, "profit": 15195, "increase": 4088 },
-        { "cost": 1430047, "profit": 19283, "increase": 5186 },
-        { "cost": 1542166, "profit": 24469, "increase": 6581 },
-        { "cost": 1658516, "profit": 31050, "increase": 8352 },
-        { "cost": 1779097, "profit": 39402, "increase": 10597 },
-        { "cost": 1903908, "profit": 50000, "increase": 0 }
-      ]
+        { "cost": 5000, "profit": 66, "increase": 5 },
+        { "cost": 556, "profit": 71, "increase": 5 },
+        { "cost": 643, "profit": 76, "increase": 6 },
+        { "cost": 781, "profit": 82, "increase": 6 },
+        { "cost": 995, "profit": 88, "increase": 6 },
+        { "cost": 1332, "profit": 94, "increase": 7 },
+        { "cost": 1872, "profit": 101, "increase": 7 },
+        { "cost": 2763, "profit": 108, "increase": 8 },
+        { "cost": 4284, "profit": 116, "increase": 9 },
+        { "cost": 6974, "profit": 125, "increase": 9 },
+        { "cost": 11935, "profit": 134, "increase": 9 },
+        { "cost": 21475, "profit": 143, "increase": 11 },
+        { "cost": 39995, "profit": 154, "increase": 11 },
+        { "cost": 80023, "profit": 165, "increase": 11 },
+        { "cost": 167823, "profit": 176, "increase": 13 },
+        { "cost": 365992, "profit": 189, "increase": 14 },
+        { "cost": 822999, "profit": 203, "increase": 14 },
+        { "cost": 2013721, "profit": 217, "increase": 16 },
+        { "cost": 5189256, "profit": 233, "increase": 17 },
+        { "cost": 8825612, "profit": 250, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "kaelar",
+        "cardLevel": 5
+      }
     },
     {
-      "slug": "ocean",
+      "slug": "vornak",
       "name": "Vornak",
       "title": "The Harbinger of Blizzards",
       "description": "A stalwart protector, harnessing the cold to conquer all.",
       "type": "ocean",
       "level": [
-        { "cost": 5000, "profit": 49, "increase": 14 },
-        { "cost": 956, "profit": 63, "increase": 17 },
-        { "cost": 4530, "profit": 80, "increase": 22 },
-        { "cost": 11320, "profit": 102, "increase": 27 },
-        { "cost": 35430, "profit": 129, "increase": 35 },
-        { "cost": 76156, "profit": 164, "increase": 44 },
-        { "cost": 103657, "profit": 208, "increase": 56 },
-        { "cost": 135389, "profit": 264, "increase": 72 },
-        { "cost": 171352, "profit": 336, "increase": 90 },
-        { "cost": 211545, "profit": 426, "increase": 115 },
-        { "cost": 255970, "profit": 541, "increase": 145 },
-        { "cost": 304625, "profit": 686, "increase": 185 },
-        { "cost": 357512, "profit": 871, "increase": 235 },
-        { "cost": 414629, "profit": 1106, "increase": 297 },
-        { "cost": 475977, "profit": 1403, "increase": 378 },
-        { "cost": 541556, "profit": 1781, "increase": 479 },
-        { "cost": 611366, "profit": 2260, "increase": 608 },
-        { "cost": 685407, "profit": 2868, "increase": 771 },
-        { "cost": 763679, "profit": 3639, "increase": 979 },
-        { "cost": 846182, "profit": 4618, "increase": 1242 },
-        { "cost": 932915, "profit": 5860, "increase": 1576 },
-        { "cost": 1023880, "profit": 7436, "increase": 2000 },
-        { "cost": 1119075, "profit": 9436, "increase": 2539 },
-        { "cost": 1218501, "profit": 11975, "increase": 3220 },
-        { "cost": 1322159, "profit": 15195, "increase": 4088 },
-        { "cost": 1430047, "profit": 19283, "increase": 5186 },
-        { "cost": 1542166, "profit": 24469, "increase": 6581 },
-        { "cost": 1658516, "profit": 31050, "increase": 8352 },
-        { "cost": 1779097, "profit": 39402, "increase": 10597 },
-        { "cost": 1903908, "profit": 50000, "increase": 0 }
-      ]
+        { "cost": 5000, "profit": 92, "increase": 6 },
+        { "cost": 655, "profit": 98, "increase": 7 },
+        { "cost": 761, "profit": 105, "increase": 7 },
+        { "cost": 922, "profit": 112, "increase": 8 },
+        { "cost": 1173, "profit": 120, "increase": 8 },
+        { "cost": 1583, "profit": 128, "increase": 9 },
+        { "cost": 2231, "profit": 137, "increase": 10 },
+        { "cost": 3299, "profit": 147, "increase": 10 },
+        { "cost": 5127, "profit": 157, "increase": 10 },
+        { "cost": 8352, "profit": 167, "increase": 8 },
+        { "cost": 14239, "profit": 175, "increase": 6 },
+        { "cost": 24987, "profit": 181, "increase": 17 },
+        { "cost": 47824, "profit": 198, "increase": 21 },
+        { "cost": 94239, "profit": 219, "increase": 15 },
+        { "cost": 198209, "profit": 234, "increase": 16 },
+        { "cost": 433772, "profit": 250, "increase": 18 },
+        { "cost": 981904, "profit": 268, "increase": 18 },
+        { "cost": 2392854, "profit": 286, "increase": 20 },
+        { "cost": 6056815, "profit": 306, "increase": 27 },
+        { "cost": 10334896, "profit": 333, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "veldar",
+        "cardLevel": 7
+      }
+    },
+    {
+      "slug": "jack",
+      "name": "Jack",
+      "title": "The Melodic Phantom",
+      "description": "A minstrel of the night, casting spells and charming those who dare listen",
+      "type": "dark",
+      "level": [
+        { "cost": 5000, "profit": 940, "increase": 60 },
+        { "cost": 11057, "profit": 1000, "increase": 71 },
+        { "cost": 12045, "profit": 1071, "increase": 78 },
+        { "cost": 14895, "profit": 1149, "increase": 81 },
+        { "cost": 20431, "profit": 1230, "increase": 89 },
+        { "cost": 26997, "profit": 1319, "increase": 91 },
+        { "cost": 38430, "profit": 1410, "increase": 95 },
+        { "cost": 54210, "profit": 1505, "increase": 112 },
+        { "cost": 86390, "profit": 1617, "increase": 111 },
+        { "cost": 138943, "profit": 1728, "increase": 120 },
+        { "cost": 240968, "profit": 1848, "increase": 148 },
+        { "cost": 426409, "profit": 1996, "increase": 134 },
+        { "cost": 805894, "profit": 2130, "increase": 135 },
+        { "cost": 1537097, "profit": 2265, "increase": 171 },
+        { "cost": 3467231, "profit": 2436, "increase": 172 },
+        { "cost": 7190498, "profit": 2608, "increase": 190 },
+        { "cost": 16548367, "profit": 2798, "increase": 203 },
+        { "cost": 28342870, "profit": 3001, "increase": 210 },
+        { "cost": 45876241, "profit": 3211, "increase": 235 },
+        { "cost": 84345861, "profit": 3446, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "liora",
+        "cardLevel": 8
+      }
+    },
+    {
+      "slug": "aegiron",
+      "name": "Aegiron",
+      "title": "The Starbound Sentinel",
+      "description": "A guardian of realms, defender of the sky, bearing a shield of valor",
+      "type": "light",
+      "level": [
+        { "cost": 5000, "profit": 69, "increase": 6 },
+        { "cost": 631, "profit": 75, "increase": 6 },
+        { "cost": 727, "profit": 81, "increase": 6 },
+        { "cost": 878, "profit": 87, "increase": 7 },
+        { "cost": 1106, "profit": 94, "increase": 7 },
+        { "cost": 1484, "profit": 101, "increase": 8 },
+        { "cost": 2077, "profit": 109, "increase": 8 },
+        { "cost": 3057, "profit": 117, "increase": 9 },
+        { "cost": 4733, "profit": 126, "increase": 9 },
+        { "cost": 7683, "profit": 135, "increase": 11 },
+        { "cost": 13129, "profit": 146, "increase": 11 },
+        { "cost": 24879, "profit": 157, "increase": 12 },
+        { "cost": 47982, "profit": 169, "increase": 13 },
+        { "cost": 89733, "profit": 182, "increase": 7 },
+        { "cost": 185340, "profit": 189, "increase": 6 },
+        { "cost": 401240, "profit": 195, "increase": 8 },
+        { "cost": 916234, "profit": 203, "increase": 10 },
+        { "cost": 2379846, "profit": 213, "increase": 8 },
+        { "cost": 5123859, "profit": 221, "increase": 11 },
+        { "cost": 8894346, "profit": 232, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "vornak",
+        "cardLevel": 4
+      }
+    },
+    {
+      "slug": "drekthar",
+      "name": "Drekthar",
+      "title": "The Skullcrusher",
+      "description": "A savage leader, feared by all for his merciless ways.",
+      "type": "dark",
+      "level": [
+        { "cost": 5000, "profit": 103, "increase": 2 },
+        { "cost": 822, "profit": 105, "increase": 6 },
+        { "cost": 952, "profit": 111, "increase": 10 },
+        { "cost": 1158, "profit": 121, "increase": 7 },
+        { "cost": 1480, "profit": 128, "increase": 9 },
+        { "cost": 1985, "profit": 137, "increase": 9 },
+        { "cost": 2795, "profit": 146, "increase": 12 },
+        { "cost": 4132, "profit": 158, "increase": 8 },
+        { "cost": 6413, "profit": 166, "increase": 15 },
+        { "cost": 10449, "profit": 181, "increase": 13 },
+        { "cost": 17875, "profit": 194, "increase": 12 },
+        { "cost": 32105, "profit": 206, "increase": 16 },
+        { "cost": 60560, "profit": 222, "increase": 17 },
+        { "cost": 119364, "profit": 239, "increase": 14 },
+        { "cost": 250182, "profit": 253, "increase": 18 },
+        { "cost": 543098, "profit": 271, "increase": 18 },
+        { "cost": 1249253, "profit": 289, "increase": 28 },
+        { "cost": 2999228, "profit": 317, "increase": 18 },
+        { "cost": 5234071, "profit": 335, "increase": 30 },
+        { "cost": 8902174, "profit": 365, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "sylvarra",
+        "cardLevel": 9
+      }
+    },
+    {
+      "slug": "morgath",
+      "name": "Morgath the Wise",
+      "title": "The Ancient Seer of Secrets",
+      "description": "A mysterious sage, guiding the lost with ancient wisdom.",
+      "type": "ocean",
+      "level": [
+        { "cost": 5000, "profit": 47, "increase": 3 },
+        { "cost": 398, "profit": 50, "increase": 3 },
+        { "cost": 459, "profit": 53, "increase": 3 },
+        { "cost": 555, "profit": 56, "increase": 3 },
+        { "cost": 715, "profit": 59, "increase": 4 },
+        { "cost": 941, "profit": 63, "increase": 4 },
+        { "cost": 1319, "profit": 67, "increase": 4 },
+        { "cost": 1957, "profit": 71, "increase": 5 },
+        { "cost": 3042, "profit": 76, "increase": 5 },
+        { "cost": 4991, "profit": 81, "increase": 5 },
+        { "cost": 8418, "profit": 86, "increase": 5 },
+        { "cost": 15432, "profit": 91, "increase": 6 },
+        { "cost": 29476, "profit": 97, "increase": 6 },
+        { "cost": 56890, "profit": 103, "increase": 7 },
+        { "cost": 117834, "profit": 110, "increase": 7 },
+        { "cost": 255902, "profit": 117, "increase": 8 },
+        { "cost": 583902, "profit": 125, "increase": 8 },
+        { "cost": 1405921, "profit": 133, "increase": 9 },
+        { "cost": 3467902, "profit": 142, "increase": 9 },
+        { "cost": 10437880, "profit": 151, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "aegiron",
+        "cardLevel": 7
+      }
+    },
+    {
+      "slug": "fennel",
+      "name": "Fennel",
+      "title": "The Earthshaker",
+      "description": "A cunning fighter, using agility and wit to overcome foes.",
+      "type": "light",
+      "level": [
+        { "cost": 5000, "profit": 46, "increase": 4 },
+        { "cost": 531, "profit": 50, "increase": 3 },
+        { "cost": 618, "profit": 53, "increase": 4 },
+        { "cost": 756, "profit": 57, "increase": 5 },
+        { "cost": 970, "profit": 62, "increase": 4 },
+        { "cost": 1307, "profit": 66, "increase": 5 },
+        { "cost": 1847, "profit": 71, "increase": 5 },
+        { "cost": 2708, "profit": 76, "increase": 6 },
+        { "cost": 4203, "profit": 82, "increase": 6 },
+        { "cost": 6801, "profit": 88, "increase": 3 },
+        { "cost": 10977, "profit": 91, "increase": 10 },
+        { "cost": 20986, "profit": 101, "increase": 8 },
+        { "cost": 39465, "profit": 109, "increase": 7 },
+        { "cost": 78341, "profit": 116, "increase": 9 },
+        { "cost": 165231, "profit": 125, "increase": 9 },
+        { "cost": 361004, "profit": 134, "increase": 10 },
+        { "cost": 830241, "profit": 144, "increase": 10 },
+        { "cost": 1998225, "profit": 154, "increase": 11 },
+        { "cost": 4978204, "profit": 165, "increase": 12 },
+        { "cost": 8634097, "profit": 177, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "drekthar",
+        "cardLevel": 5
+      }
+    },
+    {
+      "slug": "ruxandra_redtide",
+      "name": "Ruxandra Redtide",
+      "title": "The crimson-haired corsair",
+      "description": "A master of the waves, driven by passion and fury.",
+      "type": "volcano",
+      "level": [
+        { "cost": 5000, "profit": 585, "increase": 52 },
+        { "cost": 3909, "profit": 637, "increase": 35 },
+        { "cost": 4517, "profit": 672, "increase": 48 },
+        { "cost": 5480, "profit": 720, "increase": 51 },
+        { "cost": 6980, "profit": 771, "increase": 66 },
+        { "cost": 9337, "profit": 837, "increase": 48 },
+        { "cost": 13117, "profit": 885, "increase": 63 },
+        { "cost": 19357, "profit": 948, "increase": 67 },
+        { "cost": 30000, "profit": 1015, "increase": 70 },
+        { "cost": 48835, "profit": 1085, "increase": 80 },
+        { "cost": 84257, "profit": 1165, "increase": 80 },
+        { "cost": 150390, "profit": 1245, "increase": 90 },
+        { "cost": 283567, "profit": 1335, "increase": 90 },
+        { "cost": 560560, "profit": 1425, "increase": 90 },
+        { "cost": 1178092, "profit": 1515, "increase": 120 },
+        { "cost": 2687092, "profit": 1635, "increase": 120 },
+        { "cost": 5990223, "profit": 1755, "increase": 124 },
+        { "cost": 10334775, "profit": 1879, "increase": 97 },
+        { "cost": 18090222, "profit": 1976, "increase": 179 },
+        { "cost": 32786211, "profit": 2155, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "fennel",
+        "cardLevel": 12
+      }
+    },
+    {
+      "slug": "rakani",
+      "name": "Rakani",
+      "title": "The Grove Guardian",
+      "description": "A jungle healer, binding foes and healing his kin with nature’s grace.",
+      "type": "forest",
+      "level": [
+        { "cost": 5000, "profit": 41, "increase": 1 },
+        { "cost": 272, "profit": 42, "increase": 3 },
+        { "cost": 316, "profit": 45, "increase": 3 },
+        { "cost": 387, "profit": 48, "increase": 3 },
+        { "cost": 491, "profit": 51, "increase": 4 },
+        { "cost": 660, "profit": 55, "increase": 4 },
+        { "cost": 931, "profit": 59, "increase": 4 },
+        { "cost": 1381, "profit": 63, "increase": 4 },
+        { "cost": 2121, "profit": 67, "increase": 6 },
+        { "cost": 3474, "profit": 73, "increase": 4 },
+        { "cost": 5974, "profit": 77, "increase": 5 },
+        { "cost": 10658, "profit": 82, "increase": 7 },
+        { "cost": 20231, "profit": 89, "increase": 5 },
+        { "cost": 40128, "profit": 94, "increase": 7 },
+        { "cost": 84756, "profit": 101, "increase": 8 },
+        { "cost": 186235, "profit": 109, "increase": 8 },
+        { "cost": 425139, "profit": 117, "increase": 4 },
+        { "cost": 921412, "profit": 121, "increase": 4 },
+        { "cost": 1325412, "profit": 125, "increase": 2 },
+        { "cost": 2987123, "profit": 127, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "morgath",
+        "cardLevel": 5
+      }
+    },
+    {
+      "slug": "splash",
+      "name": "Splash",
+      "title": "The Sea Wanderer",
+      "description": "A fearless and agile explorer of the deep.",
+      "type": "ocean",
+      "level": [
+        { "cost": 5000, "profit": 77, "increase": 5 },
+        { "cost": 1360, "profit": 82, "increase": 5 },
+        { "cost": 1498, "profit": 87, "increase": 6 },
+        { "cost": 1745, "profit": 93, "increase": 6 },
+        { "cost": 2244, "profit": 99, "increase": 6 },
+        { "cost": 2963, "profit": 105, "increase": 7 },
+        { "cost": 3881, "profit": 112, "increase": 7 },
+        { "cost": 5813, "profit": 119, "increase": 8 },
+        { "cost": 8888, "profit": 127, "increase": 9 },
+        { "cost": 14215, "profit": 136, "increase": 9 },
+        { "cost": 24008, "profit": 145, "increase": 9 },
+        { "cost": 43127, "profit": 154, "increase": 11 },
+        { "cost": 81712, "profit": 165, "increase": 18 },
+        { "cost": 160774, "profit": 183, "increase": 12 },
+        { "cost": 333445, "profit": 195, "increase": 16 },
+        { "cost": 720258, "profit": 211, "increase": 10 },
+        { "cost": 1527100, "profit": 221, "increase": 27 },
+        { "cost": 3956325, "profit": 248, "increase": 17 },
+        { "cost": 6214887, "profit": 265, "increase": 57 },
+        { "cost": 11587228, "profit": 322, "increase": 0 }
+      ],
+      "condition": {
+        "type": "referral",
+        "launchTime": "2024-12-02T18:15:31.158Z",
+        "count": 1
+      }
+    },
+    {
+      "slug": "elara",
+      "name": "Elara",
+      "title": "The Mystical Sorceress",
+      "description": "A powerful spellcaster, wielding dark magic and secrets.",
+      "type": "light",
+      "level": [
+        { "cost": 5000, "profit": 44, "increase": 3 },
+        { "cost": 336, "profit": 47, "increase": 3 },
+        { "cost": 418, "profit": 50, "increase": 3 },
+        { "cost": 490, "profit": 53, "increase": 3 },
+        { "cost": 619, "profit": 56, "increase": 4 },
+        { "cost": 821, "profit": 60, "increase": 4 },
+        { "cost": 1145, "profit": 64, "increase": 4 },
+        { "cost": 1680, "profit": 68, "increase": 5 },
+        { "cost": 2592, "profit": 73, "increase": 5 },
+        { "cost": 4207, "profit": 78, "increase": 5 },
+        { "cost": 7177, "profit": 83, "increase": 5 },
+        { "cost": 12869, "profit": 88, "increase": 6 },
+        { "cost": 24120, "profit": 94, "increase": 6 },
+        { "cost": 47854, "profit": 100, "increase": 7 },
+        { "cost": 99124, "profit": 107, "increase": 7 },
+        { "cost": 216521, "profit": 114, "increase": 8 },
+        { "cost": 495369, "profit": 122, "increase": 8 },
+        { "cost": 1187323, "profit": 130, "increase": 9 },
+        { "cost": 3024165, "profit": 139, "increase": 10 },
+        { "cost": 5187964, "profit": 149, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "jack",
+        "cardLevel": 4
+      }
+    },
+    {
+      "slug": "aqualon",
+      "name": "Aqualon",
+      "title": "Lord of the Tides",
+      "description": "A guardian of lost relics, watching over the ocean’s darkest depths.",
+      "type": "ocean",
+      "level": [
+        { "cost": 5000, "profit": 85, "increase": 6 },
+        { "cost": 1203, "profit": 91, "increase": 6 },
+        { "cost": 1376, "profit": 97, "increase": 6 },
+        { "cost": 1651, "profit": 103, "increase": 7 },
+        { "cost": 2081, "profit": 110, "increase": 7 },
+        { "cost": 2753, "profit": 117, "increase": 8 },
+        { "cost": 3833, "profit": 125, "increase": 8 },
+        { "cost": 5616, "profit": 133, "increase": 9 },
+        { "cost": 8657, "profit": 142, "increase": 10 },
+        { "cost": 14039, "profit": 152, "increase": 10 },
+        { "cost": 23640, "profit": 162, "increase": 11 },
+        { "cost": 42613, "profit": 173, "increase": 12 },
+        { "cost": 80330, "profit": 185, "increase": 13 },
+        { "cost": 159221, "profit": 198, "increase": 13 },
+        { "cost": 331088, "profit": 211, "increase": 15 },
+        { "cost": 720363, "profit": 226, "increase": 15 },
+        { "cost": 1562147, "profit": 241, "increase": 17 },
+        { "cost": 3865412, "profit": 258, "increase": 18 },
+        { "cost": 6125441, "profit": 276, "increase": 19 },
+        { "cost": 10698122, "profit": 295, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "splash",
+        "cardLevel": 6
+      }
+    },
+    {
+      "slug": "willow",
+      "name": "Willow",
+      "title": "The Wildling",
+      "description": "A warrior elf, channeling nature’s power and fury.",
+      "type": "forest",
+      "level": [
+        { "cost": 5000, "profit": 10, "increase": 1 },
+        { "cost": 140, "profit": 11, "increase": 1 },
+        { "cost": 158, "profit": 12, "increase": 1 },
+        { "cost": 185, "profit": 13, "increase": 1 },
+        { "cost": 228, "profit": 14, "increase": 1 },
+        { "cost": 285, "profit": 15, "increase": 1 },
+        { "cost": 403, "profit": 16, "increase": 1 },
+        { "cost": 582, "profit": 17, "increase": 1 },
+        { "cost": 886, "profit": 18, "increase": 1 },
+        { "cost": 1452, "profit": 19, "increase": 1 },
+        { "cost": 2587, "profit": 20, "increase": 1 },
+        { "cost": 4474, "profit": 21, "increase": 2 },
+        { "cost": 8254, "profit": 23, "increase": 1 },
+        { "cost": 16876, "profit": 24, "increase": 2 },
+        { "cost": 35696, "profit": 26, "increase": 2 },
+        { "cost": 74699, "profit": 28, "increase": 2 },
+        { "cost": 170552, "profit": 30, "increase": 2 },
+        { "cost": 446886, "profit": 32, "increase": 2 },
+        { "cost": 1221335, "profit": 34, "increase": 2 },
+        { "cost": 1887440, "profit": 36, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "aegiron",
+        "cardLevel": 11
+      }
+    },
+    {
+      "slug": "pollen",
+      "name": "Pollen",
+      "title": "The Bloomcaller",
+      "description": "An earthy protector of the wild, calling upon the power of flowers.",
+      "type": "forest",
+      "level": [
+        { "cost": 5000, "profit": 68, "increase": 5 },
+        { "cost": 571, "profit": 73, "increase": 5 },
+        { "cost": 658, "profit": 78, "increase": 6 },
+        { "cost": 796, "profit": 84, "increase": 6 },
+        { "cost": 1010, "profit": 90, "increase": 6 },
+        { "cost": 1347, "profit": 96, "increase": 7 },
+        { "cost": 1887, "profit": 103, "increase": 7 },
+        { "cost": 2778, "profit": 110, "increase": 8 },
+        { "cost": 4299, "profit": 118, "increase": 9 },
+        { "cost": 6989, "profit": 127, "increase": 9 },
+        { "cost": 12030, "profit": 136, "increase": 9 },
+        { "cost": 21507, "profit": 145, "increase": 11 },
+        { "cost": 41358, "profit": 156, "increase": 11 },
+        { "cost": 80368, "profit": 167, "increase": 11 },
+        { "cost": 167121, "profit": 178, "increase": 13 },
+        { "cost": 358268, "profit": 191, "increase": 14 },
+        { "cost": 825741, "profit": 205, "increase": 14 },
+        { "cost": 1852366, "profit": 219, "increase": 16 },
+        { "cost": 4747141, "profit": 235, "increase": 17 },
+        { "cost": 7988224, "profit": 252, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "veldar",
+        "cardLevel": 11
+      }
+    },
+    {
+      "slug": "darius_stormblade",
+      "name": "Darius Stormblade",
+      "title": "The courageous swordsman.",
+      "description": "A warrior sworn to justice, unshaken by battle or fear.",
+      "type": "light",
+      "level": [
+        { "cost": 5000, "profit": 45, "increase": 3 },
+        { "cost": 601, "profit": 48, "increase": 3 },
+        { "cost": 688, "profit": 51, "increase": 3 },
+        { "cost": 726, "profit": 54, "increase": 3 },
+        { "cost": 1040, "profit": 57, "increase": 4 },
+        { "cost": 1377, "profit": 61, "increase": 4 },
+        { "cost": 1917, "profit": 65, "increase": 4 },
+        { "cost": 2808, "profit": 69, "increase": 5 },
+        { "cost": 4329, "profit": 74, "increase": 5 },
+        { "cost": 7019, "profit": 79, "increase": 5 },
+        { "cost": 11970, "profit": 84, "increase": 5 },
+        { "cost": 21457, "profit": 89, "increase": 6 },
+        { "cost": 40415, "profit": 95, "increase": 6 },
+        { "cost": 79970, "profit": 101, "increase": 7 },
+        { "cost": 166199, "profit": 108, "increase": 7 },
+        { "cost": 362731, "profit": 115, "increase": 8 },
+        { "cost": 831323, "profit": 123, "increase": 8 },
+        { "cost": 2000607, "profit": 131, "increase": 9 },
+        { "cost": 5055357, "profit": 140, "increase": 9 },
+        { "cost": 8710886, "profit": 149, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "morgath",
+        "cardLevel": 14
+      }
+    },
+    {
+      "slug": "thalric",
+      "name": "Thalric",
+      "title": "The Toasting Titan",
+      "description": "A jubilant hero, raising spirits and shattering foes.",
+      "type": "volcano",
+      "level": [
+        { "cost": 5000, "profit": 79, "increase": 6 },
+        { "cost": 1073, "profit": 85, "increase": 6 },
+        { "cost": 1246, "profit": 91, "increase": 6 },
+        { "cost": 1521, "profit": 97, "increase": 7 },
+        { "cost": 1950, "profit": 104, "increase": 7 },
+        { "cost": 2633, "profit": 111, "increase": 8 },
+        { "cost": 3703, "profit": 119, "increase": 8 },
+        { "cost": 5486, "profit": 127, "increase": 9 },
+        { "cost": 8527, "profit": 136, "increase": 10 },
+        { "cost": 13909, "profit": 146, "increase": 10 },
+        { "cost": 23810, "profit": 156, "increase": 11 },
+        { "cost": 42783, "profit": 167, "increase": 12 },
+        { "cost": 80700, "profit": 179, "increase": 13 },
+        { "cost": 159801, "profit": 192, "increase": 13 },
+        { "cost": 332267, "profit": 205, "increase": 15 },
+        { "cost": 725333, "profit": 220, "increase": 15 },
+        { "cost": 1662515, "profit": 235, "increase": 17 },
+        { "cost": 4001100, "profit": 252, "increase": 18 },
+        { "cost": 6705134, "profit": 270, "increase": 19 },
+        { "cost": 11798149, "profit": 289, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "jack",
+        "cardLevel": 7
+      }
+    },
+    {
+      "slug": "felwyn",
+      "name": "Felwyn",
+      "title": "The Twilight Wanderer",
+      "description": "A nomadic guardian, loyal to no master",
+      "type": "dark",
+      "level": [
+        { "cost": 5000, "profit": 60, "increase": 4 },
+        { "cost": 661, "profit": 64, "increase": 5 },
+        { "cost": 738, "profit": 69, "increase": 5 },
+        { "cost": 876, "profit": 74, "increase": 5 },
+        { "cost": 1090, "profit": 79, "increase": 5 },
+        { "cost": 1427, "profit": 84, "increase": 6 },
+        { "cost": 1967, "profit": 90, "increase": 6 },
+        { "cost": 2858, "profit": 96, "increase": 7 },
+        { "cost": 4379, "profit": 103, "increase": 7 },
+        { "cost": 7069, "profit": 110, "increase": 8 },
+        { "cost": 12020, "profit": 118, "increase": 8 },
+        { "cost": 21507, "profit": 126, "increase": 9 },
+        { "cost": 40465, "profit": 135, "increase": 10 },
+        { "cost": 80020, "profit": 145, "increase": 10 },
+        { "cost": 112333, "profit": 155, "increase": 11 },
+        { "cost": 362789, "profit": 166, "increase": 11 },
+        { "cost": 831654, "profit": 177, "increase": 13 },
+        { "cost": 2000222, "profit": 190, "increase": 13 },
+        { "cost": 3352784, "profit": 203, "increase": 14 },
+        { "cost": 5874400, "profit": 217, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "rakani",
+        "cardLevel": 14
+      }
+    },
+    {
+      "slug": "zira",
+      "name": "Zira",
+      "title": "The Stealthy Assassin",
+      "description": "A clever infiltrator, using disguise and stealth to achieve her goals.",
+      "type": "volcano",
+      "level": [
+        { "cost": 5000, "profit": 45, "increase": 5 },
+        { "cost": 571, "profit": 50, "increase": 4 },
+        { "cost": 685, "profit": 54, "increase": 3 },
+        { "cost": 801, "profit": 57, "increase": 4 },
+        { "cost": 1024, "profit": 61, "increase": 5 },
+        { "cost": 1352, "profit": 66, "increase": 4 },
+        { "cost": 1897, "profit": 70, "increase": 5 },
+        { "cost": 2788, "profit": 75, "increase": 5 },
+        { "cost": 4302, "profit": 80, "increase": 6 },
+        { "cost": 7088, "profit": 86, "increase": 6 },
+        { "cost": 12036, "profit": 92, "increase": 6 },
+        { "cost": 21450, "profit": 98, "increase": 7 },
+        { "cost": 40400, "profit": 105, "increase": 8 },
+        { "cost": 80025, "profit": 113, "increase": 7 },
+        { "cost": 166258, "profit": 120, "increase": 9 },
+        { "cost": 362758, "profit": 129, "increase": 9 },
+        { "cost": 831354, "profit": 138, "increase": 10 },
+        { "cost": 1355522, "profit": 148, "increase": 10 },
+        { "cost": 2325478, "profit": 158, "increase": 17 },
+        { "cost": 4155444, "profit": 175, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "elara",
+        "cardLevel": 5
+      }
+    },
+    {
+      "slug": "nivara",
+      "name": "Nivara",
+      "title": "The weaver of starlight",
+      "description": "A celestial mage who bends starlight and shadow with her enchanted staff.",
+      "type": "dark",
+      "level": [
+        { "cost": 5000, "profit": 275, "increase": 19 },
+        { "cost": 2656, "profit": 294, "increase": 20 },
+        { "cost": 3091, "profit": 314, "increase": 22 },
+        { "cost": 3777, "profit": 336, "increase": 23 },
+        { "cost": 4850, "profit": 359, "increase": 25 },
+        { "cost": 6533, "profit": 384, "increase": 26 },
+        { "cost": 9224, "profit": 410, "increase": 29 },
+        { "cost": 13690, "profit": 439, "increase": 30 },
+        { "cost": 21293, "profit": 469, "increase": 32 },
+        { "cost": 34650, "profit": 501, "increase": 35 },
+        { "cost": 59400, "profit": 536, "increase": 37 },
+        { "cost": 106000, "profit": 573, "increase": 40 },
+        { "cost": 200855, "profit": 613, "increase": 43 },
+        { "cost": 397250, "profit": 656, "increase": 45 },
+        { "cost": 828696, "profit": 701, "increase": 49 },
+        { "cost": 1800224, "profit": 750, "increase": 52 },
+        { "cost": 4150800, "profit": 802, "increase": 56 },
+        { "cost": 10000833, "profit": 858, "increase": 60 },
+        { "cost": 16564781, "profit": 918, "increase": 64 },
+        { "cost": 29200555, "profit": 982, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "aqualon",
+        "cardLevel": 7
+      }
+    },
+    {
+      "slug": "voltryn",
+      "name": "Voltryn",
+      "title": "The living spark of battle",
+      "description": "A warrior born of lightning, unleashing storms with every strike.",
+      "type": "ocean",
+      "level": [
+        { "cost": 5000, "profit": 59, "increase": 4 },
+        { "cost": 1303, "profit": 63, "increase": 5 },
+        { "cost": 1475, "profit": 68, "increase": 5 },
+        { "cost": 1750, "profit": 73, "increase": 5 },
+        { "cost": 2155, "profit": 78, "increase": 5 },
+        { "cost": 2846, "profit": 83, "increase": 6 },
+        { "cost": 3965, "profit": 89, "increase": 6 },
+        { "cost": 5745, "profit": 95, "increase": 7 },
+        { "cost": 8769, "profit": 102, "increase": 7 },
+        { "cost": 14155, "profit": 109, "increase": 8 },
+        { "cost": 24025, "profit": 117, "increase": 8 },
+        { "cost": 43558, "profit": 125, "increase": 9 },
+        { "cost": 81467, "profit": 134, "increase": 10 },
+        { "cost": 160532, "profit": 144, "increase": 10 },
+        { "cost": 333335, "profit": 154, "increase": 11 },
+        { "cost": 728668, "profit": 165, "increase": 11 },
+        { "cost": 1664551, "profit": 176, "increase": 13 },
+        { "cost": 4002779, "profit": 189, "increase": 13 },
+        { "cost": 10875186, "profit": 202, "increase": 14 },
+        { "cost": 17969224, "profit": 216, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "willow",
+        "cardLevel": 13
+      }
+    },
+    {
+      "slug": "tentaculus",
+      "name": "Tentaculus",
+      "title": "The Mystical Ocean Envoy",
+      "description": "A fun-loving captain with a penchant for treasure and trouble.",
+      "type": "ocean",
+      "level": [
+        { "cost": 5000, "profit": 111, "increase": 8 },
+        { "cost": 2505, "profit": 119, "increase": 8 },
+        { "cost": 2853, "profit": 127, "increase": 9 },
+        { "cost": 3403, "profit": 136, "increase": 9 },
+        { "cost": 4260, "profit": 145, "increase": 10 },
+        { "cost": 5608, "profit": 155, "increase": 11 },
+        { "cost": 7777, "profit": 166, "increase": 12 },
+        { "cost": 11354, "profit": 178, "increase": 12 },
+        { "cost": 17589, "profit": 190, "increase": 13 },
+        { "cost": 28017, "profit": 203, "increase": 14 },
+        { "cost": 47965, "profit": 217, "increase": 16 },
+        { "cost": 85931, "profit": 233, "increase": 16 },
+        { "cost": 161721, "profit": 249, "increase": 17 },
+        { "cost": 319927, "profit": 266, "increase": 19 },
+        { "cost": 664896, "profit": 285, "increase": 19 },
+        { "cost": 1451008, "profit": 304, "increase": 22 },
+        { "cost": 3326001, "profit": 326, "increase": 21 },
+        { "cost": 7245113, "profit": 347, "increase": 25 },
+        { "cost": 16554118, "profit": 372, "increase": 26 },
+        { "cost": 35232998, "profit": 398, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "darius_stormblade",
+        "cardLevel": 10
+      }
+    },
+    {
+      "slug": "geng",
+      "name": "Geng",
+      "title": "The silent blade",
+      "description": "A master of speed and precision, striking with unmatched agility.",
+      "type": "volcano",
+      "level": [
+        { "cost": 5000, "profit": 68, "increase": 5 },
+        { "cost": 541, "profit": 73, "increase": 5 },
+        { "cost": 628, "profit": 78, "increase": 6 },
+        { "cost": 766, "profit": 84, "increase": 6 },
+        { "cost": 980, "profit": 90, "increase": 6 },
+        { "cost": 1317, "profit": 96, "increase": 7 },
+        { "cost": 1857, "profit": 103, "increase": 7 },
+        { "cost": 2748, "profit": 110, "increase": 8 },
+        { "cost": 4269, "profit": 118, "increase": 9 },
+        { "cost": 6965, "profit": 127, "increase": 9 },
+        { "cost": 11820, "profit": 136, "increase": 9 },
+        { "cost": 21307, "profit": 145, "increase": 11 },
+        { "cost": 40265, "profit": 156, "increase": 11 },
+        { "cost": 79820, "profit": 167, "increase": 11 },
+        { "cost": 166089, "profit": 178, "increase": 13 },
+        { "cost": 362548, "profit": 191, "increase": 14 },
+        { "cost": 831024, "profit": 205, "increase": 14 },
+        { "cost": 1998255, "profit": 219, "increase": 16 },
+        { "cost": 5044127, "profit": 235, "increase": 17 },
+        { "cost": 8625784, "profit": 252, "increase": 0 }
+      ],
+      "condition": {
+        "type": "card",
+        "targetCard": "nivara",
+        "cardLevel": 8
+      }
     }
   ],
   "heroType": {
@@ -296,5 +948,279 @@
     "volcano": { "name": "Volcano Born Hero", "color": "#B70D0D" },
     "forest": { "name": "Forest Born Hero", "color": "#149D53" },
     "ocean": { "name": "Ocean Born Hero", "color": "#143E9D" }
-  }
+  },
+  "recipes": [
+    {
+      "key": "moonlight_elixir",
+      "name": "Moonlight Elixir",
+      "ingredients": [
+        "Moonbeam Fern",
+        "Starlight Blossom",
+        "Celestial Ivy",
+        "Frostbloom",
+        "Spiritroot"
+      ]
+    },
+    {
+      "key": "shadowfire_brew",
+      "name": "Shadowfire Brew",
+      "ingredients": [
+        "Shadowvine",
+        "Embergrass",
+        "Voidbloom",
+        "Dreamshade",
+        "Phoenix Ember"
+      ]
+    },
+    {
+      "key": "starfall_salad",
+      "name": "Starfall Salad",
+      "ingredients": [
+        "Starfall Petal",
+        "Evergreen Whisper",
+        "Dragonvine",
+        "Serpentleaf",
+        "Whispering Willow"
+      ]
+    },
+    {
+      "key": "bloodmoon_infusion",
+      "name": "Bloodmoon Infusion",
+      "ingredients": [
+        "Bloodmoon Lily",
+        "Bloodthorn",
+        "Soulroot",
+        "Dreamthistle",
+        "Moonshadow Moss"
+      ]
+    },
+    {
+      "key": "frostfire_tea",
+      "name": "Frostfire Tea",
+      "ingredients": [
+        "Frostfire Blossom",
+        "Radiant Sunflower",
+        "Shimmerleaf",
+        "Frostbloom",
+        "Spiritbark"
+      ]
+    },
+    {
+      "key": "twilight_tonic",
+      "name": "Twilight Tonic",
+      "ingredients": [
+        "Twilight Rose",
+        "Voidroot",
+        "Emberfern",
+        "Nightshade Blossom",
+        "Stardust Lily"
+      ]
+    },
+    {
+      "key": "sunfire_elixir",
+      "name": "Sunfire Elixir",
+      "ingredients": [
+        "Sunfire Lotus",
+        "Embergrass",
+        "Starfrost Berry",
+        "Radiant Sunflower",
+        "Phoenix Ember"
+      ]
+    },
+    {
+      "key": "whisperwind_potion",
+      "name": "Whisperwind Potion",
+      "ingredients": [
+        "Evergreen Whisper",
+        "Faeflower",
+        "Stardust Lily",
+        "Spiritroot",
+        "Shadowvine"
+      ]
+    },
+    {
+      "key": "celestial_brew",
+      "name": "Celestial Brew",
+      "ingredients": [
+        "Celestial Ivy",
+        "Starflare Orchid",
+        "Moonbeam Fern",
+        "Thunderleaf",
+        "Sunfire Lotus"
+      ]
+    },
+    {
+      "key": "astral_essence",
+      "name": "Astral Essence",
+      "ingredients": [
+        "Astral Oak",
+        "Starlight Fern",
+        "Sunfire Lotus",
+        "Radiant Sunflower",
+        "Celestial Ivy"
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "key": "starlight_blossom",
+      "name": "Starlight Blossom"
+    },
+    {
+      "key": "moonbeam_fern",
+      "name": "Moonbeam Fern"
+    },
+    {
+      "key": "sunfire_lotus",
+      "name": "Sunfire Lotus"
+    },
+    {
+      "key": "shadowvine",
+      "name": "Shadowvine"
+    },
+    {
+      "key": "celestial_ivy",
+      "name": "Celestial Ivy"
+    },
+    {
+      "key": "thunderleaf",
+      "name": "Thunderleaf"
+    },
+    {
+      "key": "frostbloom",
+      "name": "Frostbloom"
+    },
+    {
+      "key": "embergrass",
+      "name": "Embergrass"
+    },
+    {
+      "key": "spiritroot",
+      "name": "Spiritroot"
+    },
+    {
+      "key": "starfall_petal",
+      "name": "Starfall Petal"
+    },
+    {
+      "key": "voidbloom",
+      "name": "Voidbloom"
+    },
+    {
+      "key": "dreamshade",
+      "name": "Dreamshade"
+    },
+    {
+      "key": "phoenix_ember",
+      "name": "Phoenix Ember"
+    },
+    {
+      "key": "starflare_orchid",
+      "name": "Starflare Orchid"
+    },
+    {
+      "key": "stormblossom",
+      "name": "Stormblossom"
+    },
+    {
+      "key": "silverleaf",
+      "name": "Silverleaf"
+    },
+    {
+      "key": "bloodthorn",
+      "name": "Bloodthorn"
+    },
+    {
+      "key": "evergreen_whisper",
+      "name": "Evergreen Whisper"
+    },
+    {
+      "key": "witchwood_vine",
+      "name": "Witchwood Vine"
+    },
+    {
+      "key": "faeflower",
+      "name": "Faeflower"
+    },
+    {
+      "key": "dragonvine",
+      "name": "Dragonvine"
+    },
+    {
+      "key": "serpentleaf",
+      "name": "Serpentleaf"
+    },
+    {
+      "key": "whispering_willow",
+      "name": "Whispering Willow"
+    },
+    {
+      "key": "bloodmoon_lily",
+      "name": "Bloodmoon Lily"
+    },
+    {
+      "key": "soulroot",
+      "name": "Soulroot"
+    },
+    {
+      "key": "dreamthistle",
+      "name": "Dreamthistle"
+    },
+    {
+      "key": "moonshadow_moss",
+      "name": "Moonshadow Moss"
+    },
+    {
+      "key": "starfrost_berry",
+      "name": "Starfrost Berry"
+    },
+    {
+      "key": "spiritbark",
+      "name": "Spiritbark"
+    },
+    {
+      "key": "twilight_rose",
+      "name": "Twilight Rose"
+    },
+    {
+      "key": "voidroot",
+      "name": "Voidroot"
+    },
+    {
+      "key": "emberfern",
+      "name": "Emberfern"
+    },
+    {
+      "key": "nightshade_blossom",
+      "name": "Nightshade Blossom"
+    },
+    {
+      "key": "stardust_lily",
+      "name": "Stardust Lily"
+    },
+    {
+      "key": "frostfire_blossom",
+      "name": "Frostfire Blossom"
+    },
+    {
+      "key": "radiant_sunflower",
+      "name": "Radiant Sunflower"
+    },
+    {
+      "key": "shimmerleaf",
+      "name": "Shimmerleaf"
+    },
+    {
+      "key": "bloodfire_rose",
+      "name": "Bloodfire Rose"
+    },
+    {
+      "key": "starlight_fern",
+      "name": "Starlight Fern"
+    },
+    {
+      "key": "astral_oak",
+      "name": "Astral Oak"
+    }
+  ]
 }

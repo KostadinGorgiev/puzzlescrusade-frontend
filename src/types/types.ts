@@ -13,22 +13,33 @@ export type ActivePage =
 
 export type LayoutBackground = "image" | "gradient-color";
 
-export type UserTaskType = "twitter" | "youtube" | "telegram";
-
 export type Task = {
   icon: React.ReactNode;
   title: string;
-  type: UserTaskType;
+  type: string;
   url: string;
 };
 
-export type TaskStatus = "todo" | "done" | "claim";
+export type TaskStatus = "todo" | "done" | "verify" | "claim";
+
+export type DynamicTask = {
+  id: number;
+  title: string;
+  link: string;
+  type: string;
+  bonus_amount: number;
+  password?: string;
+  question?: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 export type DailyCheckInStatus = "claimed" | "claim" | "disabled";
 
 export type Game = {
-  user: User;
+  user?: User;
   introductionStep: number;
+  tasks: DynamicTask[];
 };
 
 export type User = {
@@ -47,9 +58,12 @@ export type User = {
   createdAt: string;
   updatedAt: string;
   serverTime: string;
+  serverTimezone: string;
   photo_url?: string;
   Referrals: Referral[];
+  total_referral_count: number;
   TaskStatuses: UserTaskStatus[];
+  UserTaskStatuses: DynamicUserTaskStatus[];
   DailyCheckIn: DailyCheckIn;
   Cards: UserCard[];
   CardClaim: CardClaim;
@@ -68,7 +82,16 @@ export type Referral = {
 export type UserTaskStatus = {
   id: number;
   user_id: number;
-  task: UserTaskType;
+  task: string;
+  status: TaskStatus;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DynamicUserTaskStatus = {
+  id: number;
+  user_id: number;
+  task_id: number;
   status: TaskStatus;
   createdAt: string;
   updatedAt: string;

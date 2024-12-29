@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import CardImage from "../../assets/images/Card_back.png";
 import levelConfig from "../../config/config.json";
 import DragonIcon from "../../Icons/DragonIcon";
@@ -11,44 +11,91 @@ import LioraSmallImage from "../../assets/images/heros/small/liora.png";
 import SylvarraSmallImage from "../../assets/images/heros/small/sylvarra.png";
 import VeldarSmallImage from "../../assets/images/heros/small/veldar.png";
 import VornakSmallImage from "../../assets/images/heros/small/vornak.png";
+import JackSmallImage from "../../assets/images/heros/small/jack.png";
+import AegironSmallImage from "../../assets/images/heros/small/aegiron.png";
+import DrektharSmallImage from "../../assets/images/heros/small/drekthar.png";
+import MorgathSmallImage from "../../assets/images/heros/small/morgath.png";
+import FennelSmallImage from "../../assets/images/heros/small/fennel.png";
+import RuxandraRedtideSmallImage from "../../assets/images/heros/small/ruxandra_redtide.png";
+import RakaniSmallImage from "../../assets/images/heros/small/rakani.png";
+import SplashSmallImage from "../../assets/images/heros/small/splash.png";
+import ElaraSmallImage from "../../assets/images/heros/small/elara.png";
+import AqualonSmallImage from "../../assets/images/heros/small/aqualon.png";
+import WillowSmallImage from "../../assets/images/heros/small/willow.png";
+import PollenSmallImage from "../../assets/images/heros/small/pollen.png";
+import DariusSmallImage from "../../assets/images/heros/small/darius.png";
+import ThalricSmallImage from "../../assets/images/heros/small/thalric.png";
+import FelwynSmallImage from "../../assets/images/heros/small/felwyn.png";
+import ZiraSmallImage from "../../assets/images/heros/small/zira.png";
+import NivaraSmallImage from "../../assets/images/heros/small/nivara.png";
+import VoltrynSmallImage from "../../assets/images/heros/small/voltryn.png";
+import TentaculusSmallImage from "../../assets/images/heros/small/tentaculus.png";
+import GengSmallImage from "../../assets/images/heros/small/geng.png";
+import moment from "moment-timezone";
 
 interface HeroComponentProps {
-  hero: (typeof levelConfig.heros)[0];
+  hero: any;
   onClick: () => void;
 }
 
+type CardConditionType = {
+  conditional: boolean;
+  conditionPass?: boolean;
+  text?: string;
+};
+
 const heroImages: { [key: string]: string } = {
-  light: LioraSmallImage,
-  dark: SylvarraSmallImage,
-  volcano: KaelarSmallImage,
-  forest: VeldarSmallImage,
-  ocean: VornakSmallImage,
+  liora: LioraSmallImage,
+  sylvarra: SylvarraSmallImage,
+  kaelar: KaelarSmallImage,
+  veldar: VeldarSmallImage,
+  vornak: VornakSmallImage,
+  jack: JackSmallImage,
+  aegiron: AegironSmallImage,
+  drekthar: DrektharSmallImage,
+  morgath: MorgathSmallImage,
+  fennel: FennelSmallImage,
+  ruxandra_redtide: RuxandraRedtideSmallImage,
+  rakani: RakaniSmallImage,
+  splash: SplashSmallImage,
+  elara: ElaraSmallImage,
+  aqualon: AqualonSmallImage,
+  willow: WillowSmallImage,
+  pollen: PollenSmallImage,
+  darius_stormblade: DariusSmallImage,
+  thalric: ThalricSmallImage,
+  felwyn: FelwynSmallImage,
+  zira: ZiraSmallImage,
+  nivara: NivaraSmallImage,
+  voltryn: VoltrynSmallImage,
+  tentaculus: TentaculusSmallImage,
+  geng: GengSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
   const user = useAppSelector((state) => state.app.game?.user) as User;
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
+  const [cardCondition, setCardCondition] = useState<CardConditionType>({
+    conditional: false,
+  });
 
   const handleUnlockHeroCard = useCallback(async () => {
-    if (user.coin_balance > hero.level[0].cost) {
-      if(loading) return;
-      setLoading(true);
-      let result = await axiosInterface.post("card/unlock", {
-        id: user.t_user_id,
-        card_slug: hero.slug,
-      });
-      setLoading(false);
-      if (result.data.success) {
-        dispatch(
-          updateHeroCards({
-            card: result.data.cards,
-            balance: result.data.balance,
-          })
-        );
-      }
+    setLoading(true);
+    let result = await axiosInterface.post("card/unlock", {
+      id: user.t_user_id,
+      card_slug: hero.slug,
+    });
+    setLoading(false);
+    if (result.data.success) {
+      dispatch(
+        updateHeroCards({
+          card: result.data.cards,
+          balance: result.data.balance,
+        })
+      );
     }
-  },[loading, user, hero, dispatch]);
+  }, [user, hero, dispatch]);
 
   const userHeroCard = useMemo(() => {
     return user.Cards.find((e) => e.card_slug === hero.slug);
@@ -65,6 +112,83 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
       return false;
     }
   }, [user, userHeroCard, hero]);
+
+  useEffect(() => {
+    checkCardCondition();
+  }, [hero, user.Cards]);
+
+  const checkCardCondition = async () => {
+    if (hero.condition) {
+      switch (hero.condition.type) {
+        case "card": {
+          const userCard = user.Cards.find(
+            (card) => card.card_slug === hero.condition.targetCard
+          );
+          if (userCard && userCard.card_level >= hero.condition.cardLevel - 1) {
+            setCardCondition({
+              conditional: true,
+              conditionPass: true,
+              text: "",
+            });
+            return;
+          }
+
+          let card = levelConfig.heros.find(
+            (e) => e.slug === hero.condition.targetCard
+          );
+          if (!card) {
+            console.warn("no card defined for condition", hero.slug);
+          }
+
+          setCardCondition({
+            conditional: true,
+            conditionPass: false,
+            text: `Need ${card?.name} card at level ${hero.condition.cardLevel}`,
+          });
+          return;
+          break;
+        }
+        case "referral": {
+          checkCardReferral(user.id, hero.slug);
+          break;
+        }
+        default: {
+          console.warn("condition not implemented yet for card", hero.slug);
+
+          setCardCondition({
+            conditional: false,
+          });
+          return;
+        }
+      }
+    } else {
+      setCardCondition({
+        conditional: false,
+      });
+      return;
+    }
+  };
+
+  const checkCardReferral = async (userId: number, cardSlug: string) => {
+    const result = await axiosInterface.post("task/card-referral-status", {
+      user_id: user.id,
+      card_slug: hero.slug,
+    });
+    const hasReferral = result.data.success;
+    if (hasReferral) {
+      setCardCondition({
+        conditional: true,
+        conditionPass: true,
+        text: "",
+      });
+    } else {
+      setCardCondition({
+        conditional: true,
+        conditionPass: false,
+        text: `Invite ${hero.condition.count} more friend`,
+      });
+    }
+  };
 
   if (userHeroCard) {
     return (
@@ -97,31 +221,33 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
             </span>
           </div>
           <div className="w-full h-[0.26vw] flex-none bg-[#eaeaea4d] mb-[1.6vw]"></div>
-          <div className="flex items-center justify-start w-full">
-            <div className="w-[9.86vw] text-center text-[2.4vw] font-extrabold text-white">
-              Lvl. {userHeroCard.card_level + 1}
+          {userHeroCard.card_level < hero.level.length - 1 ? (
+            <div className="flex items-center justify-start w-full">
+              <div className="w-[9.86vw] text-center text-[2.4vw] font-extrabold text-white">
+                Lvl. {userHeroCard.card_level + 1}
+              </div>
+              <div className="h-[4.26vw] w-[0.26vw] bg-[#eaeaea4d] mr-[1.33vw]"></div>
+              <div
+                className={`rounded-full w-[3.2vw] h-[3.2vw] flex items-center justify-center mr-[1.33vw] ${upgradable ? "bg-[#FAB648]" : "bg-[#EAEAEA]"
+                  }`}
+              >
+                <DragonIcon
+                  fill={upgradable ? "#674B1F" : "#aaaaaa"}
+                  className="w-[2.62vw] h-[2.62vw]"
+                />
+              </div>
+              <div
+                className={`text-[2.66vw] font-bold ${upgradable ? "text-[#FAB648]" : "text-[#EAEAEA]"
+                  }`}
+              >
+                {hero.level[userHeroCard.card_level + 1]?.cost}
+              </div>
             </div>
-            <div className="h-[4.26vw] w-[0.26vw] bg-[#eaeaea4d] mr-[1.33vw]"></div>
-            <div
-              className={`rounded-full w-[3.2vw] h-[3.2vw] flex items-center justify-center mr-[1.33vw] ${
-                upgradable ? "bg-[#FAB648]" : "bg-[#EAEAEA]"
-              }`}
-            >
-              <DragonIcon
-                fill={upgradable ? "#674B1F" : "#aaaaaa"}
-                className="w-[2.62vw] h-[2.62vw]"
-              />
+          ) : (
+            <div className="text-[3.2vw] font-bold leading-none text-[#4B4955] w-full text-center">
+              Max Level
             </div>
-            <div
-              className={`text-[2.66vw] font-bold ${
-                upgradable ? "text-[#FAB648]" : "text-[#EAEAEA]"
-              }`}
-            >
-              {userHeroCard.card_level < hero.level.length - 1
-                ? hero.level[userHeroCard.card_level + 1]?.cost
-                : "MAX"}
-            </div>
-          </div>
+          )}
         </div>
       </div>
     );
@@ -134,20 +260,50 @@ const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {
           className="w-[40.26vw] h-[57.33vw] border-[0.26vw] border-[#FAB648] rounded-[2.6vw] blur-[5px] overflow-hidden"
         />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32.26vw] h-[15.46vw] border-[0.26vw] border-[#FAB648] rounded-[2.66vw] pt-[1.86vw] pb-[2.93vw] px-[3.46vw] bg-[#171819e5]"
-          onClick={() => handleUnlockHeroCard()}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32.26vw] h-[15.46vw] border-[0.26vw] border-[#FAB648] rounded-[2.66vw] pt-[1.86vw] pb-[2.93vw] px-[3.46vw] bg-[#171819e5] min-h-fit"
+          onClick={() => {
+            if (user.coin_balance > hero.level[0].cost) {
+              if (loading) return;
+              if (cardCondition.conditional && !cardCondition.conditionPass)
+                return;
+              handleUnlockHeroCard();
+            }
+          }}
         >
           <div className="text-center text-[3.73vw] font-bold text-[#FA6648]">
             Unlock card
           </div>
-          <div className="flex items-center justify-center gap-[0.8vw]">
-            <div className="rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center bg-[#FAB648]">
-              <DragonIcon fill="#674B1F" className="w-[4.22vw] h-[4.22vw]" />
+          {cardCondition.conditional && !cardCondition.conditionPass ? (
+            <div className="text-center text-[2.93vw] font-bold tracking-tight text-[#EAEAEA]">
+              {cardCondition.text}
             </div>
-            <div className="text-[2.93vw] font-bold text-[#FAB648]">
-              {hero.level[0].cost} Dragons
+          ) : (
+            <div className="flex items-center justify-center gap-[0.8vw]">
+              <div
+                className={`rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center ${user.coin_balance > hero.level[0].cost
+                  ? "bg-[#FAB648]"
+                  : "bg-[#aaaaaa]"
+                  }`}
+              >
+                <DragonIcon
+                  fill={
+                    user.coin_balance > hero.level[0].cost
+                      ? "#674B1F"
+                      : "#eaeaea"
+                  }
+                  className="w-[4.22vw] h-[4.22vw]"
+                />
+              </div>
+              <div
+                className={`text-[2.93vw] font-bold tracking-tight ${user.coin_balance > hero.level[0].cost
+                  ? "text-[#FAB648]"
+                  : "text-[#EAEAEA]"
+                  }`}
+              >
+                {hero.level[0].cost} Dragons
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );

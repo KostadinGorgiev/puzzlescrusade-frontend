@@ -13,6 +13,26 @@ import LioraBigImage from "../../assets/images/heros/small/liora.png";
 import SylvarraBigImage from "../../assets/images/heros/small/sylvarra.png";
 import VeldarBigImage from "../../assets/images/heros/small/veldar.png";
 import VornakBigImage from "../../assets/images/heros/small/vornak.png";
+import JackBigImage from "../../assets/images/heros/small/jack.png";
+import AegironBigImage from "../../assets/images/heros/small/aegiron.png";
+import DrektharBigImage from "../../assets/images/heros/small/drekthar.png";
+import MorgathBigImage from "../../assets/images/heros/small/morgath.png";
+import FennelBigImage from "../../assets/images/heros/small/fennel.png";
+import RuxandraRedtideBigImage from "../../assets/images/heros/small/ruxandra_redtide.png";
+import RakaniBigImage from "../../assets/images/heros/small/rakani.png";
+import SplashBigImage from "../../assets/images/heros/small/splash.png";
+import ElaraBigImage from "../../assets/images/heros/small/elara.png";
+import AqualonBigImage from "../../assets/images/heros/small/aqualon.png";
+import WillowBigImage from "../../assets/images/heros/small/willow.png";
+import PollenBigImage from "../../assets/images/heros/small/pollen.png";
+import DariusBigImage from "../../assets/images/heros/small/darius.png";
+import ThalricBigImage from "../../assets/images/heros/small/thalric.png";
+import FelwynSmallImage from "../../assets/images/heros/small/felwyn.png";
+import ZiraSmallImage from "../../assets/images/heros/small/zira.png";
+import NivaraSmallImage from "../../assets/images/heros/small/nivara.png";
+import VoltrynSmallImage from "../../assets/images/heros/small/voltryn.png";
+import TentaculusSmallImage from "../../assets/images/heros/small/tentaculus.png";
+import GengSmallImage from "../../assets/images/heros/small/geng.png";
 
 interface HeroModalProps {
   hero: (typeof levelConfig.heros)[0];
@@ -20,11 +40,31 @@ interface HeroModalProps {
 }
 
 const heroImages: { [key: string]: string } = {
-  light: LioraBigImage,
-  dark: SylvarraBigImage,
-  volcano: KaelarBigImage,
-  forest: VeldarBigImage,
-  ocean: VornakBigImage,
+  liora: LioraBigImage,
+  sylvarra: SylvarraBigImage,
+  kaelar: KaelarBigImage,
+  veldar: VeldarBigImage,
+  vornak: VornakBigImage,
+  jack: JackBigImage,
+  aegiron: AegironBigImage,
+  drekthar: DrektharBigImage,
+  morgath: MorgathBigImage,
+  fennel: FennelBigImage,
+  ruxandra_redtide: RuxandraRedtideBigImage,
+  rakani: RakaniBigImage,
+  splash: SplashBigImage,
+  elara: ElaraBigImage,
+  aqualon: AqualonBigImage,
+  willow: WillowBigImage,
+  pollen: PollenBigImage,
+  darius_stormblade: DariusBigImage,
+  thalric: ThalricBigImage,
+  felwyn: FelwynSmallImage,
+  zira: ZiraSmallImage,
+  nivara: NivaraSmallImage,
+  voltryn: VoltrynSmallImage,
+  tentaculus: TentaculusSmallImage,
+  geng: GengSmallImage,
 };
 
 const heroTypeIcons: { [key: string]: React.ReactNode } = {
@@ -39,6 +79,7 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
   const user = useAppSelector((state) => state.app.game?.user) as User;
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   const userHeroCard: UserCard = useMemo(() => {
     return user.Cards.find((e) => e.card_slug === hero.slug);
@@ -58,13 +99,13 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
 
   const handleUpgradeCard = useCallback(async () => {
     if (user.coin_balance > hero.level[userHeroCard.card_level + 1].cost) {
-      if(loading) return;
+      if (loading) return;
       setLoading(true);
       let result = await axiosInterface.post("card/upgrade", {
         id: user.t_user_id,
         card_slug: hero.slug,
       });
-      setLoading(false)
+      setLoading(false);
       if (result.data.success) {
         dispatch(
           updateHeroCards({
@@ -77,16 +118,39 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
     }
   }, [loading, dispatch, user, hero, onClose, userHeroCard]);
 
+  const handleClose = () => {
+    setHidden(true);
+    setTimeout(() => {
+      onClose();
+    }, 190);
+  };
+
   return (
-    <div className="absolute top-0 w-screen h-fit min-h-screen bg-[#171819e5] z-[1000] c-modal">
+    <div
+      className={`fixed top-0 w-screen h-fit min-h-screen bg-[#171819e5] z-[1000] c-modal ${
+        hidden ? "face-out-animation" : "face-in-animation"
+      }`}
+    >
       <img
         src={heroImages[userHeroCard.card_slug]}
         alt={hero.name}
-        className="absolute top-0 left-0 w-[100vw] h-[100vw]"
+        className={`absolute left-0 w-[100vw] h-[100vw] ${
+          hidden
+            ? "top-[100vh] hero-modal-content-close"
+            : "top-0 hero-modal-content"
+        }`}
       />
-      <div className="absolute top-[62.93vw] w-screen h-[20.05vw] bg-gradient-to-t from-[#171819] to-transparent"></div>
-      <div className="absolute top-[82.98vw] w-screen h-[calc(100vh-82.98vw)] bg-[#171819]"></div>
-      <div className="pt-[77.06vw] px-[7.73vw] pb-[8.8vw] absolute top-0 left-0 w-screen max-h-screen overflow-auto">
+      <div
+        className={`absolute top-[62.93vw] w-screen h-[20.05vw] bg-gradient-to-t from-[#171819] to-transparent ${
+          hidden ? "face-out-animation" : "face-in-animation"
+        }`}
+      ></div>
+      <div
+        className={`absolute top-[82.98vw] w-screen h-[calc(100vh-82.98vw)] bg-[#171819] ${
+          hidden ? "face-out-animation" : "face-in-animation"
+        }`}
+      ></div>
+      <div className="pt-[77.06vw] px-[7.73vw] pb-[8.8vw] absolute top-0 left-0 w-screen max-h-screen overflow-auto hero-modal-content">
         <div className="flex flex-col items-center">
           <div className="text-[9.6vw] font-bold text-[#EAEAEA] leading-none mb-[1.33vw]">
             {hero.name}
@@ -113,29 +177,33 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
           <div className="text-[4vw] font-normal text-[#AAAAAA] mb-[4.26vw] leading-none">
             Profit per Hour
           </div>
-          {hero.level.length - 1 > userHeroCard.card_level && (
-            <div className="h-[14.13vw] flex items-center px-[5.86vw] rounded-[2.66vw] bg-[#212326] mb-[1.6vw]">
-              <ArrowUpIcon className="w-[7.13vw] h-[4.1vw] mr-[4.26vw]" />
-              <span className="text-[8vw] font-bold text-[#FAB648] mr-[4vw]">{`+ ${
-                hero.level[userHeroCard.card_level].increase
-              } `}</span>
-              <div className="rounded-full w-[9.6vw] h-[9.6vw] flex items-center justify-center bg-[#FAB648]">
-                <DragonIcon fill="#674B1F" className="w-[9.02vw] h-[9.02vw]" />
+          {hero.level.length - 1 > userHeroCard.card_level ? (
+            <>
+              <div className="h-[14.13vw] flex items-center px-[5.86vw] rounded-[2.66vw] bg-[#212326] mb-[1.6vw]">
+                <ArrowUpIcon className="w-[7.13vw] h-[4.1vw] mr-[4.26vw]" />
+                <span className="text-[8vw] font-bold text-[#FAB648] mr-[4vw]">{`+ ${
+                  hero.level[userHeroCard.card_level].increase
+                } `}</span>
+                <div className="rounded-full w-[9.6vw] h-[9.6vw] flex items-center justify-center bg-[#FAB648]">
+                  <DragonIcon
+                    fill="#674B1F"
+                    className="w-[9.02vw] h-[9.02vw]"
+                  />
+                </div>
               </div>
-            </div>
-          )}
-          <div className="flex gap-[1.6vw] items-center mb-[6.93vw]">
-            <div className="flex items-center gap-[1.2vw] opacity-40">
-              <div className="text-[4vw] font-bold text-[#EAEAEA]">
-                +{hero.level[userHeroCard.card_level].profit}
-              </div>
-              <div className="rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center bg-[#FAB648]">
-                <DragonIcon fill="#674B1F" className="w-[4.22vw] h-[4.22vw]" />
-              </div>
-            </div>
+              <div className="flex gap-[1.6vw] items-center mb-[6.93vw]">
+                <div className="flex items-center gap-[1.2vw] opacity-40">
+                  <div className="text-[4vw] font-bold text-[#EAEAEA]">
+                    +{hero.level[userHeroCard.card_level].profit}
+                  </div>
+                  <div className="rounded-full w-[4.8vw] h-[4.8vw] flex items-center justify-center bg-[#FAB648]">
+                    <DragonIcon
+                      fill="#674B1F"
+                      className="w-[4.22vw] h-[4.22vw]"
+                    />
+                  </div>
+                </div>
 
-            {hero.level.length - 1 > userHeroCard.card_level && (
-              <>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-[4vw] h-[1.98vw] flex-none"
@@ -160,10 +228,24 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
                     />
                   </div>
                 </div>
-              </>
-            )}
-          </div>
-          {hero.level.length - 1 > userHeroCard.card_level && (
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="h-[14.13vw] flex items-center px-[5.86vw] rounded-[2.66vw] bg-[#212326] mb-[13.33vw]">
+                <span className="text-[8vw] font-bold text-[#FAB648] mr-[4vw]">{`+ ${
+                  hero.level[userHeroCard.card_level].profit
+                } `}</span>
+                <div className="rounded-full w-[9.6vw] h-[9.6vw] flex items-center justify-center bg-[#FAB648]">
+                  <DragonIcon
+                    fill="#674B1F"
+                    className="w-[9.02vw] h-[9.02vw]"
+                  />
+                </div>
+              </div>
+            </>
+          )}
+          {hero.level.length - 1 > userHeroCard.card_level ? (
             <div
               className={`w-full h-[18.13vw] rounded-[2.66vw] items-center justify-center gap-[2.66vw] flex ${
                 upgradable
@@ -186,6 +268,12 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
                 {hero.level[userHeroCard.card_level + 1].cost}
               </span>
             </div>
+          ) : (
+            <div className="w-full h-[18.13vw] rounded-[2.66vw] items-center justify-center gap-[2.66vw] flex bg-[#aaaaaa]">
+              <span className="text-[10.66vw] font-bold text-white">
+                Max Level
+              </span>
+            </div>
           )}
         </div>
         <div className="grid grid-cols-4 gap-y-[2.4vw] gap-x-[2.66vw]"></div>
@@ -193,7 +281,7 @@ const HeroModal: React.FC<HeroModalProps> = ({ hero, onClose }) => {
       <CircleXMarkIcon
         fill="#fa6648"
         className="w-[6.4vw] h-[6.4vw] absolute top-[8.26vw] right-[6.13vw]"
-        onClick={() => onClose()}
+        onClick={() => handleClose()}
       />
     </div>
   );

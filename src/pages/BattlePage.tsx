@@ -1,5 +1,5 @@
-import React from 'react'
-import MainLayout from '../layout/MainLayout'
+import React from "react";
+import MainLayout from "../layout/MainLayout";
 
 const BattlePage: React.FC = () => {
   return (
@@ -10,15 +10,18 @@ const BattlePage: React.FC = () => {
             Easy rider
           </div>
           <div className="text-[3.2vw] font-medium text-[#AAAAAA] text-center">
-            In order to enter the battle mode you need to hold 5<br /> fully
-            grown hero cards. Yes, yes, that isn’t easy to
-            <br /> achieve but you know how the sayin goes:
-            <br /> “The harder the battle, the sweeter the victory.”
+            Maximize your heroes and be prepared for Wallachia’s grand
+            <br />
+            opening. Gaining early access offers significant advantages.
+            <br />
+            Make sure to be there from day one. Stay tuned for updates
+            <br />
+            and don’t miss out!
           </div>
         </div>
       </div>
     </MainLayout>
-  )
-}
+  );
+};
 
-export default BattlePage
+export default BattlePage;

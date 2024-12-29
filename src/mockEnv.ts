@@ -24,10 +24,10 @@ if (process.env.NODE_ENV === 'development') {
   if (shouldMock) {
     const initDataRaw = new URLSearchParams([
       ['user', JSON.stringify({
-        id: 99281932,
-        first_name: 'Andrew',
-        last_name: 'Rogue',
-        username: 'rogue',
+        id: 458862687,
+        first_name: 'Vitalie the Bull',
+        last_name: '',
+        username: 'Vitalie_the_BULL',
         language_code: 'en',
         is_premium: true,
         allows_write_to_pm: true,

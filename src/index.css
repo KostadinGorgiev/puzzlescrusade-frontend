@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -38,4 +38,90 @@ code {
 
 .main-layout:has(.c-modal) {
   overflow: hidden;
+}
+
+.face-in-animation {
+  animation-name: FadeIn;
+  animation-duration: 0.7s;
+}
+
+.face-out-animation {
+  animation-name: FadeOut;
+  animation-duration: 0.2s;
+}
+
+.hero-modal-content {
+  animation-name: HeroModalContent;
+  animation-duration: 0.7s;
+}
+
+.hero-modal-content-close {
+  animation-name: HeroModalContentClose;
+  animation-duration: 0.2s;
+}
+
+.slide-top-animation {
+  animation: SlideTopIn 0.3s forwards;
+}
+
+.slide-top-out-animation {
+  animation: SlideTopOut 0.3s forwards;
+}
+
+@keyframes HeroModalContent {
+  from {
+    top: 100vh;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes HeroModalContentClose {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 100vh;
+  }
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes FadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes SlideTopIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes SlideTopOut {
+  from {
+    /* transform: translateY(0); */
+    opacity: 1;
+  }
+  to {
+    /* transform: translateY(100%); */
+    opacity: 0;
+  }
 }

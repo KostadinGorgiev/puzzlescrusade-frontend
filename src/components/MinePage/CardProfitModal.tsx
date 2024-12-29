@@ -2,11 +2,13 @@ import React, { useCallback, useMemo, useState } from "react";
 import { User } from "../../types/types";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import axiosInterface from "../../utils/axios";
-import MinerImage from "../../assets/images/introduction/step2.png";
+import MinerImage from "../../assets/images/collect/fennel.png";
 import DragonIcon from "../../Icons/DragonIcon";
 import levelConfig from "../../config/config.json";
 import moment from "moment";
 import { claimCardProfit } from "../../store/appSlice";
+import { useAdsgram } from "../../utils/useAdgram";
+import CameraMovieIcon from "../../Icons/CameraMovieIcon";
 
 interface CardProfitModalProps {
   onClose: () => void;
@@ -39,24 +41,58 @@ const CardProfitModal: React.FC<CardProfitModalProps> = ({ onClose }) => {
     return profitPerHour * diffHrs;
   }, [user]);
 
-  const handleClaimCardProfit = useCallback(async () => {
-    if (loading) return;
-    setLoading(true);
-    let result = await axiosInterface.post("card/claim", {
-      id: user.t_user_id,
-      time: user.serverTime,
-      last_claim: user.CardClaim.last_claim,
+  const handleClaimCardProfit = useCallback(
+    async (doubleCliam: boolean) => {
+      if (loading) return;
+      setLoading(true);
+      let result = await axiosInterface.post("card/claim", {
+        id: user.t_user_id,
+        time: user.serverTime,
+        last_claim: user.CardClaim.last_claim,
+        doubleCliam,
+      });
+      setLoading(false);
+      if (result.data.success)
+        dispatch(
+          claimCardProfit({
+            coin_balance: result.data.coin_balance,
+            level_point: result.data.level_point,
+          })
+        );
+      onClose();
+    },
+    [loading, user, dispatch, onClose]
+  );
+
+  const ShowAdButton = () => {
+    const onReward = useCallback(() => {
+      handleClaimCardProfit(true);
+    }, []);
+    const onError = useCallback((result: any) => {
+      alert(JSON.stringify(result, null, 4));
+    }, []);
+
+    /**
+     * insert your-block-id
+     */
+    const showAd = useAdsgram({
+      blockId: process.env.REACT_APP_ADSGRAM_BLOCK_ID as string,
+      onReward,
+      onError,
     });
-    setLoading(false);
-    if (result.data.success)
-      dispatch(
-        claimCardProfit({
-          coin_balance: result.data.coin_balance,
-          level_point: result.data.level_point,
-        })
-      );
-    onClose();
-  },[loading, user, dispatch, onClose]);
+
+    return (
+      <div
+        className="w-[84.53vw] h-[18.13vw] rounded-[2.66vw] bg-[#FAB648] flex items-center justify-center mb-[1.86vw] gap-[5.33vw]"
+        onClick={() => showAd()}
+      >
+        <span className="text-[6.93vw] font-black text-[#221E33]">
+          DOUBLE REWARD
+        </span>
+        <CameraMovieIcon className="w-[5.2vw] h-[5.2vw] flex-none" />
+      </div>
+    );
+  };
 
   if (Math.floor(profitAmount) > 0) {
     return (
@@ -64,7 +100,7 @@ const CardProfitModal: React.FC<CardProfitModalProps> = ({ onClose }) => {
         <img
           src={MinerImage}
           alt="Miner"
-          className="absolute top-[6.93vw] left-[12vw] w-[76.26vw] h-[112vw]"
+          className="absolute top-[6.93vw] left-[0.7vw] w-[98.66vw] h-auto"
         />
         <div className="absolute top-[62.93vw] w-screen h-[20.05vw] bg-gradient-to-t from-[#171819] to-transparent"></div>
         <div className="absolute top-[82.98vw] w-screen h-[calc(100vh-82.98vw)] bg-[#171819]"></div>
@@ -89,11 +125,12 @@ const CardProfitModal: React.FC<CardProfitModalProps> = ({ onClose }) => {
                 {Math.floor(profitAmount)}
               </div>
             </div>
+            <ShowAdButton />
             <div
-              className="w-[84.53vw] h-[18.13vw] rounded-[2.66vw] bg-[#FAB648] flex items-center justify-center mb-[4.53vw]"
-              onClick={() => handleClaimCardProfit()}
+              className="w-[53.6vw] h-[8.26vw] rounded-[2.66vw] bg-[#EAEAEA] flex items-center justify-center mb-[4.53vw]"
+              onClick={() => handleClaimCardProfit(false)}
             >
-              <span className="text-[8vw] font-black text-[#221E33]">
+              <span className="text-[4.26vw] font-black text-[#221E33]">
                 COLLECT
               </span>
             </div>

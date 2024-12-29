@@ -24,7 +24,7 @@ const ProfilePage: React.FC = () => {
           />
           <div className="w-[23.46vw] h-[23.46vw] rounded-full bg-white overflow-hidden mb-[4.26vw]">
             <img
-              src={ProfileImage}
+              src={user.photo_url ? user.photo_url : ProfileImage}
               alt="Elbowbeard"
               className="w-full h-full"
             />
@@ -101,10 +101,11 @@ const ProfilePage: React.FC = () => {
                 />
               </div>
             </div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center">
               <span className="text-[4.26vw] font-bold text-[#FAB648]">
-                You don't have
-                <br /> any heroes yet.
+                Your heroes will show up here,
+                <br />
+                when you bring them to max level.
               </span>
             </div>
           </div>

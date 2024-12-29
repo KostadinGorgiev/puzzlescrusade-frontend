@@ -13,11 +13,13 @@ const CardsPage: React.FC = () => {
     <MainLayout>
       <div className="py-[7.2vw] px-[5.6vw] w-screen flex flex-col items-center">
         <div className="text-[6.4vw] font-bold text-[#EAEAEA] mb-[5.6vw]">
-          Build your deck
+          Prepare for Airdrop
         </div>
-        <div className="text-[3.2vw] font-medium text-[#AAAAAA] mb-[4.8vw]">
-          Train your skills to explore and conquer the amazing
-          <br /> world of Puzzles Crusade and mint NFT Heroes.
+        <div className="text-[3.2vw] font-medium text-[#AAAAAA] mb-[4.8vw] text-center">
+          Build your deck with powerful hero cards! Max their <br />
+          levels to unlock them for Battle Mode, earn extra coins
+          <br />
+          as passive income and climb the leaderboard.
         </div>
         <div className="relative">
           <div className="w-screen">
@@ -26,10 +28,6 @@ const CardsPage: React.FC = () => {
                 <HeroComponent
                   hero={hero}
                   onClick={() => {
-                    document.querySelector(".main-layout")?.scrollTo({
-                      top: 0,
-                      behavior: "auto",
-                    });
                     setSelectedHero(hero);
                   }}
                   key={index}

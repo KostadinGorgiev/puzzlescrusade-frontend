@@ -18,6 +18,7 @@ import { ExpandedTGUser } from "../types/types";
 import Loading from "./Loading/Loading";
 import Introduction from "./Introduction/Introduction";
 import socketIo from "socket.io-client";
+import ErrorPage from "../pages/ErrorPage";
 
 const App: React.FC = () => {
   const activePage = useAppSelector((state) => state.app.activePage);
@@ -47,9 +48,9 @@ const App: React.FC = () => {
   useEffect(() => {
     if (initUser)
       dispatch(initializeUser(initUser)).then(() => {
-        setTimeout(() => {
-          dispatch(setLoading(false));
-        }, 3000);
+        // setTimeout(() => {
+        dispatch(setLoading(false));
+        // }, 3000);
       });
     initSocket();
   }, [initUser]);
@@ -64,13 +65,16 @@ const App: React.FC = () => {
       socket.on("card_profit", (data) => {
         dispatch(claimCardProfitSocket(data.coin));
       });
+      socket.on("ternimate_session", (data) => {
+        miniApp.close();
+      });
     }
   };
 
   if (loading) {
     return <Loading />;
   } else if (!user) {
-    return <div className="">Error when fetch user data</div>;
+    return <ErrorPage />;
   } else if (user.isNew) {
     return <Introduction />;
   } else {

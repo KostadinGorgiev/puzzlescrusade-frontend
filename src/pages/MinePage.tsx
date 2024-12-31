@@ -13,7 +13,7 @@ import { coinsNeedLevelUp, userEnergySize, userLevel } from "../utils/service";
 import moment from "moment";
 import DailyCheckInModal from "../components/MinePage/DailyCheckInModal";
 import CardProfitModal from "../components/MinePage/CardProfitModal";
-import CraftIcon from "../Icons/CraftIcon";
+// import CraftIcon from "../Icons/CraftIcon";
 
 interface MinePageProps {
   showBoost?: boolean;
@@ -236,7 +236,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center w-[12.8vw] h-[12.8vw] rounded-r-[1.6vw] bg-[#FA6648] gap-[0.8vw] absolute left-0 top-[58.4vw]" onClick={() => dispatch(changePage("portion"))}>
-          <CraftIcon className="w-[7.2vw] h-[7.2vw] flex-none" fill="#221E33" />
+          {/* <CraftIcon className="w-[7.2vw] h-[7.2vw] flex-none" fill="#221E33" /> */}
           <span className="text-[2.6vw] font-bold text-[#221E33] leading-none">
             CRAFT
           </span>

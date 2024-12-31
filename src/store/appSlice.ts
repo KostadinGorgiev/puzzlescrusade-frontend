@@ -116,10 +116,10 @@ export const appSlice = createSlice({
           }
           state.game.user.coin_balance =
             state.game.user.coin_balance +
-            levelConfig.tapMultipler[state.game.user.tap_multipler_level].to;
+            levelConfig.tapMultipler[state.game.user.tap_multipler_level].to * 3;
           state.game.user.level_point =
             state.game.user.level_point +
-            levelConfig.tapMultipler[state.game.user.tap_multipler_level].to;
+            levelConfig.tapMultipler[state.game.user.tap_multipler_level].to * 3;
           state.game.user.energy_point =
             state.game.user.energy_point - 1 > 0
               ? state.game.user.energy_point - 1

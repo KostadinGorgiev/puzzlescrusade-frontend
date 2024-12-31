@@ -31,7 +31,7 @@ import NivaraSmallImage from "../../assets/images/heros/small/nivara.png";
 import VoltrynSmallImage from "../../assets/images/heros/small/voltryn.png";
 import TentaculusSmallImage from "../../assets/images/heros/small/tentaculus.png";
 import GengSmallImage from "../../assets/images/heros/small/geng.png";
-import moment from "moment-timezone";
+import JingleSmallImage from "../../assets/images/heros/small/jingle.png";
 
 interface HeroComponentProps {
   hero: any;
@@ -70,6 +70,7 @@ const heroImages: { [key: string]: string } = {
   voltryn: VoltrynSmallImage,
   tentaculus: TentaculusSmallImage,
   geng: GengSmallImage,
+  jingle: JingleSmallImage,
 };
 
 const HeroComponent: React.FC<HeroComponentProps> = ({ hero, onClick }) => {

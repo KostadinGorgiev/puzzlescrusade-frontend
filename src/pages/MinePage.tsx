@@ -30,7 +30,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
 
   const levelProgress = () => {
     let level = userLevel(user.level_point);
-    return ((user.level_point) * 100) / (level.to);
+    return (user.level_point * 100) / level.to;
     // return ((user.level_point - level.from) * 100) / (level.to - level.from);
   };
 
@@ -123,6 +123,15 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
     }
 
     return profitPerHour;
+  }, [user]);
+
+  const showPortion = useMemo(() => {
+    let userIds = [6469354442, 813830716, 458862687, 1790465451];
+    if (userIds.find((e) => e === user.t_user_id)) {
+      return true;
+    } else {
+      return false;
+    }
   }, [user]);
 
   return (
@@ -235,12 +244,20 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center w-[12.8vw] h-[12.8vw] rounded-r-[1.6vw] bg-[#FA6648] gap-[0.8vw] absolute left-0 top-[58.4vw]" onClick={() => dispatch(changePage("portion"))}>
-          <CraftIcon className="w-[7.2vw] h-[7.2vw] flex-none" fill="#221E33" />
-          <span className="text-[2.6vw] font-bold text-[#221E33] leading-none">
-            CRAFT
-          </span>
-        </div>
+        {showPortion && (
+          <div
+            className="flex flex-col items-center justify-center w-[12.8vw] h-[12.8vw] rounded-r-[1.6vw] bg-[#FA6648] gap-[0.8vw] absolute left-0 top-[58.4vw]"
+            onClick={() => dispatch(changePage("portion"))}
+          >
+            <CraftIcon
+              className="w-[7.2vw] h-[7.2vw] flex-none"
+              fill="#221E33"
+            />
+            <span className="text-[2.6vw] font-bold text-[#221E33] leading-none">
+              CRAFT
+            </span>
+          </div>
+        )}
       </div>
       {showBoost && <BoostModal />}
       {showDailylCheckIn && <DailyCheckInModal />}

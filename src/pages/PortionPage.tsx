@@ -22,15 +22,19 @@ const PortionPage: React.FC<PortionPageProps> = () => {
   const [time, setTime] = useState<Moment>();
   const [clickedIngredient, setClickedIngredient] = useState<string>("");
   const [wrongAttempt, setWrongAttempt] = useState<boolean>(false);
+  const [currentIngredients, setCurrentIngredients] = useState<string[]>([]);
+  const [randomIngredients, setRandomIngredients] = useState<any[]>([]);
 
-  const currentIngredients = useMemo(() => {
+  useEffect(() => {
     let recipe = levelConfig.recipes.find(
       (e) => e.key === user.UserCurrentPortion.current_recipe
     );
-    return recipe?.ingredients;
-  }, [user.UserCurrentPortion]);
+    if (recipe) {
+      setCurrentIngredients(recipe.ingredients);
+    }
+  }, [user.UserCurrentPortion.current_recipe]);
 
-  const randomIngredients = useMemo(() => {
+  useEffect(() => {
     const result = getRandomElements(levelConfig.ingredients, 4);
     if (currentIngredients) {
       let includeIngredient = levelConfig.ingredients.find(
@@ -39,11 +43,11 @@ const PortionPage: React.FC<PortionPageProps> = () => {
           currentIngredients[user.UserCurrentPortion.current_ingredient_index]
       );
 
-      return shuffleArray([...result, includeIngredient]);
+      setRandomIngredients(shuffleArray([...result, includeIngredient]));
     } else {
-      return shuffleArray(result);
+      setRandomIngredients(shuffleArray(result));
     }
-  }, [user.UserCurrentPortion, currentIngredients]);
+  }, [currentIngredients, user.UserCurrentPortion.current_ingredient_index]);
 
   const showFailedCounter = useMemo(() => {
     return (

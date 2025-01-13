@@ -28,7 +28,7 @@ const PortionPage: React.FC<PortionPageProps> = () => {
       (e) => e.key === user.UserCurrentPortion.current_recipe
     );
     return recipe?.ingredients;
-  }, [user]);
+  }, [user.UserCurrentPortion]);
 
   const randomIngredients = useMemo(() => {
     const result = getRandomElements(levelConfig.ingredients, 4);
@@ -43,7 +43,7 @@ const PortionPage: React.FC<PortionPageProps> = () => {
     } else {
       return shuffleArray(result);
     }
-  }, [user, currentIngredients]);
+  }, [user.UserCurrentPortion, currentIngredients]);
 
   const showFailedCounter = useMemo(() => {
     return (

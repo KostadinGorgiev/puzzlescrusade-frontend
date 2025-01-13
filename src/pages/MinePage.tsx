@@ -127,9 +127,9 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
 
   const showPortion = useMemo(() => {
     let userIds = [6469354442, 813830716, 458862687, 1790465451];
-    console.log('show portion', userIds, user.t_user_id, userIds.find((e) => e === user.t_user_id));
+    console.log('show portion', userIds, user.t_user_id, userIds.find((e) => e == user.t_user_id));
     
-    if (userIds.find((e) => e === user.t_user_id)) {
+    if (userIds.find((e) => e == user.t_user_id)) {
       return true;
     } else {
       return false;

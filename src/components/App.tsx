@@ -19,6 +19,7 @@ import Loading from "./Loading/Loading";
 import Introduction from "./Introduction/Introduction";
 import socketIo from "socket.io-client";
 import ErrorPage from "../pages/ErrorPage";
+import PortionPage from "../pages/PortionPage";
 
 const App: React.FC = () => {
   const activePage = useAppSelector((state) => state.app.activePage);
@@ -95,6 +96,8 @@ const App: React.FC = () => {
         return <DailyCheckInPage />;
       case "battle":
         return <BattlePage />;
+      case "portion":
+        return <PortionPage />;
       default:
         return <MinePage />;
     }

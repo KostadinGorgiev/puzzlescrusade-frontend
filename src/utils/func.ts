@@ -18,3 +18,18 @@ export function formatNumber(num: number): string {
   // If no match, return the number as is
   return num.toString();
 }
+
+export function getRandomElements(arr: any[], num: number): any[] {
+  // Shuffle the array
+  const shuffled = arr.sort(() => 0.5 - Math.random());
+  // Return the first `num` elements from the shuffled array
+  return shuffled.slice(0, num);
+}
+
+export function shuffleArray(arr: any[]) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}

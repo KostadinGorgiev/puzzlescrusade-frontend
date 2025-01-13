@@ -68,6 +68,10 @@ code {
   animation: SlideTopOut 0.3s forwards;
 }
 
+.wrong-attempt {
+  animation: wrongAttempt 0.1s infinite;
+}
+
 @keyframes HeroModalContent {
   from {
     top: 100vh;
@@ -123,5 +127,17 @@ code {
   to {
     /* transform: translateY(100%); */
     opacity: 0;
+  }
+}
+
+@keyframes wrongAttempt {
+  0%,
+  100% {
+    transform: translateX(-4%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateX(4%);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }

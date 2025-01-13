@@ -13,6 +13,7 @@ import { coinsNeedLevelUp, userEnergySize, userLevel } from "../utils/service";
 import moment from "moment";
 import DailyCheckInModal from "../components/MinePage/DailyCheckInModal";
 import CardProfitModal from "../components/MinePage/CardProfitModal";
+import CraftIcon from "../Icons/CraftIcon";
 
 interface MinePageProps {
   showBoost?: boolean;
@@ -126,7 +127,7 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
 
   return (
     <MainLayout>
-      <div className="p-[6.13vw]">
+      <div className="p-[6.13vw] relative">
         <div className="flex gap-[4.26vw] mb-[6.4vw]">
           <div className="w-full h-[11.2vw] p-[1.6vw] flex flex-col items-center gap-[1.6vw] rounded-[1.6vw] bg-[#4B4955] bg-opacity-70 cursor-pointer">
             <span className="text-[2.4vw] font-medium text-[#EAEAEA] leading-none">
@@ -233,6 +234,12 @@ const MinePage: React.FC<MinePageProps> = ({ showBoost = false }) => {
               </span>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col items-center justify-center w-[12.8vw] h-[12.8vw] rounded-r-[1.6vw] bg-[#FA6648] gap-[0.8vw] absolute left-0 top-[58.4vw]" onClick={() => dispatch(changePage("portion"))}>
+          <CraftIcon className="w-[7.2vw] h-[7.2vw] flex-none" fill="#221E33" />
+          <span className="text-[2.6vw] font-bold text-[#221E33] leading-none">
+            CRAFT
+          </span>
         </div>
       </div>
       {showBoost && <BoostModal />}

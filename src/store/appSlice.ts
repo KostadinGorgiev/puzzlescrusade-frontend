@@ -9,6 +9,7 @@ import {
   User,
   UserCard,
   Referral,
+  UserCurrentPortion,
 } from "../types/types";
 import axiosInterface from "../utils/axios";
 import levelConfig from "../config/config.json";
@@ -253,6 +254,14 @@ export const appSlice = createSlice({
         ];
       }
     },
+    setUserPortion: (state, action: PayloadAction<UserCurrentPortion>) => {
+      if (state.game.user) state.game.user.UserCurrentPortion = action.payload;
+    },
+    updateCoinBalance: (state, action: PayloadAction<{ balance: number }>) => {
+      if (state.game.user) {
+        state.game.user.coin_balance = action.payload.balance;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(initializeUser.fulfilled, (state, action) => {
@@ -294,6 +303,8 @@ export const {
   claimCardProfitSocket,
   closeLevelUpScreen,
   loadMoreReferrals,
+  setUserPortion,
+  updateCoinBalance,
 } = appSlice.actions;
 
 export const getPage = (state: RootState) => state.app.activePage;

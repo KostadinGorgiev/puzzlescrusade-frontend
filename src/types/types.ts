@@ -9,7 +9,8 @@ export type ActivePage =
   | "earn"
   | "daily-checkin"
   | "battle"
-  | "profile";
+  | "profile"
+  | "portion";
 
 export type LayoutBackground = "image" | "gradient-color";
 
@@ -67,6 +68,7 @@ export type User = {
   DailyCheckIn: DailyCheckIn;
   Cards: UserCard[];
   CardClaim: CardClaim;
+  UserCurrentPortion: UserCurrentPortion;
   isNew: boolean;
 };
 
@@ -120,6 +122,20 @@ export type DailyCheckIn = {
 export type CardClaim = {
   id: number;
   user_id: number;
+  last_claim: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UserCurrentPortion = {
+  id: number;
+  user_id: number;
+  current_recipe: string;
+  current_ingredient_index: number;
+  wrong_attempt_count: number;
+  wrong_attempt_time: string;
+  is_crafted: boolean;
+  craft_time: string;
   last_claim: string;
   createdAt: string;
   updatedAt: string;

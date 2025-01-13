@@ -299,56 +299,70 @@ const PortionPage: React.FC<PortionPageProps> = () => {
                   </div>
                 )}
               </div>
-              <Ingredient
-                name={randomIngredients[0].name}
-                className={`w-[70px] h-[70px] absolute top-[0px] left-[129px] ${
-                  clickedIngredient === randomIngredients[0].name &&
-                  wrongAttempt
-                    ? "wrong-attempt"
-                    : ""
-                }`}
-                onClick={() => handleClickIngredient(randomIngredients[0].name)}
-              />
-              <Ingredient
-                name={randomIngredients[1].name}
-                className={`w-[70px] h-[70px] absolute top-[80px] left-[29px] ${
-                  clickedIngredient === randomIngredients[1].name &&
-                  wrongAttempt
-                    ? "wrong-attempt"
-                    : ""
-                }`}
-                onClick={() => handleClickIngredient(randomIngredients[1].name)}
-              />
-              <Ingredient
-                name={randomIngredients[2].name}
-                className={`w-[70px] h-[70px] absolute top-[80px] left-[230px] ${
-                  clickedIngredient === randomIngredients[2].name &&
-                  wrongAttempt
-                    ? "wrong-attempt"
-                    : ""
-                }`}
-                onClick={() => handleClickIngredient(randomIngredients[2].name)}
-              />
-              <Ingredient
-                name={randomIngredients[3].name}
-                className={`w-[70px] h-[70px] absolute top-[184px] left-[65px] ${
-                  clickedIngredient === randomIngredients[3].name &&
-                  wrongAttempt
-                    ? "wrong-attempt"
-                    : ""
-                }`}
-                onClick={() => handleClickIngredient(randomIngredients[3].name)}
-              />
-              <Ingredient
-                name={randomIngredients[4].name}
-                className={`w-[70px] h-[70px] absolute top-[184px] left-[194px] ${
-                  clickedIngredient === randomIngredients[4].name &&
-                  wrongAttempt
-                    ? "wrong-attempt"
-                    : ""
-                }`}
-                onClick={() => handleClickIngredient(randomIngredients[4].name)}
-              />
+              {randomIngredients.length > 0 && (
+                <>
+                  <Ingredient
+                    name={randomIngredients[0].name}
+                    className={`w-[70px] h-[70px] absolute top-[0px] left-[129px] ${
+                      clickedIngredient === randomIngredients[0].name &&
+                      wrongAttempt
+                        ? "wrong-attempt"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleClickIngredient(randomIngredients[0].name)
+                    }
+                  />
+                  <Ingredient
+                    name={randomIngredients[1].name}
+                    className={`w-[70px] h-[70px] absolute top-[80px] left-[29px] ${
+                      clickedIngredient === randomIngredients[1].name &&
+                      wrongAttempt
+                        ? "wrong-attempt"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleClickIngredient(randomIngredients[1].name)
+                    }
+                  />
+                  <Ingredient
+                    name={randomIngredients[2].name}
+                    className={`w-[70px] h-[70px] absolute top-[80px] left-[230px] ${
+                      clickedIngredient === randomIngredients[2].name &&
+                      wrongAttempt
+                        ? "wrong-attempt"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleClickIngredient(randomIngredients[2].name)
+                    }
+                  />
+                  <Ingredient
+                    name={randomIngredients[3].name}
+                    className={`w-[70px] h-[70px] absolute top-[184px] left-[65px] ${
+                      clickedIngredient === randomIngredients[3].name &&
+                      wrongAttempt
+                        ? "wrong-attempt"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleClickIngredient(randomIngredients[3].name)
+                    }
+                  />
+                  <Ingredient
+                    name={randomIngredients[4].name}
+                    className={`w-[70px] h-[70px] absolute top-[184px] left-[194px] ${
+                      clickedIngredient === randomIngredients[4].name &&
+                      wrongAttempt
+                        ? "wrong-attempt"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleClickIngredient(randomIngredients[4].name)
+                    }
+                  />
+                </>
+              )}
             </div>
             {showFailedCounter ? (
               <div className="">

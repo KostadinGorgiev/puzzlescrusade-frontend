@@ -147,13 +147,13 @@ const PortionPage: React.FC<PortionPageProps> = () => {
 
     return (
       <button
-        className="h-[28px] flex items-center px-[8px] gap-[8px] border-[1px] border-[#AAAAAA] bg-[#FAB648] rounded-[4px]"
+        className="h-[7.47vw] flex items-center px-[2.13vw] gap-[2.13vw] border-[0.27vw] border-[#AAAAAA] bg-[#FAB648] rounded-[1.07vw]"
         onClick={() => showAd()}
       >
-        <span className="text-[9px] font-extrabold text-[#221E33]">
+        <span className="text-[2.4vw] font-extrabold text-[#221E33]">
           Watch an ad
         </span>
-        <CameraMovieIcon className="w-[15px] h-[15px] flex-none" />
+        <CameraMovieIcon className="w-[4vw] h-[4vw] flex-none" />
       </button>
     );
   };
@@ -195,78 +195,77 @@ const PortionPage: React.FC<PortionPageProps> = () => {
     });
     if (result.data.success) dispatch(setUserPortion(result.data.result));
   };
-  console.log(levelConfig.recipes.length);
 
   return (
     <MainLayout bg="gradient-color">
-      <div className="p-[6.13vw] text-center">
-        <div className="text-[24px] font-bold text-[#EAEAEA] mb-[21px]">
+      <div className="p-[16.35vw] text-center">
+        <div className="text-[6.4vw] font-bold text-[#EAEAEA] mb-[5.6vw]">
           Find the formula
         </div>
-        <div className="text-[12px] font-medium text-[#AAAAAA] mb-[21px] leading-none">
+        <div className="text-[3.2vw] font-medium text-[#AAAAAA] mb-[5.6vw] leading-none">
           Find all 5 secret ingredients
           <br />
           and craft a magical potion
         </div>
-        <div className="flex justify-between gap-[10px] mb-[20px]">
+        <div className="flex justify-between gap-[2.67vw] mb-[5.33vw]">
           {currentIngredients &&
             currentIngredients.map((ingredient, index) => {
               if (index < user.UserCurrentPortion.current_ingredient_index) {
                 return (
                   <div
-                    className="w-[59px] h-[59px] bg-[#149d5427] border-[2px] border-[#119D52] flex items-center justify-center"
+                    className="w-[15.73vw] h-[15.73vw] bg-[#149d5427] border-[0.53vw] border-[#119D52] flex items-center justify-center"
                     key={index}
                   >
                     <Ingredient
                       name={ingredient}
-                      className="w-[49px] h-[49px] flex-none"
+                      className="w-[13.07vw] h-[13.07vw] flex-none"
                     />
                   </div>
                 );
               } else {
                 return (
-                  <div className="w-[59px] h-[59px] bg-white" key={index}></div>
+                  <div className="w-[15.73vw] h-[15.73vw] bg-white" key={index}></div>
                 );
               }
             })}
         </div>
         {showCraft ? (
-          <div className="relative w-full pt-[30px] pb-[24px]">
+          <div className="relative w-full pt-[8vw] pb-[6.4vw]">
             <div className="relative z-20 flex flex-col items-center">
               <img
                 src={CraftJarImage}
                 alt="Craft Jar"
-                className="w-[173px] h-[242px] mb-[24px]"
+                className="w-[46.13vw] h-[64.53vw] mb-[6.4vw]"
               />
               {user.UserCurrentPortion.is_crafted ? (
                 showCollect ? (
                   <button
-                    className="w-[147px] h-[42px] rounded-[10px] bg-[#FAB648] flex items-center justify-center border-none outline-none"
+                    className="w-[39.2vw] h-[11.2vw] rounded-[2.67vw] bg-[#FAB648] flex items-center justify-center border-none outline-none"
                     onClick={() => handleCollectPortion()}
                   >
-                    <span className="text-[24px] font-bold text-[#221E33] uppercase">
+                    <span className="text-[6.4vw] font-bold text-[#221E33] uppercase">
                       Collect
                     </span>
                   </button>
                 ) : (
-                  <button className="w-[147px] h-[42px] rounded-[10px] bg-[#EAEAEA] flex items-center justify-center border-none outline-none">
-                    <span className="text-[24px] font-bold text-[#AAAAAA] uppercase">
+                  <button className="w-[39.2vw] h-[11.2vw] rounded-[2.67vw] bg-[#EAEAEA] flex items-center justify-center border-none outline-none">
+                    <span className="text-[6.4vw] font-bold text-[#AAAAAA] uppercase">
                       Collect
                     </span>
                   </button>
                 )
               ) : (
                 <button
-                  className="w-[147px] h-[42px] rounded-[10px] bg-[#FAB648] flex items-center justify-center border-none outline-none"
+                  className="w-[39.2vw] h-[11.2vw] rounded-[2.67vw] bg-[#FAB648] flex items-center justify-center border-none outline-none"
                   onClick={() => handleCraftPortion()}
                 >
-                  <span className="text-[24px] font-bold text-[#221E33] uppercase">
+                  <span className="text-[6.4vw] font-bold text-[#221E33] uppercase">
                     Craft
                   </span>
                 </button>
               )}
             </div>
-            <div className="w-[240px] h-[240px] absolute top-[38px] left-1/2 -translate-x-1/2 opacity-[0.26] rounded-full bg-white">
+            <div className="w-[64vw] h-[64vw] absolute top-[10.13vw] left-1/2 -translate-x-1/2 opacity-[0.26] rounded-full bg-white">
               <img
                 src={CraftAuraImage}
                 alt="Craft Aura"
@@ -275,17 +274,17 @@ const PortionPage: React.FC<PortionPageProps> = () => {
               />
             </div>
             {!showCollect && user.UserCurrentPortion.is_crafted && (
-              <div className="text-[60px] font-bold text-[#EAEAEA] absolute w-full text-center left-0 top-[45px]">
+              <div className="text-[16vw] font-bold text-[#EAEAEA] absolute w-full text-center left-0 top-[12vw]">
                 {craftTimeCounter}
               </div>
             )}
           </div>
         ) : (
           <>
-            <div className="relative pt-[34px] pb-[18px] px-[61px] flex items-center justify-center mb-[15px]">
-              <div className="w-[206px] h-[206px] bg-[#ffffff18] rounded-full border-[1px] border-[#B5B4B4] flex-none flex items-center justify-center">
+            <div className="relative pt-[9.07vw] pb-[4.8vw] px-[16.27vw] flex items-center justify-center mb-[4vw]">
+              <div className="w-[54.93vw] h-[54.93vw] bg-[#ffffff18] rounded-full border-[0.27vw] border-[#B5B4B4] flex-none flex items-center justify-center">
                 {showFailedCounter && (
-                  <div className="text-[70px] font-extrabold text-[#EAEAEA]">
+                  <div className="text-[18.67vw] font-extrabold text-[#EAEAEA]">
                     {60 -
                       moment
                         .tz(time, user.serverTimezone)
@@ -303,7 +302,7 @@ const PortionPage: React.FC<PortionPageProps> = () => {
                 <>
                   <Ingredient
                     name={randomIngredients[0]?.name}
-                    className={`w-[70px] h-[70px] absolute top-[0px] left-[129px] ${
+                    className={`w-[18.67vw] h-[18.67vw] absolute top-[0vw] left-[34.4vw] ${
                       clickedIngredient === randomIngredients[0]?.name &&
                       wrongAttempt
                         ? "wrong-attempt"
@@ -315,7 +314,7 @@ const PortionPage: React.FC<PortionPageProps> = () => {
                   />
                   <Ingredient
                     name={randomIngredients[1]?.name}
-                    className={`w-[70px] h-[70px] absolute top-[80px] left-[29px] ${
+                    className={`w-[18.67vw] h-[18.67vw] absolute top-[21.33vw] left-[7.73vw] ${
                       clickedIngredient === randomIngredients[1]?.name &&
                       wrongAttempt
                         ? "wrong-attempt"
@@ -327,7 +326,7 @@ const PortionPage: React.FC<PortionPageProps> = () => {
                   />
                   <Ingredient
                     name={randomIngredients[2]?.name}
-                    className={`w-[70px] h-[70px] absolute top-[80px] left-[230px] ${
+                    className={`w-[18.67vw] h-[18.67vw] absolute top-[21.33vw] left-[61.33vw] ${
                       clickedIngredient === randomIngredients[2]?.name &&
                       wrongAttempt
                         ? "wrong-attempt"
@@ -339,7 +338,7 @@ const PortionPage: React.FC<PortionPageProps> = () => {
                   />
                   <Ingredient
                     name={randomIngredients[3]?.name}
-                    className={`w-[70px] h-[70px] absolute top-[184px] left-[65px] ${
+                    className={`w-[18.67vw] h-[18.67vw] absolute top-[49.07vw] left-[17.33vw] ${
                       clickedIngredient === randomIngredients[3]?.name &&
                       wrongAttempt
                         ? "wrong-attempt"
@@ -351,7 +350,7 @@ const PortionPage: React.FC<PortionPageProps> = () => {
                   />
                   <Ingredient
                     name={randomIngredients[4]?.name}
-                    className={`w-[70px] h-[70px] absolute top-[184px] left-[194px] ${
+                    className={`w-[18.67vw] h-[18.67vw] absolute top-[49.07vw] left-[51.73vw] ${
                       clickedIngredient === randomIngredients[4]?.name &&
                       wrongAttempt
                         ? "wrong-attempt"
@@ -366,33 +365,33 @@ const PortionPage: React.FC<PortionPageProps> = () => {
             </div>
             {showFailedCounter ? (
               <div className="">
-                <div className="text-[16px] font-medium text-[#EAEAEA] mb-[15px] leading-none">
+                <div className="text-[4.27vw] font-medium text-[#EAEAEA] mb-[4vw] leading-none">
                   Don't want to wait?
                 </div>
-                <div className="flex items-center gap-[8px] w-full justify-center">
+                <div className="flex items-center gap-[2.13vw] w-full justify-center">
                   <ShowAdButton />
-                  <span className="text-[16px] font-medium text-[#EAEAEA]">
+                  <span className="text-[4.27vw] font-medium text-[#EAEAEA]">
                     OR
                   </span>
                   <button
-                    className="h-[28px] flex items-center px-[8px] gap-[6px] border-[1px] border-[#AAAAAA] bg-[#FAB648] rounded-[4px]"
+                    className="h-[7.47vw] flex items-center px-[2.13vw] gap-[1.6vw] border-[0.27vw] border-[#AAAAAA] bg-[#FAB648] rounded-[1.07vw]"
                     onClick={() => skipWrongAttempTime("coin")}
                   >
-                    <span className="text-[9px] font-extrabold text-[#221E33]">
+                    <span className="text-[2.4vw] font-extrabold text-[#221E33]">
                       Pay
                     </span>
                     <DragonIcon
-                      className="w-[12px] h-[12px] flex-none"
+                      className="w-[3.2vw] h-[3.2vw] flex-none"
                       fill="#221E33"
                     />
-                    <span className="text-[9px] font-extrabold text-[#221E33]">
+                    <span className="text-[2.4vw] font-extrabold text-[#221E33]">
                       10 000
                     </span>
                   </button>
                 </div>
               </div>
             ) : (
-              <div className="text-[16px] font-medium text-[#EAEAEA]">
+              <div className="text-[4.27vw] font-medium text-[#EAEAEA]">
                 You have{" "}
                 {showFailedCounter
                   ? 3

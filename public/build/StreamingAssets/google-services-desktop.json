@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "42743624597",
+    "firebase_url": "https://puzzles-crusade-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "puzzles-crusade",
+    "storage_bucket": "puzzles-crusade.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42743624597:android:87d0cc18d5d056b9fc3c9c",
+        "android_client_info": {
+          "package_name": "com.ZouGames.PuzzlesCrusade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42743624597-bupsqurhomarap972f7qpdev2m88ut57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnq1TvuLClnQOXnL9Y2GjGC9HyWLa8Rbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42743624597-bupsqurhomarap972f7qpdev2m88ut57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,6 +13,29 @@ import CraftAuraImage from "../assets/images/portion/craft_aura.png";
 import axiosInterface from "../utils/axios";
 import { setUserPortion, updateCoinBalance } from "../store/appSlice";
 import { useAdsgram } from "../utils/useAdgram";
+import MoonLightImage from "../assets/images/portion/recipes/moonlight_elixir.png";
+import ShadowfireBrewImage from "../assets/images/portion/recipes/shadowfire_brew.png";
+import StarfallSaladImage from "../assets/images/portion/recipes/starfall_salad.png";
+import BloodmoonInfusionImage from "../assets/images/portion/recipes/bloodmoon_infusion.png";
+import FrostfireTeaImage from "../assets/images/portion/recipes/frostfire_tea.png";
+import TwilightTonicImage from "../assets/images/portion/recipes/twilight_tonic.png";
+import SunfireElixirImage from "../assets/images/portion/recipes/sunfire_elixir.png";
+import WhisperwindPotionImage from "../assets/images/portion/recipes/whisperwind_potion.png";
+import CelestialBrewImage from "../assets/images/portion/recipes/celestial_brew.png";
+import AstralEssenceImage from "../assets/images/portion/recipes/astral_essence.png";
+
+const RecipeImages: any = {
+  moonlight_elixir: MoonLightImage,
+  shadowfire_brew: ShadowfireBrewImage,
+  starfall_salad: StarfallSaladImage,
+  bloodmoon_infusion: BloodmoonInfusionImage,
+  frostfire_tea: FrostfireTeaImage,
+  twilight_tonic: TwilightTonicImage,
+  sunfire_elixir: SunfireElixirImage,
+  whisperwind_potion: WhisperwindPotionImage,
+  celestial_brew: CelestialBrewImage,
+  astral_essence: AstralEssenceImage,
+};
 
 interface PortionPageProps {}
 
@@ -24,6 +47,7 @@ const PortionPage: React.FC<PortionPageProps> = () => {
   const [wrongAttempt, setWrongAttempt] = useState<boolean>(false);
   const [currentIngredients, setCurrentIngredients] = useState<string[]>([]);
   const [randomIngredients, setRandomIngredients] = useState<any[]>([]);
+  const [showRevealModal, setShowRevealModal] = useState<boolean>(false);
 
   useEffect(() => {
     let recipe = levelConfig.recipes.find(
@@ -194,6 +218,7 @@ const PortionPage: React.FC<PortionPageProps> = () => {
       id: user.t_user_id,
     });
     if (result.data.success) dispatch(setUserPortion(result.data.result));
+    setShowRevealModal(false);
   };
 
   return (
@@ -244,16 +269,16 @@ const PortionPage: React.FC<PortionPageProps> = () => {
                 showCollect ? (
                   <button
                     className="w-[39.2vw] h-[11.2vw] rounded-[2.6vw] bg-[#FAB648] flex items-center justify-center border-none outline-none"
-                    onClick={() => handleCollectPortion()}
+                    onClick={() => setShowRevealModal(true)}
                   >
                     <span className="text-[6.4vw] font-bold text-[#221E33] uppercase">
-                      Collect
+                      Reveal
                     </span>
                   </button>
                 ) : (
                   <button className="w-[39.2vw] h-[11.2vw] rounded-[2.6vw] bg-[#EAEAEA] flex items-center justify-center border-none outline-none">
                     <span className="text-[6.4vw] font-bold text-[#AAAAAA] uppercase">
-                      Collect
+                      Reveal
                     </span>
                   </button>
                 )
@@ -406,6 +431,38 @@ const PortionPage: React.FC<PortionPageProps> = () => {
             )}
           </>
         )}
+      </div>
+
+      <div
+        className="fixed top-0 w-screen min-h-screen z-[1000] bg-[#00000062] backdrop-blur-lg"
+        hidden={!showRevealModal}
+      >
+        <div className="absolute z-20 w-full h-full flex items-center justify-center">
+          <div className="portion-animation">
+            <img
+              src={RecipeImages[user.UserCurrentPortion.current_recipe]}
+              alt=""
+              className="portion-animation-img w-[80vw] h-auto max-w-none"
+            />
+            <div className="portion-animation-text text-[9.6vw] font-bold text-[#f8e458] text-center mb-[2.13vw]">
+              {
+                levelConfig.recipes.find(
+                  (e) => e.key === user.UserCurrentPortion.current_recipe
+                )?.name
+              }
+            </div>
+            <div className="flex justify-center">
+              <button
+                className="w-[39.2vw] h-[11.2vw] rounded-[2.6vw] bg-[#FAB648] flex items-center justify-center border-none outline-none"
+                onClick={() => handleCollectPortion()}
+              >
+                <span className="text-[6.4vw] font-bold text-[#221E33] uppercase">
+                  Collect
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </MainLayout>
   );

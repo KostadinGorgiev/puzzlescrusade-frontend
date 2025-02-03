@@ -76,6 +76,7 @@ code {
   from {
     top: 100vh;
   }
+
   to {
     top: 0px;
   }
@@ -85,6 +86,7 @@ code {
   from {
     top: 0px;
   }
+
   to {
     top: 100vh;
   }
@@ -94,6 +96,7 @@ code {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -103,6 +106,7 @@ code {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -113,6 +117,7 @@ code {
     transform: translateY(100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -124,6 +129,7 @@ code {
     /* transform: translateY(0); */
     opacity: 1;
   }
+
   to {
     /* transform: translateY(100%); */
     opacity: 0;
@@ -131,13 +137,75 @@ code {
 }
 
 @keyframes wrongAttempt {
+
   0%,
   100% {
     transform: translateX(-4%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
+
   50% {
     transform: translateX(4%);
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.portion-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  animation: PortionAnimation 1s forwards;
+}
+
+.portion-animation-img {
+  animation: PortionAnimationImage 1s forwards, PortionAnimationImageGrow 1s 1s forwards;
+}
+
+.portion-animation-text {
+  animation: PortionAnimationText 1s forwards;
+}
+
+@keyframes PortionAnimation {
+  0% {
+    scale: 0;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes PortionAnimationImage {
+  0% {
+    scale: 0;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes PortionAnimationImageGrow {
+  0% {
+    scale: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    scale: 1.3;
+    transform: translateY(-20%);
+  }
+}
+
+@keyframes PortionAnimationText {
+  0% {
+    scale: 0;
+  }
+
+  100% {
+    scale: 1;
   }
 }

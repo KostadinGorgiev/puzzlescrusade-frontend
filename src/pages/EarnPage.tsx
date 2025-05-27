@@ -145,6 +145,7 @@ const EarnPage: React.FC = () => {
       task_id: task.id,
     });
 
+    setLoading(false);
     if (!result.data.success) {
       setShowTelegramError(true);
       setIsErrorFading(false);

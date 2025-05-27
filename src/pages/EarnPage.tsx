@@ -14,7 +14,8 @@ import { useBackButton, useUtils } from "@telegram-apps/sdk-react";
 import DragonIcon from "../Icons/DragonIcon";
 import VerifyMission from "../components/Earn/VerifyMission";
 import YoutubeIcon from "../Icons/YoutubeIcon";
-
+import brickwall from "../assets/images/brickwall-logo.webp";
+import ShareIcon from "../Icons/ShareIcon";
 interface TaskStatusComponentProps {
   status: TaskStatus;
   onClick?: () => void;
@@ -24,6 +25,7 @@ export const taskIcon: any = {
   twitter: <XIcon className="flex-none w-[6.4vw] h-[5.78vw]" />,
   telegram: <TelegramIcon className="flex-none w-[6.4vw] h-[5.28vw]" />,
   youtube: <YoutubeIcon className="flex-none w-[6.4vw] h-[5.28vw]" />,
+  brickwall: <img src={brickwall} className="flex-none w-[8.4vw]" />,
 };
 
 const EarnPage: React.FC = () => {
@@ -98,12 +100,16 @@ const EarnPage: React.FC = () => {
       if (status === "todo") {
         handleCompleteTask(task);
       } else if (status === "verify") {
-        setSelectedTask(task);
-        setShowVerify(true);
-        backbutton.show();
-        backbutton.on("click", () => {
-          setShowVerify(false);
-        });
+        if (task.type === "brickwall") {
+          handleVerifyBrickwallTask(task);
+        } else {
+          setSelectedTask(task);
+          setShowVerify(true);
+          backbutton.show();
+          backbutton.on("click", () => {
+            setShowVerify(false);
+          });
+        }
       } else if (status === "claim") {
         handleClaimTask(task);
       }
@@ -121,7 +127,7 @@ const EarnPage: React.FC = () => {
   };
 
   const handleCompleteTask = async (task: DynamicTask) => {
-    if (task.type == "telegram") {
+    if (task.type == "telegram" || task.type == "brickwall") {
       utils.openTelegramLink(task?.link || "");
     } else {
       utils.openLink(task?.link || "");
@@ -131,6 +137,28 @@ const EarnPage: React.FC = () => {
       task_id: task.id,
     });
     fetchTaskList();
+  };
+
+  const handleVerifyBrickwallTask = async (task: DynamicTask) => {
+    const result = await axiosInterface.post("task/verify-brickwall", {
+      user_id: user.t_user_id,
+      task_id: task.id,
+    });
+
+    if (!result.data.success) {
+      setShowTelegramError(true);
+      setIsErrorFading(false);
+
+      setTimeout(() => {
+        setIsErrorFading(true);
+        setTimeout(() => {
+          setShowTelegramError(false);
+          setIsErrorFading(false);
+        }, 300); // Animation duration
+      }, 3000);
+    } else {
+      fetchTaskList();
+    }
   };
 
   const handleClaimTask = async (task: DynamicTask) => {
@@ -229,8 +257,8 @@ const EarnPage: React.FC = () => {
                     <div className="flex-1">
                       <div
                         className={`flex-1 font-medium text-[#AAAAAA] leading-none ${userTaskStatus(task) === "todo"
-                            ? "text-[3.2vw]"
-                            : "text-[3.7vw]"
+                          ? "text-[3.2vw]"
+                          : "text-[3.7vw]"
                           }`}
                       >
                         {task.title}
@@ -249,11 +277,21 @@ const EarnPage: React.FC = () => {
                         </div>
                       )}
                     </div>
-                    <div className="flex items-center justify-center w-[24.26vw]">
+                    <div className="flex items-center justify-center w-[24.26vw] gap-2">
                       <TaskStatusComponent
                         status={userTaskStatus(task)}
                         onClick={() => handleUserTaskClick(task)}
                       />
+                      {task.type === "brickwall" && userTaskStatus(task) === "verify" && (
+                        <button
+                          className="flex-none w-[6.66vw] h-[6.66vw] outline-none border-none bg-[#4B4955] rounded-full flex items-center justify-center"
+                          onClick={() => {
+                            utils.openTelegramLink(task?.link || "");
+                          }}
+                        >
+                          <ShareIcon className="w-[3.2vw] h-[3.2vw]" />
+                        </button>
+                      )}
                     </div>
                   </div>
                   <div className="w-full border-t-[0.13vw] border-[#AAAAAA] my-[3.46vw] opacity-30"></div>
